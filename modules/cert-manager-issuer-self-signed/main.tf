@@ -1,5 +1,7 @@
 locals {
-  namespace        = var.namespace != null ? var.namespace : "cert-manager"
+  default_namespace        = "cert-manager"
+
+  namespace        = var.force_defaults_for_null_variables && var.namespace == null ? local.default_namespace : var.namespace
 }
 
 resource "kubectl_manifest" "self_signed_cert_cluster_issuer" {

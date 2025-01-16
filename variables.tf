@@ -147,7 +147,8 @@ variable "ingress_controller_nginx_timeout" {
 
 variable "ingress_controller_nginx_values" {
   default     = null
-  description = "A list of values in raw YAML to be applied to the helm release. Merges with the settings input, can also be used with the `file()` function, i.e. `file(\"my/values.yaml\")`."
+  description = "A list of values in raw YAML to be applied to the helm release. Overrides default values from [default-configs](./default-configs). Merges with the settings input, can also be used with the `file()` function, i.e. `file(\"my/values.yaml\")`."
+  type = list(string)
 }
 
 #######
@@ -191,7 +192,8 @@ variable "cert_manager_timeout" {
 
 variable "cert_manager_values" {
   default     = null
-  description = "A list of values in raw YAML to be applied to the helm release. Merges with the settings input, can also be used with the `file()` function, i.e. `file(\"my/values.yaml\")`."
+  description = "A list of values in raw YAML to be applied to the helm release. Overrides default values from [default-configs](./default-configs). Merges with the settings input, can also be used with the `file()` function, i.e. `file(\"my/values.yaml\")`."
+  type = list(string)
 }
 
 #######
@@ -262,7 +264,8 @@ variable "pulsar_kaap_timeout" {
 
 variable "pulsar_kaap_values" {
   default     = null
-  description = "A list of values in raw YAML to be applied to the helm release. Merges with the settings input, can also be used with the `file()` function, i.e. `file(\"my/values.yaml\")`."
+  description = "A list of values in raw YAML to be applied to the helm release. Overrides default values from [default-configs](./default-configs). Merges with the settings input, can also be used with the `file()` function, i.e. `file(\"my/values.yaml\")`."
+  type = list(string)
 }
 
 #######
@@ -318,8 +321,9 @@ variable "streamx_operator_timeout" {
 }
 
 variable "streamx_operator_values" {
-  default     = []
-  description = "A list of values in raw YAML to be applied to the helm release. Merges with the settings input, can also be used with the `file()` function, i.e. `file(\"my/values.yaml\")`."
+  default     = null
+  description = "A list of values in raw YAML to be applied to the helm release. Overrides default composed values. Merges with the settings input, can also be used with the `file()` function, i.e. `file(\"my/values.yaml\")`."
+  type = list(string)
 }
 
 variable "streamx_operator_messaging_pulsar_init_image" {

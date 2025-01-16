@@ -10,7 +10,7 @@ module "ingress_controller_nginx" {
   release_name     = var.ingress_controller_nginx_release_name
   settings         = var.ingress_controller_nginx_settings
   timeout          = var.ingress_controller_nginx_timeout
-  values           = var.ingress_controller_nginx_values
+  values           = coalescelist(var.ingress_controller_nginx_values, [file("${path.module}/default-configs/ingress-controller-nginx/values.yaml")])
 }
 
 module "cert_manager" {
@@ -25,7 +25,7 @@ module "cert_manager" {
   release_name     = var.cert_manager_release_name
   settings         = var.cert_manager_settings
   timeout          = var.cert_manager_timeout
-  values           = var.cert_manager_values
+  values           = coalescelist(var.cert_manager_values, [file("${path.module}/default-configs/cert-manager/values.yaml")])
 }
 
 module "cert_manager_lets_encrypt_issuer" {
@@ -53,7 +53,7 @@ module "pulsar_kaap" {
   release_name     = var.pulsar_kaap_release_name
   settings         = var.pulsar_kaap_settings
   timeout          = var.pulsar_kaap_timeout
-  values           = var.pulsar_kaap_values
+  values           = coalescelist(var.pulsar_kaap_values, [file("${path.module}/default-configs/pulsar-kaap/values.yaml")])
 }
 
 locals {
@@ -111,7 +111,7 @@ module "streamx_operator" {
       }
       monitoring = {
         traces = {
-          enabled = var.streamx_operator_monitoring_traces_enabled
+          enabled  = var.streamx_operator_monitoring_traces_enabled
           endpoint = var.streamx_operator_monitoring_traces_endpoint
         }
       }
