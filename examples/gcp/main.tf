@@ -30,7 +30,7 @@ resource "google_container_node_pool" "node_pool" {
       "https://www.googleapis.com/auth/devstorage.read_only"
     ]
 
-    disk_size_gb =200
+    disk_size_gb = 200
     disk_type    = "pd-ssd"
     machine_type = "e2-standard-4"
   }

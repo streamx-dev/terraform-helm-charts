@@ -20,13 +20,13 @@ variable "ovh_service_name" {
 }
 
 variable "ovh_cluster_name" {
-  default = "streamx"
+  default     = "streamx"
   description = "The name of the kubernetes cluster."
   type        = string
 }
 
 variable "ovh_cluster_region" {
-  default = "GRA11"
+  default     = "GRA11"
   description = "A valid OVHcloud public cloud region ID in which the kubernetes cluster will be available."
   type        = string
 }
