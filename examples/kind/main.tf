@@ -7,7 +7,7 @@ resource "kind_cluster" "cluster" {
     kind        = "Cluster"
     api_version = "kind.x-k8s.io/v1alpha4"
     node {
-      role                   = "control-plane"
+      role = "control-plane"
       kubeadm_config_patches = [
         <<-KCP
         kind: InitConfiguration

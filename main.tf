@@ -97,7 +97,7 @@ module "streamx_operator" {
   release_name              = var.streamx_operator_release_name
   settings                  = var.streamx_operator_settings
   timeout                   = var.streamx_operator_timeout
-  values                    = coalescelist(var.streamx_operator_values, [
+  values = coalescelist(var.streamx_operator_values, [
     yamlencode({
       imagePullSecrets = local.streamx_operator_image_pull_secret_name == null ? [] : [
         { name = local.streamx_operator_image_pull_secret_name }

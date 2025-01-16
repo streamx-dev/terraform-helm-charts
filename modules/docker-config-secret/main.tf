@@ -1,6 +1,6 @@
 resource "kubernetes_secret" "docker_config_secret" {
   metadata {
-    name = var.name
+    name      = var.name
     namespace = var.namespace
   }
 
