@@ -30,8 +30,6 @@ output "kubeconfig_path" {
 
 output "kubeconfig" {
   description = "K8s cluster kubeconfig"
-  value       = file("${path.module}/env/kubeconfig")
+  value       = local.kubeconfig
   sensitive   = true
-
-  depends_on = [kind_cluster.cluster]
 }

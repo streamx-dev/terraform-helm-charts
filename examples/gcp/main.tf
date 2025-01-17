@@ -51,9 +51,8 @@ resource "google_container_node_pool" "node_pool" {
   }
 }
 
-resource "local_sensitive_file" "kubeconfig" {
-  filename = "${path.module}/env/kubeconfig"
-  content  = <<EOT
+locals {
+  kubeconfig = <<EOT
 apiVersion: v1
 clusters:
 - cluster:
@@ -79,6 +78,11 @@ users:
         token-key: '{.credential.access_token}'
       name: gcp
 EOT
+}
+
+resource "local_sensitive_file" "kubeconfig" {
+  filename = "${path.module}/env/kubeconfig"
+  content  = local.kubeconfig
 }
 
 module "streamx_platform" {
