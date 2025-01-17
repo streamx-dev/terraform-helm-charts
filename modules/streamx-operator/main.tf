@@ -39,7 +39,7 @@ locals {
   values           = var.force_defaults_for_null_variables && var.values == null ? local.default_values : var.values
 }
 
-resource "helm_release" "cert_manager" {
+resource "helm_release" "streamx_operator" {
   atomic              = local.atomic
   chart               = local.chart_name
   cleanup_on_fail     = local.cleanup_on_fail

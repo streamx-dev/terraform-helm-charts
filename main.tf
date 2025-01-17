@@ -114,6 +114,9 @@ module "streamx_operator" {
   timeout                   = var.streamx_operator_timeout
   values = coalescelist(var.streamx_operator_values, [
     yamlencode({
+      image = {
+        tag = "0.0.7-jvm"
+      }
       imagePullSecrets = local.streamx_operator_image_pull_secret_name == null ? [] : [
         { name = local.streamx_operator_image_pull_secret_name }
       ]
