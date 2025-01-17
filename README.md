@@ -114,5 +114,6 @@
 
 | Name | Description |
 |------|-------------|
+| <a name="output_cert_manager_lets_encrypt_issuer_ingress_annotations"></a> [cert\_manager\_lets\_encrypt\_issuer\_ingress\_annotations](#output\_cert\_manager\_lets\_encrypt\_issuer\_ingress\_annotations) | Ingress annotations with Cert Manager Let's Encrypt issuer configuration |
 | <a name="output_loadbalancer_ip"></a> [loadbalancer\_ip](#output\_loadbalancer\_ip) | K8s cluster Load Balancer IP |
 <!-- END_TF_DOCS -->
