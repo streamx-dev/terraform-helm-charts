@@ -13,7 +13,14 @@
 # limitations under the License.
 #
 
-# This file defines code owners for this repository.
-# See more in https://docs.github.com/en/enterprise-cloud@latest/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+variable "force_defaults_for_null_variables" {
+  default     = true
+  description = "Enables forcing default variable values when the variable value passed to the module is null."
+  type        = bool
+}
 
-* @streamx-dev/streamx-infra-admins
+variable "namespace" {
+  default     = "cert-manager"
+  description = "The namespace used for the deployment"
+  type        = string
+}

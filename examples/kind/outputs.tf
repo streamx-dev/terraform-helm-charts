@@ -13,7 +13,20 @@
 # limitations under the License.
 #
 
-# This file defines code owners for this repository.
-# See more in https://docs.github.com/en/enterprise-cloud@latest/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+output "loadbalancer_ip" {
+  description = "K8s cluster Load Balancer IP"
+  value       = module.streamx_platform.loadbalancer_ip
+}
 
-* @streamx-dev/streamx-infra-admins
+output "kubeconfig_path" {
+  description = "K8s cluster kubeconfig file path"
+  value       = abspath("${path.module}/env/kubeconfig")
+}
+
+output "kubeconfig" {
+  description = "K8s cluster kubeconfig"
+  value       = file("${path.module}/env/kubeconfig")
+  sensitive   = true
+
+  depends_on = [kind_cluster.cluster]
+}

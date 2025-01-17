@@ -13,7 +13,18 @@
 # limitations under the License.
 #
 
-# This file defines code owners for this repository.
-# See more in https://docs.github.com/en/enterprise-cloud@latest/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+variable "cert_manager_lets_encrypt_issuer_acme_email" {
+  description = "Email passed to acme server."
+  type        = string
+}
 
-* @streamx-dev/streamx-infra-admins
+variable "streamx_operator_image_pull_secret_registry_email" {
+  description = "StreamX Operator container image registry user email."
+  type        = string
+}
+
+variable "streamx_operator_image_pull_secret_registry_password" {
+  description = "StreamX Operator container image registry user password."
+  type        = string
+  sensitive   = true
+}

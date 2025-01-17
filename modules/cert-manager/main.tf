@@ -15,13 +15,13 @@
 
 locals {
   default_atomic           = true
-  default_chart_name       = "streamx-operator"
-  default_chart_repository = "oci://europe-west1-docker.pkg.dev/streamx-releases/streamx-helm-charts"
-  default_chart_version    = "0.0.2"
+  default_chart_name       = "cert-manager"
+  default_chart_repository = "https://charts.jetstack.io"
+  default_chart_version    = "v1.14.5"
   default_cleanup_on_fail  = true
   default_create_namespace = true
-  default_namespace        = "streamx-operator"
-  default_release_name     = "streamx-operator"
+  default_namespace        = "cert-manager"
+  default_release_name     = "cert-manager"
   default_settings         = {}
   default_timeout          = 120
   default_values           = []
@@ -39,19 +39,17 @@ locals {
   values           = var.force_defaults_for_null_variables && var.values == null ? local.default_values : var.values
 }
 
-resource "helm_release" "streamx_operator" {
-  atomic              = local.atomic
-  chart               = local.chart_name
-  cleanup_on_fail     = local.cleanup_on_fail
-  create_namespace    = local.create_namespace
-  name                = local.release_name
-  namespace           = local.namespace
-  repository          = local.chart_repository
-  repository_username = var.chart_repository_username
-  repository_password = var.chart_repository_password
-  timeout             = local.timeout
-  version             = local.chart_version
-  values              = local.values
+resource "helm_release" "cert_manager" {
+  atomic           = local.atomic
+  chart            = local.chart_name
+  cleanup_on_fail  = local.cleanup_on_fail
+  create_namespace = local.create_namespace
+  name             = local.release_name
+  namespace        = local.namespace
+  repository       = local.chart_repository
+  timeout          = local.timeout
+  version          = local.chart_version
+  values           = local.values
 
   dynamic "set" {
     for_each = local.settings

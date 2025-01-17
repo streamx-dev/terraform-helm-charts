@@ -13,7 +13,11 @@
 # limitations under the License.
 #
 
-# This file defines code owners for this repository.
-# See more in https://docs.github.com/en/enterprise-cloud@latest/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+locals {
+  load_balancer_ingress = data.kubernetes_service.ingress_svc.status.0.load_balancer.0.ingress
+}
 
-* @streamx-dev/streamx-infra-admins
+output "ingress_ip" {
+  description = "IP of the loadbalancer"
+  value       = length(local.load_balancer_ingress) > 0 ? local.load_balancer_ingress.0.ip : null
+}

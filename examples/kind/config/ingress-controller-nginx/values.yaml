@@ -13,7 +13,24 @@
 # limitations under the License.
 #
 
-# This file defines code owners for this repository.
-# See more in https://docs.github.com/en/enterprise-cloud@latest/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
-
-* @streamx-dev/streamx-infra-admins
+controller:
+  replicaCount: 1
+  hostPort:
+    enabled: true
+  terminationGracePeriodSeconds: 0
+  service:
+    type: "NodePort"
+  watchIngressWithoutClass: true
+  nodeSelector:
+    ingress-ready: "true"
+  tolerations:
+    - effect: "NoSchedule"
+      key: "node-role.kubernetes.io/master"
+      operator: "Equal"
+    - effect: "NoSchedule"
+      key: "node-role.kubernetes.io/control-plane"
+      operator: "Equal"
+  publishService:
+    enabled: false
+  extraArgs:
+    publish-status-address: "localhost"

@@ -13,7 +13,7 @@
 # limitations under the License.
 #
 
-# This file defines code owners for this repository.
-# See more in https://docs.github.com/en/enterprise-cloud@latest/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
-
-* @streamx-dev/streamx-infra-admins
+output "cluster_issuer_ingress_annotations" {
+  description = "Ingress annotations with cert manager configuration"
+  value       = { "cert-manager.io/cluster-issuer" : kubectl_manifest.letsencrypt_cert_cluster_issuer.name }
+}

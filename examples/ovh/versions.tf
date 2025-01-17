@@ -13,7 +13,20 @@
 # limitations under the License.
 #
 
-# This file defines code owners for this repository.
-# See more in https://docs.github.com/en/enterprise-cloud@latest/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
-
-* @streamx-dev/streamx-infra-admins
+terraform {
+  required_version = ">= 1.0.0"
+  required_providers {
+    kind = {
+      source  = "tehcyx/kind"
+      version = "~> 0.7.0"
+    }
+    kubectl = {
+      source  = "gavinbunney/kubectl"
+      version = "~> 1.14.0"
+    }
+    ovh = {
+      source  = "ovh/ovh"
+      version = "~> 1.4.0"
+    }
+  }
+}

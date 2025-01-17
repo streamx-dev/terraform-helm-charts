@@ -13,7 +13,12 @@
 # limitations under the License.
 #
 
-# This file defines code owners for this repository.
-# See more in https://docs.github.com/en/enterprise-cloud@latest/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+output "client_service_url" {
+  description = "Pulsar client service URL"
+  value       = "pulsar://pulsar-broker.${local.namespace}.svc.cluster.local:6650"
+}
 
-* @streamx-dev/streamx-infra-admins
+output "admin_service_url" {
+  description = "Pulsar admin service URL"
+  value       = "http://pulsar-broker.${local.namespace}.svc.cluster.local:8080"
+}

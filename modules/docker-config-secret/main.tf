@@ -13,7 +13,24 @@
 # limitations under the License.
 #
 
-# This file defines code owners for this repository.
-# See more in https://docs.github.com/en/enterprise-cloud@latest/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+resource "kubernetes_secret" "docker_config_secret" {
+  metadata {
+    name      = var.name
+    namespace = var.namespace
+  }
 
-* @streamx-dev/streamx-infra-admins
+  type = "kubernetes.io/dockerconfigjson"
+
+  data = {
+    ".dockerconfigjson" = jsonencode({
+      auths = {
+        "${var.registry_server}" = {
+          "username" = var.registry_username
+          "password" = var.registry_password
+          "email"    = var.registry_email
+          "auth"     = base64encode("${var.registry_username}:${var.registry_password}")
+        }
+      }
+    })
+  }
+}

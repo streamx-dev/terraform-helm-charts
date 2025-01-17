@@ -13,7 +13,7 @@
 # limitations under the License.
 #
 
-# This file defines code owners for this repository.
-# See more in https://docs.github.com/en/enterprise-cloud@latest/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
-
-* @streamx-dev/streamx-infra-admins
+output "secret_name" {
+  description = "Created secret name."
+  value       = kubernetes_secret.docker_config_secret.metadata[0].name
+}
