@@ -13,16 +13,17 @@
 # limitations under the License.
 #
 
-resource "azurerm_resource_group" "example" {
-  name     = "streamx-example"
+resource "azurerm_resource_group" "rg" {
   location = "West Europe"
+  name     = "streamx-example"
 }
 
 resource "azurerm_kubernetes_cluster" "cluster" {
+  location            = azurerm_resource_group.rg.location
   name                = "streamx-example"
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
-  dns_prefix          = "streax"
+  resource_group_name = azurerm_resource_group.rg.name
+
+  dns_prefix          = "streamx-example"
 
   default_node_pool {
     name       = "default"
@@ -48,7 +49,6 @@ resource "azurerm_kubernetes_cluster_node_pool" "bs" {
   vm_size               = "standard_b8ms"
   node_count            = 5
 }
-
 
 resource "local_sensitive_file" "kubeconfig" {
   filename = "${path.module}/env/kubeconfig"
