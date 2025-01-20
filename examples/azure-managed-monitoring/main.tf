@@ -405,8 +405,24 @@ module "streamx_platform" {
   ]
 }
 
-resource "kubectl_manifest" "pod_monitor" {
-  yaml_body = file("${path.module}/config/prometheus/podmonitor.yaml")
+resource "kubectl_manifest" "streamx_pod_monitor" {
+  yaml_body = file("${path.module}/config/prometheus/streamx-pod-monitor.yaml")
+}
+
+resource "kubectl_manifest" "kaap_bookkeeper_pod_monitor" {
+  yaml_body = file("${path.module}/config/prometheus/kaap-bookkeeper-pod-monitor.yaml")
+}
+
+resource "kubectl_manifest" "kaap_broker_pod_monitor" {
+  yaml_body = file("${path.module}/config/prometheus/kaap-broker-pod-monitor.yaml")
+}
+
+resource "kubectl_manifest" "kaap_zookeeper_pod_monitor" {
+  yaml_body = file("${path.module}/config/prometheus/kaap-zookeeper-pod-monitor.yaml")
+}
+
+resource "kubectl_manifest" "kaap_operator_pod_monitor" {
+  yaml_body = file("${path.module}/config/prometheus/kaap-operator-pod-monitor.yaml")
 }
 
 resource "grafana_folder" "streamx" {
@@ -417,5 +433,18 @@ resource "grafana_folder" "streamx" {
 resource "grafana_dashboard" "streamx" {
   folder      = grafana_folder.streamx.uid
   overwrite   = true
-  config_json = file("${path.module}/config/grafana/streamx.json")
+  config_json = file("${path.module}/config/grafana/streamx/streamx.json")
+}
+
+resource "grafana_folder" "kaap" {
+  title = "Pulsar - KAAP (Kubernetes Autoscaling for Apache Pulsar)"
+  uid   = "pulsar-kaap"
+}
+
+resource "grafana_dashboard" "kaap" {
+  for_each = fileset("${path.module}/config/grafana/kaap", "*.json")
+
+  folder      = grafana_folder.kaap.uid
+  overwrite   = true
+  config_json = file("${path.module}/config/grafana/kaap/${each.value}")
 }
