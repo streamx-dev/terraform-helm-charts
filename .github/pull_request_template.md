@@ -11,6 +11,6 @@
 
 ## ✅ Checklist
 
-- [ ] My code follows the [code standards](https://github.com/streamx-dev/streamx/blob/main/CONTRIBUTING.md) of this project
+- [ ] My code follows the code standards of this project
 - [ ] Changed code is covered with unit tests
 - [ ] I have updated READMEs and java docs (if applicable)
