@@ -20,13 +20,11 @@ output "loadbalancer_ip" {
 
 output "kubeconfig_path" {
   description = "K8s cluster kubeconfig file path"
-  value       = abspath("${path.module}/env/kubeconfig")
+  value       = abspath(kind_cluster.cluster.kubeconfig_path)
 }
 
 output "kubeconfig" {
   description = "K8s cluster kubeconfig"
-  value       = try(file(kind_cluster.cluster.kubeconfig_path), "File not yet created")
+  value       = kind_cluster.cluster.kubeconfig
   sensitive   = true
-
-  depends_on = [kind_cluster.cluster]
 }
