@@ -47,10 +47,14 @@ resource "kind_cluster" "cluster" {
 }
 
 module "streamx_platform" {
-  source = "../../" #TODO: change to deployed module source
+  source  = "streamx-dev/charts/helm"
+  version = "0.0.1"
 
   ingress_controller_nginx_values = [
     file("${path.module}/config/ingress-controller-nginx/values.yaml")
+  ]
+  pulsar_kaap_values = [
+    file("${path.module}/config/pulsar-kaap/values.yaml")
   ]
   cert_manager_lets_encrypt_issuer_acme_email          = var.cert_manager_lets_encrypt_issuer_acme_email
   streamx_operator_image_pull_secret_registry_email    = var.streamx_operator_image_pull_secret_registry_email
