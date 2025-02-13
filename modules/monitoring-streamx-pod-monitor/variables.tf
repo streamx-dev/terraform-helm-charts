@@ -13,13 +13,7 @@
 # limitations under the License.
 #
 
-variable "streamx_operator_image_pull_secret_registry_email" {
-  description = "StreamX Operator container image registry user email."
+variable "namespace" {
+  description = "The namespace used for the deployment"
   type        = string
-}
-
-variable "streamx_operator_image_pull_secret_registry_password" {
-  description = "StreamX Operator container image registry user password."
-  type        = string
-  sensitive   = true
 }

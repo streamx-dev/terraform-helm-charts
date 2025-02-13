@@ -1,0 +1,30 @@
+grafana:
+  adminPassword:
+  admin:
+    existingSecret: grafana-admin-secret
+  sidecar:
+    dashboards:
+      folderAnnotation: dashboard_folder
+      provider:
+        foldersFromFilesStructure: true
+
+prometheus:
+  enabled: true
+  prometheusSpec:
+    retention: 10d
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          resources:
+            requests:
+              storage: 50Gi
+    podMonitorSelectorNilUsesHelmValues: false
+    podMonitorNamespaceSelector:
+      any: true
+    podMonitorSelector: { }
+    additionalArgs:
+      - name: enable-feature
+        value: otlp-write-receiver
+
+alertmanager:
+  enabled: false

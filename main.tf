@@ -25,7 +25,9 @@ module "ingress_controller_nginx" {
   release_name     = var.ingress_controller_nginx_release_name
   settings         = var.ingress_controller_nginx_settings
   timeout          = var.ingress_controller_nginx_timeout
-  values           = coalescelist(var.ingress_controller_nginx_values, [file("${path.module}/default-configs/ingress-controller-nginx/values.yaml")])
+  values           = coalescelist(var.ingress_controller_nginx_values, [
+    file("${path.module}/default-configs/ingress-controller-nginx/values.yaml")
+  ])
 }
 
 module "cert_manager" {
@@ -40,7 +42,9 @@ module "cert_manager" {
   release_name     = var.cert_manager_release_name
   settings         = var.cert_manager_settings
   timeout          = var.cert_manager_timeout
-  values           = coalescelist(var.cert_manager_values, [file("${path.module}/default-configs/cert-manager/values.yaml")])
+  values           = coalescelist(var.cert_manager_values, [
+    file("${path.module}/default-configs/cert-manager/values.yaml")
+  ])
 }
 
 module "cert_manager_lets_encrypt_issuer" {
@@ -56,6 +60,49 @@ module "cert_manager_lets_encrypt_issuer" {
   depends_on = [module.cert_manager]
 }
 
+locals {
+  prometheus_stack_namespace = var.prometheus_stack_create_namespace ? kubernetes_namespace.prometheus_stack[0].metadata[0].name : var.prometheus_stack_namespace
+}
+
+resource "kubernetes_namespace" "prometheus_stack" {
+  count = var.prometheus_stack_enabled && var.prometheus_stack_create_namespace ? 1 : 0
+
+  metadata {
+    name = var.prometheus_stack_namespace
+  }
+}
+
+resource "kubernetes_secret_v1" "grafana_admin_secret" {
+  count = var.prometheus_stack_enabled ? 1 : 0
+
+  metadata {
+    name      = "grafana-admin-secret"
+    namespace = local.prometheus_stack_namespace
+  }
+
+  data = {
+    admin-user     = var.prometheus_stack_grafana_admin_login
+    admin-password = var.prometheus_stack_grafana_admin_password
+  }
+}
+
+module "prometheus_stack" {
+  count  = var.prometheus_stack_enabled ? 1 : 0
+  source = "./modules/monitoring-prometheus-stack"
+
+  chart_name       = var.prometheus_stack_chart_name
+  chart_repository = var.prometheus_stack_chart_repository
+  chart_version    = var.prometheus_stack_chart_version
+  create_namespace = var.prometheus_stack_create_namespace
+  namespace        = local.prometheus_stack_namespace
+  release_name     = var.prometheus_stack_release_name
+  settings         = var.prometheus_stack_settings
+  timeout          = var.prometheus_stack_timeout
+  values           = coalescelist(var.prometheus_stack_values, [
+    file("${path.module}/default-configs/prometheus-stack/values.yaml")
+  ])
+}
+
 module "pulsar_kaap" {
   count  = var.pulsar_kaap_enabled ? 1 : 0
   source = "./modules/pulsar-kaap"
@@ -68,7 +115,25 @@ module "pulsar_kaap" {
   release_name     = var.pulsar_kaap_release_name
   settings         = var.pulsar_kaap_settings
   timeout          = var.pulsar_kaap_timeout
-  values           = coalescelist(var.pulsar_kaap_values, [file("${path.module}/default-configs/pulsar-kaap/values.yaml")])
+  values           = coalescelist(var.pulsar_kaap_values, [
+    file("${path.module}/default-configs/pulsar-kaap/values.yaml")
+  ])
+}
+
+module "kaap_pod_monitor" {
+  count     = var.prometheus_stack_enabled && var.pulsar_kaap_enabled ? 1 : 0
+  source    = "./modules/monitoring-kaap-pod-monitor"
+  namespace = var.pulsar_kaap_namespace
+
+  depends_on = [module.prometheus_stack, module.pulsar_kaap]
+}
+
+module "kaap_dashboards" {
+  count     = var.prometheus_stack_enabled && var.pulsar_kaap_enabled ? 1 : 0
+  source    = "./modules/monitoring-kaap-grafana-dashboards"
+  namespace = local.prometheus_stack_namespace
+
+  depends_on = [module.prometheus_stack, module.pulsar_kaap]
 }
 
 locals {
@@ -112,7 +177,7 @@ module "streamx_operator" {
   release_name              = var.streamx_operator_release_name
   settings                  = var.streamx_operator_settings
   timeout                   = var.streamx_operator_timeout
-  values = coalescelist(var.streamx_operator_values, [
+  values                    = coalescelist(var.streamx_operator_values, [
     yamlencode({
       image = {
         tag = "0.0.7-jvm"
@@ -135,4 +200,20 @@ module "streamx_operator" {
       }
     })
   ])
+}
+
+module "streamx_pod_monitor" {
+  count     = var.prometheus_stack_enabled && var.streamx_operator_enabled ? 1 : 0
+  source    = "./modules/monitoring-streamx-pod-monitor"
+  namespace = local.streamx_operator_namespace
+
+  depends_on = [module.prometheus_stack, module.streamx_operator]
+}
+
+module "streamx_dashboards" {
+  count     = var.prometheus_stack_enabled && var.streamx_operator_enabled ? 1 : 0
+  source    = "./modules/monitoring-streamx-grafana-dashboards"
+  namespace = local.prometheus_stack_namespace
+
+  depends_on = [module.prometheus_stack, module.pulsar_kaap]
 }

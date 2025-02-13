@@ -22,7 +22,7 @@ resource "kind_cluster" "cluster" {
     kind        = "Cluster"
     api_version = "kind.x-k8s.io/v1alpha4"
     node {
-      role = "control-plane"
+      role                   = "control-plane"
       kubeadm_config_patches = [
         <<-KCP
         kind: InitConfiguration
@@ -47,16 +47,17 @@ resource "kind_cluster" "cluster" {
 }
 
 module "streamx_platform" {
-  source  = "streamx-dev/charts/helm"
-  version = "0.0.1"
+  source = "../../"
 
   ingress_controller_nginx_values = [
     file("${path.module}/config/ingress-controller-nginx/values.yaml")
   ]
-  pulsar_kaap_values = [
+  prometheus_stack_grafana_admin_password = "admin"
+  pulsar_kaap_values                      = [
     file("${path.module}/config/pulsar-kaap/values.yaml")
   ]
-  cert_manager_lets_encrypt_issuer_acme_email          = var.cert_manager_lets_encrypt_issuer_acme_email
+  cert_manager_lets_encrypt_issuer_enabled             = false
+  cert_manager_lets_encrypt_issuer_acme_email          = null
   streamx_operator_image_pull_secret_registry_email    = var.streamx_operator_image_pull_secret_registry_email
   streamx_operator_image_pull_secret_registry_password = var.streamx_operator_image_pull_secret_registry_password
 }

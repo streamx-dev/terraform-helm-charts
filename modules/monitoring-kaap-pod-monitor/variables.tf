@@ -13,13 +13,14 @@
 # limitations under the License.
 #
 
-variable "streamx_operator_image_pull_secret_registry_email" {
-  description = "StreamX Operator container image registry user email."
-  type        = string
+variable "force_defaults_for_null_variables" {
+  default     = true
+  description = "Enables forcing default variable values when the variable value passed to the module is null."
+  type        = bool
 }
 
-variable "streamx_operator_image_pull_secret_registry_password" {
-  description = "StreamX Operator container image registry user password."
+variable "namespace" {
+  default = "kaap"
+  description = "The namespace used for the deployment"
   type        = string
-  sensitive   = true
 }

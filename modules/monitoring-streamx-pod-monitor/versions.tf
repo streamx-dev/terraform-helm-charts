@@ -13,13 +13,12 @@
 # limitations under the License.
 #
 
-variable "streamx_operator_image_pull_secret_registry_email" {
-  description = "StreamX Operator container image registry user email."
-  type        = string
-}
-
-variable "streamx_operator_image_pull_secret_registry_password" {
-  description = "StreamX Operator container image registry user password."
-  type        = string
-  sensitive   = true
+terraform {
+  required_version = ">= 1.0.0"
+  required_providers {
+    kubectl = {
+      source  = "gavinbunney/kubectl"
+      version = "~> 1.14.0"
+    }
+  }
 }

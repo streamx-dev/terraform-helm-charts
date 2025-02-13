@@ -32,6 +32,12 @@ variable "cert_manager_lets_encrypt_issuer_enabled" {
   type        = bool
 }
 
+variable "prometheus_stack_enabled" {
+  default     = true
+  description = "Enables Kubernetes Prometheus Stack."
+  type        = bool
+}
+
 variable "pulsar_kaap_enabled" {
   default     = true
   description = "Enables Kubernetes Autoscaling for Apache Pulsar (KAAP)."
@@ -86,6 +92,19 @@ variable "cert_manager_namespace" {
 
 variable "cert_manager_lets_encrypt_issuer_namespace" {
   default     = null
+  description = "The namespace used for the deployment"
+  type        = string
+}
+
+### Prometheus stack
+variable "prometheus_stack_create_namespace" {
+  default     = true
+  description = "Create a namespace for the deployment."
+  type        = bool
+}
+
+variable "prometheus_stack_namespace" {
+  default     = "prometheus-stack"
   description = "The namespace used for the deployment"
   type        = string
 }
@@ -236,6 +255,63 @@ variable "cert_manager_lets_encrypt_issuer_ingress_class" {
   description = "Cluster Issuer Ingress class name"
   type        = string
   default     = null
+}
+
+#######
+### Prometheus stack
+#######
+variable "prometheus_stack_chart_name" {
+  default     = null
+  description = "The name of the Helm chart to install"
+  type        = string
+}
+
+variable "prometheus_stack_chart_repository" {
+  default     = null
+  description = "The repository containing the Helm chart to install."
+  type        = string
+}
+
+variable "prometheus_stack_chart_version" {
+  default     = null
+  description = "The version of the Helm chart to install."
+  type        = string
+}
+
+variable "prometheus_stack_release_name" {
+  default     = null
+  description = "The name of the helm release."
+  type        = string
+}
+
+variable "prometheus_stack_settings" {
+  default     = null
+  description = "Additional key value settings which will be passed to the Helm chart values, e.g. { \"namespace\" = \"kube-system\" }."
+  type        = map(any)
+}
+
+variable "prometheus_stack_timeout" {
+  default     = null
+  description = "Time in seconds to wait for any individual kubernetes operation"
+  type        = number
+}
+
+variable "prometheus_stack_values" {
+  default     = null
+  description = "A list of values in raw YAML to be applied to the helm release. Overrides default values from [default-configs](./default-configs). Merges with the settings input, can also be used with the `file()` function, i.e. `file(\"my/values.yaml\")`."
+  type        = list(string)
+}
+
+variable "prometheus_stack_grafana_admin_login" {
+  default     = "sxadmin"
+  description = "Grafana admin user login"
+  type        = string
+}
+
+variable "prometheus_stack_grafana_admin_password" {
+  description = "Grafana admin user password"
+  type        = string
+  sensitive   = true
 }
 
 #######

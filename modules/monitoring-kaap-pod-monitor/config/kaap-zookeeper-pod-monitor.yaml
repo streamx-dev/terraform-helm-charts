@@ -1,0 +1,59 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: "kaap-zookeeper-pod-monitor"
+spec:
+  labelLimit: 63
+  labelNameLengthLimit: 511
+  labelValueLengthLimit: 1023
+  podMetricsEndpoints:
+    - targetPort: 2181
+      path: "metrics"
+      scheme: http
+      interval: "10s"
+      scrapeTimeout: "10s"
+      relabelings:
+        # Scrape only pods with the annotation: prometheus.io/scrape = true
+        - sourceLabels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
+          action: keep
+          regex: "true"
+        # If prometheus.io/path is specified, scrape this path instead of /metrics
+        - sourceLabels: [__meta_kubernetes_pod_annotation_prometheus_io_path]
+          action: replace
+          targetLabel: __metrics_path__
+          regex: (.+)
+        # If prometheus.io/port is specified, scrape this port instead of the default
+        - sourceLabels: [__address__, __meta_kubernetes_pod_annotation_prometheus_io_port]
+          action: replace
+          regex: ([^:]+)(?::\d+)?;(\d+)
+          replacement: $1:$2
+          targetLabel: __address__
+        # If prometheus.io/scheme is specified, scrape with this scheme instead of http
+        - sourceLabels: [__meta_kubernetes_pod_annotation_prometheus_io_scheme]
+          action: replace
+          regex: (http|https)
+          targetLabel: __scheme__
+        - action: labelmap
+          regex: __meta_kubernetes_pod_label_(.+)
+        - sourceLabels: [__meta_kubernetes_namespace]
+          action: replace
+          targetLabel: kubernetes_namespace
+        - sourceLabels: [__meta_kubernetes_pod_label_component]
+          action: replace
+          targetLabel: job
+        - sourceLabels: [__meta_kubernetes_pod_name]
+          action: replace
+          targetLabel: kubernetes_pod_name
+        - sourceLabels: [__meta_kubernetes_pod_name]
+          action: replace
+          targetLabel: instance
+        - sourceLabels: [__meta_kubernetes_pod_label_component]
+          action: replace
+          targetLabel: application
+  namespaceSelector:
+    any: true
+  selector:
+    matchLabels:
+      app: pulsar
+      cluster: pulsar
+      component: zookeeper

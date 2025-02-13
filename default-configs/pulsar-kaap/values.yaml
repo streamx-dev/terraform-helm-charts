@@ -18,7 +18,7 @@ cluster:
   spec:
     global:
       name: pulsar
-      image: apachepulsar/pulsar:4.0.0
+      image: apachepulsar/pulsar:4.0.2
       restartOnConfigMapChange: true
     zookeeper:
       replicas: 3
