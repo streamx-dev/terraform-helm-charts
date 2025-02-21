@@ -115,7 +115,7 @@ module "streamx_operator" {
   values = coalescelist(var.streamx_operator_values, [
     yamlencode({
       image = {
-        tag = "0.0.8-jvm"
+        tag = "0.0.9-jvm"
       }
       imagePullSecrets = local.streamx_operator_image_pull_secret_name == null ? [] : [
         { name = local.streamx_operator_image_pull_secret_name }
