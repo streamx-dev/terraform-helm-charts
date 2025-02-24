@@ -86,9 +86,12 @@ resource "local_sensitive_file" "kubeconfig" {
 }
 
 module "streamx_platform" {
-  source = "../../" #TODO: change to deployed module source
+  source  = "streamx-dev/charts/helm"
+  version = "0.0.3"
 
   cert_manager_lets_encrypt_issuer_acme_email          = var.cert_manager_lets_encrypt_issuer_acme_email
   streamx_operator_image_pull_secret_registry_email    = var.streamx_operator_image_pull_secret_registry_email
   streamx_operator_image_pull_secret_registry_password = var.streamx_operator_image_pull_secret_registry_password
+  streamx_operator_chart_repository_username           = "_json_key_base64"
+  streamx_operator_chart_repository_password           = var.streamx_operator_image_pull_secret_registry_password
 }
