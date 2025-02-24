@@ -48,7 +48,7 @@ resource "kind_cluster" "cluster" {
 
 module "streamx_platform" {
   source  = "streamx-dev/charts/helm"
-  version = "0.0.1"
+  version = "0.0.3"
 
   ingress_controller_nginx_values = [
     file("${path.module}/config/ingress-controller-nginx/values.yaml")

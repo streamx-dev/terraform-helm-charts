@@ -42,7 +42,8 @@ resource "local_sensitive_file" "kubeconfig" {
 }
 
 module "streamx_platform" {
-  source = "../../" #TODO: change to deployed module source
+  source  = "streamx-dev/charts/helm"
+  version = "0.0.3"
 
   cert_manager_lets_encrypt_issuer_acme_email          = var.cert_manager_lets_encrypt_issuer_acme_email
   ingress_controller_nginx_timeout                     = 300
