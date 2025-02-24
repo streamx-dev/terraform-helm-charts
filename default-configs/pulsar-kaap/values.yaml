@@ -33,7 +33,7 @@ cluster:
       replicas: 3
       volumes:
         journal:
-          size: 10Gi
+          size: 15Gi
         ledgers:
           size: 120Gi
       resources:
