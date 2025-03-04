@@ -26,19 +26,19 @@ variable "atomic" {
 }
 
 variable "chart_name" {
-  default     = "kube-prometheus-stack"
+  default     = "loki"
   description = "The name of the Helm chart to install"
   type        = string
 }
 
 variable "chart_repository" {
-  default     = "https://prometheus-community.github.io/helm-charts"
+  default     = "https://grafana.github.io/helm-charts"
   description = "The repository containing the Helm chart to install"
   type        = string
 }
 
 variable "chart_version" {
-  default     = "69.2.3"
+  default     = "6.27.0"
   description = "The version of the Helm chart to install"
   type        = string
 }
@@ -56,13 +56,13 @@ variable "create_namespace" {
 }
 
 variable "namespace" {
-  default     = "prometheus-stack"
+  default     = "loki"
   description = "The namespace used for the deployment"
   type        = string
 }
 
 variable "release_name" {
-  default     = "prometheus-stack"
+  default     = "loki"
   description = "The name of the helm release"
   type        = string
 }
@@ -74,7 +74,7 @@ variable "settings" {
 }
 
 variable "timeout" {
-  default     = 120
+  default     = 300
   description = "Time in seconds to wait for any individual kubernetes operation"
   type        = number
 }

@@ -23,7 +23,7 @@ locals {
   default_namespace        = "loki"
   default_release_name     = "loki"
   default_settings         = {}
-  default_timeout          = 120
+  default_timeout          = 300
   default_values           = []
 
   atomic           = var.force_defaults_for_null_variables && var.atomic == null ? local.default_atomic : var.atomic
@@ -39,7 +39,7 @@ locals {
   values           = var.force_defaults_for_null_variables && var.values == null ? local.default_values : var.values
 }
 
-resource "helm_release" "prometheus_stack" {
+resource "helm_release" "loki" {
   atomic           = local.atomic
   chart            = local.chart_name
   cleanup_on_fail  = local.cleanup_on_fail

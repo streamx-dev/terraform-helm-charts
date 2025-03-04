@@ -4043,7 +4043,7 @@
           "type": "prometheus",
           "uid": "${prometheus}"
         },
-        "definition": "label_values(up,namespace)",
+        "definition": "label_values(up,kubernetes_namespace)",
         "hide": 0,
         "includeAll": false,
         "label": "Namespace",
@@ -4052,7 +4052,7 @@
         "options": [],
         "query": {
           "qryType": 1,
-          "query": "label_values(up,namespace)",
+          "query": "label_values(up,kubernetes_namespace)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
@@ -4066,7 +4066,7 @@
           "type": "prometheus",
           "uid": "${prometheus}"
         },
-        "definition": "label_values(up{namespace=\"$namespace\"},application)",
+        "definition": "label_values(up{kubernetes_namespace=\"$namespace\"},application)",
         "hide": 0,
         "includeAll": true,
         "label": "Application",
@@ -4075,7 +4075,7 @@
         "options": [],
         "query": {
           "qryType": 1,
-          "query": "label_values(up{namespace=\"$namespace\"},application)",
+          "query": "label_values(up{kubernetes_namespace=\"$namespace\"},application)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,

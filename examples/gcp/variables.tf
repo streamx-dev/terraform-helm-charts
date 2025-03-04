@@ -13,6 +13,12 @@
 # limitations under the License.
 #
 
+variable "grafana_admin_password" {
+  description = "Grafana admin user password."
+  type        = string
+  sensitive   = true
+}
+
 variable "cert_manager_lets_encrypt_issuer_acme_email" {
   description = "Email passed to acme server."
   type        = string

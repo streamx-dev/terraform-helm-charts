@@ -1,0 +1,65 @@
+image:
+  repository: "otel/opentelemetry-collector-k8s"
+
+mode: daemonset
+
+presets:
+  logsCollection:
+    enabled: true
+    includeCollectorLogs: false
+  kubernetesAttributes:
+    enabled: true
+    extractAllPodLabels: true
+    extractAllPodAnnotations: true
+  kubeletMetrics:
+    enabled: true
+  hostMetrics:
+    enabled: true
+
+config:
+  receivers:
+    jaeger: null
+    prometheus: null
+    zipkin: null
+  connectors:
+    spanmetrics:
+  exporters:
+    otlphttp/metrics:
+      endpoint: ${ metrics_otlphttp_endpoint }
+      tls:
+        insecure: true
+    otlphttp/logs:
+      endpoint: ${ logs_otlphttp_endpoint }
+      tls:
+        insecure: true
+    otlp/traces:
+      endpoint: ${ traces_otlp_endpoint }
+      tls:
+        insecure: true
+  service:
+    pipelines:
+      traces:
+        receivers:
+          - otlp
+        exporters:
+          - otlp/traces
+          - spanmetrics
+      metrics:
+        receivers:
+          - otlp
+          - spanmetrics
+        exporters:
+          - otlphttp/metrics
+      logs:
+        exporters:
+          - otlphttp/logs
+
+ports:
+  jaeger-compact:
+    enabled: false
+  jaeger-thrift:
+    enabled: false
+  jaeger-grpc:
+    enabled: false
+  zipkin:
+    enabled: false

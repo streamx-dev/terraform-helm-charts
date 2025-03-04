@@ -1,0 +1,27 @@
+global:
+  extraEnvFrom:
+    - secretRef:
+        name: s3-access-keys
+
+mimir:
+  structuredConfig:
+    common:
+      storage:
+        backend: s3
+        s3:
+          endpoint: minio.minio.svc.cluster.local:9000
+          secret_access_key: "${secretAccessKey}"
+          access_key_id: "${accessKeyId}"
+          insecure: true
+    blocks_storage:
+      s3:
+        bucket_name: mimir-blocks
+    alertmanager_storage:
+      s3:
+        bucket_name: mimir-alertmanager
+    ruler_storage:
+      s3:
+        bucket_name: mimir-ruler
+
+minio:
+  enabled: false

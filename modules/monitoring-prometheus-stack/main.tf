@@ -23,7 +23,7 @@ locals {
   default_namespace        = "prometheus-stack"
   default_release_name     = "prometheus-stack"
   default_settings         = {}
-  default_timeout          = 120
+  default_timeout          = 300
   default_values           = []
 
   atomic           = var.force_defaults_for_null_variables && var.atomic == null ? local.default_atomic : var.atomic
