@@ -61,6 +61,7 @@ module "cert_manager_lets_encrypt_issuer" {
 }
 
 resource "random_password" "minio_secret_access_key" {
+  count = var.minio_enabled && var.minio_create_namespace ? 1 : 0
   # Removed special characters to avoid issues with tempo configuration in tempo/config.yaml
   special = false
   length  = 16
