@@ -89,7 +89,7 @@ resource "kubernetes_secret_v1" "minio_s3_access_keys" {
 
   data = {
     accessKeyId : "minio-user"
-    secretAccessKey : random_password.minio_secret_access_key.result
+    secretAccessKey : random_password.minio_secret_access_key[0].result
   }
 }
 
@@ -134,7 +134,7 @@ resource "kubernetes_secret_v1" "loki_s3_access_keys" {
 
   data = {
     accessKeyId : "minio-user"
-    secretAccessKey : random_password.minio_secret_access_key.result
+    secretAccessKey : random_password.minio_secret_access_key[0].result
   }
 }
 
@@ -179,7 +179,7 @@ resource "kubernetes_secret_v1" "tempo_s3_access_keys" {
 
   data = {
     accessKeyId : "minio-user"
-    secretAccessKey : random_password.minio_secret_access_key.result
+    secretAccessKey : random_password.minio_secret_access_key[0].result
   }
 }
 
@@ -224,7 +224,7 @@ resource "kubernetes_secret_v1" "mimir_s3_access_keys" {
 
   data = {
     accessKeyId : "minio-user"
-    secretAccessKey : random_password.minio_secret_access_key.result
+    secretAccessKey : random_password.minio_secret_access_key[0].result
   }
 }
 
