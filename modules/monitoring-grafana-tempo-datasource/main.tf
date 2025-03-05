@@ -15,7 +15,7 @@
 
 resource "kubernetes_config_map_v1" "tempo-datasource" {
   metadata {
-    name = "tempo-datasource"
+    name      = "tempo-datasource"
     namespace = var.grafana_namespace
     labels = {
       grafana_datasource = "1"
@@ -32,8 +32,6 @@ datasources:
     access: "proxy"
     url: "http://tempo-distributed-query-frontend-discovery.${var.tempo_namespace}.svc.cluster.local:3100"
     jsonData:
-      tracesToMetrics:
-        datasourceUid: "prometheus"
       serviceMap:
         datasourceUid: "prometheus"
 EOT

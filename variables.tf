@@ -794,6 +794,7 @@ variable "prometheus_stack_grafana_admin_login" {
 }
 
 variable "prometheus_stack_grafana_admin_password" {
+  default     = "sxadmin"
   description = "Grafana admin user password"
   type        = string
   sensitive   = true
@@ -851,6 +852,7 @@ variable "grafana_admin_login" {
 }
 
 variable "grafana_admin_password" {
+  default     = "sxadmin"
   description = "Grafana admin user password"
   type        = string
   sensitive   = true

@@ -15,7 +15,7 @@
 
 resource "kubernetes_config_map_v1" "mimir-datasource" {
   metadata {
-    name = "mimir-datasource"
+    name      = "mimir-datasource"
     namespace = var.grafana_namespace
     labels = {
       grafana_datasource = "1"

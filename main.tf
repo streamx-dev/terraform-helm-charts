@@ -25,7 +25,7 @@ module "ingress_controller_nginx" {
   release_name     = var.ingress_controller_nginx_release_name
   settings         = var.ingress_controller_nginx_settings
   timeout          = var.ingress_controller_nginx_timeout
-  values           = coalescelist(var.ingress_controller_nginx_values, [
+  values = coalescelist(var.ingress_controller_nginx_values, [
     file("${path.module}/default-configs/ingress-controller-nginx/values.yaml")
   ])
 }
@@ -42,7 +42,7 @@ module "cert_manager" {
   release_name     = var.cert_manager_release_name
   settings         = var.cert_manager_settings
   timeout          = var.cert_manager_timeout
-  values           = coalescelist(var.cert_manager_values, [
+  values = coalescelist(var.cert_manager_values, [
     file("${path.module}/default-configs/cert-manager/values.yaml")
   ])
 }
@@ -63,7 +63,7 @@ module "cert_manager_lets_encrypt_issuer" {
 resource "random_password" "minio_secret_access_key" {
   # Removed special characters to avoid issues with tempo configuration in tempo/config.yaml
   special = false
-  length = 16
+  length  = 16
 }
 
 resource "kubernetes_namespace" "minio" {
@@ -104,7 +104,7 @@ module "minio" {
   release_name     = var.minio_release_name
   settings         = var.minio_settings
   timeout          = var.minio_timeout
-  values           = coalescelist(var.minio_values, [
+  values = coalescelist(var.minio_values, [
     file("${path.module}/default-configs/minio/values.yaml")
   ])
 
@@ -149,7 +149,7 @@ module "loki" {
   release_name     = var.loki_release_name
   settings         = var.loki_settings
   timeout          = var.loki_timeout
-  values           = coalescelist(var.loki_values, [
+  values = coalescelist(var.loki_values, [
     file("${path.module}/default-configs/loki/values.yaml")
   ])
 
@@ -194,7 +194,7 @@ module "tempo" {
   release_name     = var.tempo_release_name
   settings         = var.tempo_settings
   timeout          = var.tempo_timeout
-  values           = coalescelist(var.tempo_values, [
+  values = coalescelist(var.tempo_values, [
     file("${path.module}/default-configs/tempo/values.yaml")
   ])
 
@@ -239,7 +239,7 @@ module "mimir" {
   release_name     = var.mimir_release_name
   settings         = var.mimir_settings
   timeout          = var.mimir_timeout
-  values           = coalescelist(var.mimir_values, [
+  values = coalescelist(var.mimir_values, [
     file("${path.module}/default-configs/mimir/values.yaml")
   ])
 
@@ -258,15 +258,15 @@ module "opentelemetry_operator" {
   release_name     = var.opentelemetry_operator_release_name
   settings         = var.opentelemetry_operator_settings
   timeout          = var.opentelemetry_operator_timeout
-  values           = coalescelist(var.opentelemetry_operator_values, [
+  values = coalescelist(var.opentelemetry_operator_values, [
     file("${path.module}/default-configs/opentelemetry-operator/values.yaml")
   ])
 }
 
 locals {
-  logs_otlphttp_endpoint  = var.loki_enabled ? module.loki[0].loki_otlp_endpoint : var.opentelemetry_collector_deamonset_logs_otlphttp_endpoint
-  traces_otlp_endpoint = var.tempo_enabled ? module.tempo[0].tempo_otlp_endpoint : var.opentelemetry_collector_deamonset_traces_otlp_endpoint
-  metrics_otlphttp_endpoint = var.mimir_enabled ? module.mimir[0].mimir_otlp_endpoint : var.prometheus_stack_enabled ? module.prometheus_stack[0].metrics_otlp_endpoint : var.opentelemetry_collector_deamonset_metrics_otlphttp_endpoint
+  logs_otlphttp_endpoint                      = var.loki_enabled ? module.loki[0].loki_otlp_endpoint : var.opentelemetry_collector_deamonset_logs_otlphttp_endpoint
+  traces_otlp_endpoint                        = var.tempo_enabled ? module.tempo[0].tempo_otlp_endpoint : var.opentelemetry_collector_deamonset_traces_otlp_endpoint
+  metrics_otlphttp_endpoint                   = var.mimir_enabled ? module.mimir[0].mimir_otlp_endpoint : var.prometheus_stack_enabled ? module.prometheus_stack[0].metrics_otlp_endpoint : var.opentelemetry_collector_deamonset_metrics_otlphttp_endpoint
   opentelemetry_collector_default_config_mode = var.mimir_enabled ? "mimir" : "prometheus-stack"
 }
 
@@ -282,10 +282,10 @@ module "opentelemetry_collector_deamonset" {
   release_name     = var.opentelemetry_collector_deamonset_release_name
   settings         = var.opentelemetry_collector_deamonset_settings
   timeout          = var.opentelemetry_collector_deamonset_timeout
-  values           = coalescelist(var.opentelemetry_collector_deamonset_values, [
+  values = coalescelist(var.opentelemetry_collector_deamonset_values, [
     templatefile("${path.module}/default-configs/opentelemetry-collector/${local.opentelemetry_collector_default_config_mode}/deamonset-values.tftpl.yaml", {
-      logs_otlphttp_endpoint  = "http://${local.logs_otlphttp_endpoint}"
-      traces_otlp_endpoint = local.traces_otlp_endpoint
+      logs_otlphttp_endpoint    = "http://${local.logs_otlphttp_endpoint}"
+      traces_otlp_endpoint      = local.traces_otlp_endpoint
       metrics_otlphttp_endpoint = "http://${local.metrics_otlphttp_endpoint}"
     })
   ])
@@ -305,7 +305,7 @@ module "opentelemetry_collector_statefulset" {
   release_name     = var.opentelemetry_collector_statefulset_release_name
   settings         = var.opentelemetry_collector_statefulset_settings
   timeout          = var.opentelemetry_collector_statefulset_timeout
-  values           = coalescelist(var.opentelemetry_collector_statefulset_values, [
+  values = coalescelist(var.opentelemetry_collector_statefulset_values, [
     templatefile("${path.module}/default-configs/opentelemetry-collector/${local.opentelemetry_collector_default_config_mode}/statefulset-values.tftpl.yaml", {
       metrics_otlphttp_endpoint = "http://${local.metrics_otlphttp_endpoint}"
     })
@@ -330,12 +330,12 @@ resource "kubernetes_secret_v1" "grafana-admin" {
   count = var.grafana_enabled ? 1 : 0
 
   metadata {
-    name = "grafana-admin"
+    name      = "grafana-admin"
     namespace = local.grafana_namespace
   }
 
   data = {
-    "admin-user" = var.grafana_admin_login
+    "admin-user"     = var.grafana_admin_login
     "admin-password" = var.grafana_admin_password
   }
 }
@@ -369,7 +369,7 @@ resource "kubernetes_namespace" "prometheus_stack" {
 
 locals {
   prometheus_stack_namespace = var.prometheus_stack_enabled && var.prometheus_stack_create_namespace ? kubernetes_namespace.prometheus_stack[0].metadata[0].name : var.prometheus_stack_namespace
-  grafana_config_namespace = var.grafana_enabled ? local.grafana_namespace : var.prometheus_stack_enabled ? local.prometheus_stack_namespace : var.grafana_namespace
+  grafana_config_namespace   = var.grafana_enabled ? local.grafana_namespace : var.prometheus_stack_enabled ? local.prometheus_stack_namespace : var.grafana_namespace
 }
 
 module "grafana_loki_datasource" {
@@ -436,7 +436,7 @@ module "prometheus_stack" {
   release_name     = var.prometheus_stack_release_name
   settings         = var.prometheus_stack_settings
   timeout          = var.prometheus_stack_timeout
-  values           = coalescelist(var.prometheus_stack_values, [
+  values = coalescelist(var.prometheus_stack_values, [
     file("${path.module}/default-configs/prometheus-stack/values.yaml")
   ])
 
@@ -455,7 +455,7 @@ module "pulsar_kaap" {
   release_name     = var.pulsar_kaap_release_name
   settings         = var.pulsar_kaap_settings
   timeout          = var.pulsar_kaap_timeout
-  values           = coalescelist(var.pulsar_kaap_values, [
+  values = coalescelist(var.pulsar_kaap_values, [
     file("${path.module}/default-configs/pulsar-kaap/values.yaml")
   ])
 }
@@ -522,7 +522,7 @@ module "streamx_operator" {
   release_name              = var.streamx_operator_release_name
   settings                  = var.streamx_operator_settings
   timeout                   = var.streamx_operator_timeout
-  values                    = coalescelist(var.streamx_operator_values, [
+  values = coalescelist(var.streamx_operator_values, [
     yamlencode({
       image = {
         tag = "0.0.10-jvm"

@@ -18,15 +18,15 @@ resource "kind_cluster" "cluster" {
   kubeconfig_path = "${path.module}/env/kubeconfig"
   wait_for_ready  = true
 
-#  provisioner "local-exec" {
-#    command = "kind load image-archive ${path.module}/images/kind-all-images.tar --name streamx"
-#  }
+  #  provisioner "local-exec" {
+  #    command = "kind load image-archive ${path.module}/images/kind-all-images.tar --name streamx"
+  #  }
 
   kind_config {
     kind        = "Cluster"
     api_version = "kind.x-k8s.io/v1alpha4"
     node {
-      role                   = "control-plane"
+      role = "control-plane"
       kubeadm_config_patches = [
         <<-KCP
         kind: InitConfiguration
@@ -66,9 +66,7 @@ module "streamx_platform" {
     file("${path.module}/../../default-configs/loki/values.yaml"),
     file("${path.module}/config/loki/values.yaml")
   ]
-  prometheus_stack_grafana_admin_password = "sxadmin"
-  grafana_admin_password = "sxadmin"
-  pulsar_kaap_values                      = [
+  pulsar_kaap_values = [
     file("${path.module}/../../default-configs/pulsar-kaap/values.yaml"),
     file("${path.module}/config/pulsar-kaap/values.yaml")
   ]

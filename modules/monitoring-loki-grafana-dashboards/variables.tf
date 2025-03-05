@@ -20,7 +20,7 @@ variable "force_defaults_for_null_variables" {
 }
 
 variable "namespace" {
-  default = "prometheus-stack"
+  default     = "prometheus-stack"
   description = "The namespace used for Grafana deployment"
   type        = string
 }

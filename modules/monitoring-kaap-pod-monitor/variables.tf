@@ -20,7 +20,7 @@ variable "force_defaults_for_null_variables" {
 }
 
 variable "namespace" {
-  default = "kaap"
+  default     = "kaap"
   description = "The namespace used for the deployment"
   type        = string
 }

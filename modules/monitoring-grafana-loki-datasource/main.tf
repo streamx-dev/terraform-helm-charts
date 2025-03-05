@@ -15,7 +15,7 @@
 
 resource "kubernetes_config_map_v1" "loki-datasource" {
   metadata {
-    name = "loki-datasource"
+    name      = "loki-datasource"
     namespace = var.grafana_namespace
     labels = {
       grafana_datasource = "1"
