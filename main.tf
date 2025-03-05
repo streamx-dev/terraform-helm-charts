@@ -76,7 +76,7 @@ resource "kubernetes_namespace" "minio" {
 }
 
 locals {
-  minio_namespace = var.minio_create_namespace ? kubernetes_namespace.minio[0].metadata[0].name : var.minio_namespace
+  minio_namespace = var.minio_enabled && var.minio_create_namespace ? kubernetes_namespace.minio[0].metadata[0].name : var.minio_namespace
 }
 
 resource "kubernetes_secret_v1" "minio_s3_access_keys" {
