@@ -36,15 +36,6 @@ buckets:
   - name: tempo-traces
     policy: none
     purge: false
-  - name: mimir-blocks
-    policy: none
-    purge: false
-  - name: mimir-ruler
-    policy: none
-    purge: false
-  - name: mimir-alertmanager
-    policy: none
-    purge: false
 persistence:
   size: 50Gi
 resources:

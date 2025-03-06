@@ -38,12 +38,6 @@ variable "prometheus_stack_enabled" {
   type        = bool
 }
 
-variable "grafana_enabled" {
-  default     = false
-  description = "Enables Grafana."
-  type        = bool
-}
-
 variable "minio_enabled" {
   default     = true
   description = "Enables MinIO."
@@ -59,12 +53,6 @@ variable "loki_enabled" {
 variable "tempo_enabled" {
   default     = true
   description = "Enables Tempo."
-  type        = bool
-}
-
-variable "mimir_enabled" {
-  default     = false
-  description = "Enables Mimir."
   type        = bool
 }
 
@@ -157,19 +145,6 @@ variable "prometheus_stack_namespace" {
   type        = string
 }
 
-### Grafana
-variable "grafana_create_namespace" {
-  default     = true
-  description = "Create a namespace for the deployment."
-  type        = bool
-}
-
-variable "grafana_namespace" {
-  default     = "grafana"
-  description = "The namespace used for the deployment"
-  type        = string
-}
-
 ### MinIO
 variable "minio_create_namespace" {
   default     = true
@@ -205,19 +180,6 @@ variable "tempo_create_namespace" {
 
 variable "tempo_namespace" {
   default     = "tempo"
-  description = "The namespace used for the deployment"
-  type        = string
-}
-
-### Mimir
-variable "mimir_create_namespace" {
-  default     = true
-  description = "Create a namespace for the deployment."
-  type        = bool
-}
-
-variable "mimir_namespace" {
-  default     = "mimir"
   description = "The namespace used for the deployment"
   type        = string
 }
@@ -545,51 +507,6 @@ variable "tempo_values" {
 }
 
 #######
-### Mimir
-#######
-variable "mimir_chart_name" {
-  default     = null
-  description = "The name of the Helm chart to install"
-  type        = string
-}
-
-variable "mimir_chart_repository" {
-  default     = null
-  description = "The repository containing the Helm chart to install."
-  type        = string
-}
-
-variable "mimir_chart_version" {
-  default     = null
-  description = "The version of the Helm chart to install."
-  type        = string
-}
-
-variable "mimir_release_name" {
-  default     = null
-  description = "The name of the helm release."
-  type        = string
-}
-
-variable "mimir_settings" {
-  default     = null
-  description = "Additional key value settings which will be passed to the Helm chart values, e.g. { \"namespace\" = \"kube-system\" }."
-  type        = map(any)
-}
-
-variable "mimir_timeout" {
-  default     = null
-  description = "Time in seconds to wait for any individual kubernetes operation"
-  type        = number
-}
-
-variable "mimir_values" {
-  default     = null
-  description = "A list of values in raw YAML to be applied to the helm release. Overrides default values from [default-configs](./default-configs). Merges with the settings input, can also be used with the `file()` function, i.e. `file(\"my/values.yaml\")`."
-  type        = list(string)
-}
-
-#######
 ### OpenTelemetry Operator
 #######
 variable "opentelemetry_operator_chart_name" {
@@ -794,64 +711,6 @@ variable "prometheus_stack_grafana_admin_login" {
 }
 
 variable "prometheus_stack_grafana_admin_password" {
-  default     = "sxadmin"
-  description = "Grafana admin user password"
-  type        = string
-  sensitive   = true
-}
-
-#######
-### Grafana
-#######
-variable "grafana_chart_name" {
-  default     = null
-  description = "The name of the Helm chart to install"
-  type        = string
-}
-
-variable "grafana_chart_repository" {
-  default     = null
-  description = "The repository containing the Helm chart to install."
-  type        = string
-}
-
-variable "grafana_chart_version" {
-  default     = null
-  description = "The version of the Helm chart to install."
-  type        = string
-}
-
-variable "grafana_release_name" {
-  default     = null
-  description = "The name of the helm release."
-  type        = string
-}
-
-variable "grafana_settings" {
-  default     = null
-  description = "Additional key value settings which will be passed to the Helm chart values, e.g. { \"namespace\" = \"kube-system\" }."
-  type        = map(any)
-}
-
-variable "grafana_timeout" {
-  default     = null
-  description = "Time in seconds to wait for any individual kubernetes operation"
-  type        = number
-}
-
-variable "grafana_values" {
-  default     = null
-  description = "A list of values in raw YAML to be applied to the helm release. Overrides default values from [default-configs](./default-configs). Merges with the settings input, can also be used with the `file()` function, i.e. `file(\"my/values.yaml\")`."
-  type        = list(string)
-}
-
-variable "grafana_admin_login" {
-  default     = "sxadmin"
-  description = "Grafana admin user login"
-  type        = string
-}
-
-variable "grafana_admin_password" {
   default     = "sxadmin"
   description = "Grafana admin user password"
   type        = string

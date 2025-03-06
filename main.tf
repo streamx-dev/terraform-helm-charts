@@ -202,51 +202,6 @@ module "tempo" {
   depends_on = [module.minio, kubernetes_secret_v1.tempo_s3_access_keys]
 }
 
-resource "kubernetes_namespace" "mimir" {
-  count = var.mimir_enabled && var.mimir_create_namespace ? 1 : 0
-
-  metadata {
-    name = var.mimir_namespace
-  }
-}
-
-locals {
-  mimir_namespace = var.mimir_enabled && var.mimir_create_namespace ? kubernetes_namespace.mimir[0].metadata[0].name : var.mimir_namespace
-}
-
-resource "kubernetes_secret_v1" "mimir_s3_access_keys" {
-  count = var.mimir_enabled && var.minio_enabled ? 1 : 0
-
-  metadata {
-    name      = "s3-access-keys"
-    namespace = local.mimir_namespace
-  }
-
-  data = {
-    accessKeyId : "minio-user"
-    secretAccessKey : random_password.minio_secret_access_key[0].result
-  }
-}
-
-module "mimir" {
-  count  = var.mimir_enabled ? 1 : 0
-  source = "./modules/monitoring-mimir"
-
-  chart_name       = var.mimir_chart_name
-  chart_repository = var.mimir_chart_repository
-  chart_version    = var.mimir_chart_version
-  create_namespace = var.mimir_create_namespace
-  namespace        = local.mimir_namespace
-  release_name     = var.mimir_release_name
-  settings         = var.mimir_settings
-  timeout          = var.mimir_timeout
-  values = coalescelist(var.mimir_values, [
-    file("${path.module}/default-configs/mimir/values.yaml")
-  ])
-
-  depends_on = [module.minio, kubernetes_secret_v1.mimir_s3_access_keys]
-}
-
 module "opentelemetry_operator" {
   count  = var.opentelemetry_operator_enabled ? 1 : 0
   source = "./modules/monitoring-opentelemetry-operator"
@@ -267,8 +222,7 @@ module "opentelemetry_operator" {
 locals {
   logs_otlphttp_endpoint                      = var.loki_enabled ? module.loki[0].loki_otlp_endpoint : var.opentelemetry_collector_deamonset_logs_otlphttp_endpoint
   traces_otlp_endpoint                        = var.tempo_enabled ? module.tempo[0].tempo_otlp_endpoint : var.opentelemetry_collector_deamonset_traces_otlp_endpoint
-  metrics_otlphttp_endpoint                   = var.mimir_enabled ? module.mimir[0].mimir_otlp_endpoint : var.prometheus_stack_enabled ? module.prometheus_stack[0].metrics_otlp_endpoint : var.opentelemetry_collector_deamonset_metrics_otlphttp_endpoint
-  opentelemetry_collector_default_config_mode = var.mimir_enabled ? "mimir" : "prometheus-stack"
+  metrics_otlphttp_endpoint                   = var.prometheus_stack_enabled ? module.prometheus_stack[0].metrics_otlp_endpoint : var.opentelemetry_collector_deamonset_metrics_otlphttp_endpoint
 }
 
 module "opentelemetry_collector_deamonset" {
@@ -284,7 +238,7 @@ module "opentelemetry_collector_deamonset" {
   settings         = var.opentelemetry_collector_deamonset_settings
   timeout          = var.opentelemetry_collector_deamonset_timeout
   values = coalescelist(var.opentelemetry_collector_deamonset_values, [
-    templatefile("${path.module}/default-configs/opentelemetry-collector/${local.opentelemetry_collector_default_config_mode}/deamonset-values.tftpl.yaml", {
+    templatefile("${path.module}/default-configs/opentelemetry-collector/deamonset-values.tftpl.yaml", {
       logs_otlphttp_endpoint    = "http://${local.logs_otlphttp_endpoint}"
       traces_otlp_endpoint      = local.traces_otlp_endpoint
       metrics_otlphttp_endpoint = "http://${local.metrics_otlphttp_endpoint}"
@@ -292,72 +246,6 @@ module "opentelemetry_collector_deamonset" {
   ])
 
   depends_on = [module.opentelemetry_operator]
-}
-
-module "opentelemetry_collector_statefulset" {
-  count  = var.opentelemetry_collector_statefulset_enabled ? 1 : 0
-  source = "./modules/monitoring-opentelemetry-collector"
-
-  chart_name       = var.opentelemetry_collector_statefulset_chart_name
-  chart_repository = var.opentelemetry_collector_statefulset_chart_repository
-  chart_version    = var.opentelemetry_collector_statefulset_chart_version
-  create_namespace = var.opentelemetry_collector_statefulset_create_namespace
-  namespace        = var.opentelemetry_collector_statefulset_namespace
-  release_name     = var.opentelemetry_collector_statefulset_release_name
-  settings         = var.opentelemetry_collector_statefulset_settings
-  timeout          = var.opentelemetry_collector_statefulset_timeout
-  values = coalescelist(var.opentelemetry_collector_statefulset_values, [
-    templatefile("${path.module}/default-configs/opentelemetry-collector/${local.opentelemetry_collector_default_config_mode}/statefulset-values.tftpl.yaml", {
-      metrics_otlphttp_endpoint = "http://${local.metrics_otlphttp_endpoint}"
-    })
-  ])
-
-  depends_on = [module.opentelemetry_operator, module.mimir]
-}
-
-resource "kubernetes_namespace" "grafana" {
-  count = var.grafana_enabled && var.grafana_create_namespace ? 1 : 0
-
-  metadata {
-    name = var.grafana_namespace
-  }
-}
-
-locals {
-  grafana_namespace = var.grafana_enabled && var.grafana_create_namespace ? kubernetes_namespace.grafana[0].metadata[0].name : var.grafana_namespace
-}
-
-resource "kubernetes_secret_v1" "grafana-admin" {
-  count = var.grafana_enabled ? 1 : 0
-
-  metadata {
-    name      = "grafana-admin"
-    namespace = local.grafana_namespace
-  }
-
-  data = {
-    "admin-user"     = var.grafana_admin_login
-    "admin-password" = var.grafana_admin_password
-  }
-}
-
-module "grafana" {
-  count  = var.grafana_enabled ? 1 : 0
-  source = "./modules/monitoring-grafana"
-
-  chart_name       = var.grafana_chart_name
-  chart_repository = var.grafana_chart_repository
-  chart_version    = var.grafana_chart_version
-  create_namespace = var.grafana_create_namespace
-  namespace        = local.grafana_namespace
-  release_name     = var.grafana_release_name
-  settings         = var.grafana_settings
-  timeout          = var.grafana_timeout
-  values = coalescelist(var.grafana_values, [
-    file("${path.module}/default-configs/grafana/values.yaml")
-  ])
-
-  depends_on = [kubernetes_secret_v1.grafana-admin]
 }
 
 resource "kubernetes_namespace" "prometheus_stack" {
@@ -370,7 +258,6 @@ resource "kubernetes_namespace" "prometheus_stack" {
 
 locals {
   prometheus_stack_namespace = var.prometheus_stack_enabled && var.prometheus_stack_create_namespace ? kubernetes_namespace.prometheus_stack[0].metadata[0].name : var.prometheus_stack_namespace
-  grafana_config_namespace   = var.grafana_enabled ? local.grafana_namespace : var.prometheus_stack_enabled ? local.prometheus_stack_namespace : var.grafana_namespace
 }
 
 module "grafana_loki_datasource" {
@@ -378,7 +265,7 @@ module "grafana_loki_datasource" {
 
   source            = "./modules/monitoring-grafana-loki-datasource"
   loki_namespace    = var.loki_namespace
-  grafana_namespace = local.grafana_config_namespace
+  grafana_namespace = local.prometheus_stack_namespace
 
   depends_on = [module.loki]
 }
@@ -386,7 +273,7 @@ module "grafana_loki_datasource" {
 module "loki_dashboards" {
   count     = var.loki_enabled ? 1 : 0
   source    = "./modules/monitoring-loki-grafana-dashboards"
-  namespace = local.grafana_config_namespace
+  namespace = local.prometheus_stack_namespace
 
   depends_on = [module.loki]
 }
@@ -396,19 +283,9 @@ module "grafana_tempo_datasource" {
 
   source            = "./modules/monitoring-grafana-tempo-datasource"
   tempo_namespace   = var.tempo_namespace
-  grafana_namespace = local.grafana_config_namespace
+  grafana_namespace = local.prometheus_stack_namespace
 
   depends_on = [module.tempo]
-}
-
-module "grafana_mimir_datasource" {
-  count = var.mimir_enabled ? 1 : 0
-
-  source            = "./modules/monitoring-grafana-mimir-datasource"
-  mimir_namespace   = local.mimir_namespace
-  grafana_namespace = local.grafana_config_namespace
-
-  depends_on = [module.mimir]
 }
 
 resource "kubernetes_secret_v1" "grafana_admin_secret" {
@@ -472,7 +349,7 @@ module "kaap_pod_monitor" {
 module "kaap_dashboards" {
   count     = var.pulsar_kaap_enabled ? 1 : 0
   source    = "./modules/monitoring-kaap-grafana-dashboards"
-  namespace = local.grafana_config_namespace
+  namespace = local.prometheus_stack_namespace
 
   depends_on = [module.pulsar_kaap]
 }
@@ -559,7 +436,7 @@ module "streamx_pod_monitor" {
 module "streamx_dashboards" {
   count     = var.streamx_operator_enabled ? 1 : 0
   source    = "./modules/monitoring-streamx-grafana-dashboards"
-  namespace = local.grafana_config_namespace
+  namespace = local.prometheus_stack_namespace
 
   depends_on = [module.streamx_operator]
 }
