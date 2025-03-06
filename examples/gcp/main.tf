@@ -84,9 +84,8 @@ resource "local_sensitive_file" "kubeconfig" {
 }
 
 module "streamx_platform" {
-  #  source  = "streamx-dev/charts/helm"
-  #  version = "0.0.3"
-  source = "../../"
+  source  = "streamx-dev/charts/helm"
+  version = "0.0.4"
 
   prometheus_stack_grafana_admin_password              = var.grafana_admin_password
   grafana_admin_password                               = var.grafana_admin_password

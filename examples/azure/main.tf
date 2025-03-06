@@ -57,7 +57,7 @@ resource "local_sensitive_file" "kubeconfig" {
 
 module "streamx_platform" {
   source  = "streamx-dev/charts/helm"
-  version = "0.0.3"
+  version = "0.0.4"
 
   cert_manager_lets_encrypt_issuer_acme_email = var.cert_manager_lets_encrypt_issuer_acme_email
   ingress_controller_nginx_settings = {
