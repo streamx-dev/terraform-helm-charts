@@ -18,6 +18,10 @@ resource "kind_cluster" "cluster" {
   kubeconfig_path = "${path.module}/env/kubeconfig"
   wait_for_ready  = true
 
+  #  provisioner "local-exec" {
+  #    command = "kind load image-archive ${path.module}/images/kind-all-images.tar --name streamx"
+  #  }
+
   kind_config {
     kind        = "Cluster"
     api_version = "kind.x-k8s.io/v1alpha4"
@@ -48,17 +52,29 @@ resource "kind_cluster" "cluster" {
 
 module "streamx_platform" {
   source  = "streamx-dev/charts/helm"
-  version = "0.0.3"
+  version = "0.0.4"
 
   ingress_controller_nginx_values = [
     file("${path.module}/config/ingress-controller-nginx/values.yaml")
   ]
+  tempo_values = [
+    file("${path.module}/../../default-configs/tempo/values.yaml"),
+    file("${path.module}/config/tempo/values.yaml")
+  ]
+  loki_values = [
+    file("${path.module}/../../default-configs/loki/values.yaml"),
+    file("${path.module}/config/loki/values.yaml")
+  ]
   pulsar_kaap_values = [
+    file("${path.module}/../../default-configs/pulsar-kaap/values.yaml"),
     file("${path.module}/config/pulsar-kaap/values.yaml")
   ]
-  cert_manager_lets_encrypt_issuer_acme_email          = var.cert_manager_lets_encrypt_issuer_acme_email
+  cert_manager_lets_encrypt_issuer_enabled             = false
+  cert_manager_lets_encrypt_issuer_acme_email          = null
   streamx_operator_image_pull_secret_registry_email    = var.streamx_operator_image_pull_secret_registry_email
   streamx_operator_image_pull_secret_registry_password = var.streamx_operator_image_pull_secret_registry_password
   streamx_operator_chart_repository_username           = "_json_key_base64"
   streamx_operator_chart_repository_password           = var.streamx_operator_image_pull_secret_registry_password
+
+  depends_on = [kind_cluster.cluster]
 }

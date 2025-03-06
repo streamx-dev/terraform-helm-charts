@@ -74,7 +74,7 @@ variable "settings" {
 }
 
 variable "timeout" {
-  default     = 120
+  default     = 300
   description = "Time in seconds to wait for any individual kubernetes operation"
   type        = number
 }

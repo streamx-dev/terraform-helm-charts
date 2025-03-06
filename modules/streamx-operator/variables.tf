@@ -51,7 +51,7 @@ variable "chart_repository_password" {
 }
 
 variable "chart_version" {
-  default     = "0.0.4"
+  default     = "0.0.6"
   description = "The version of the Helm chart to install"
   type        = string
 }
@@ -87,7 +87,7 @@ variable "settings" {
 }
 
 variable "timeout" {
-  default     = 120
+  default     = 300
   description = "Time in seconds to wait for any individual kubernetes operation"
   type        = number
 }

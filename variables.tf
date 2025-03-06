@@ -32,6 +32,48 @@ variable "cert_manager_lets_encrypt_issuer_enabled" {
   type        = bool
 }
 
+variable "prometheus_stack_enabled" {
+  default     = true
+  description = "Enables Kubernetes Prometheus Stack."
+  type        = bool
+}
+
+variable "minio_enabled" {
+  default     = true
+  description = "Enables MinIO."
+  type        = bool
+}
+
+variable "loki_enabled" {
+  default     = true
+  description = "Enables Loki."
+  type        = bool
+}
+
+variable "tempo_enabled" {
+  default     = true
+  description = "Enables Tempo."
+  type        = bool
+}
+
+variable "opentelemetry_operator_enabled" {
+  default     = true
+  description = "Enables OpenTelemetry Operator."
+  type        = bool
+}
+
+variable "opentelemetry_collector_deamonset_enabled" {
+  default     = true
+  description = "Enables OpenTelemetry Collector Deamonset."
+  type        = bool
+}
+
+variable "opentelemetry_collector_statefulset_enabled" {
+  default     = false
+  description = "Enables OpenTelemetry Collector Statefulset."
+  type        = bool
+}
+
 variable "pulsar_kaap_enabled" {
   default     = true
   description = "Enables Kubernetes Autoscaling for Apache Pulsar (KAAP)."
@@ -85,6 +127,97 @@ variable "cert_manager_namespace" {
 ### Cert Manager Let's Encrypt Issuer
 
 variable "cert_manager_lets_encrypt_issuer_namespace" {
+  default     = null
+  description = "The namespace used for the deployment"
+  type        = string
+}
+
+### Prometheus stack
+variable "prometheus_stack_create_namespace" {
+  default     = true
+  description = "Create a namespace for the deployment."
+  type        = bool
+}
+
+variable "prometheus_stack_namespace" {
+  default     = "prometheus-stack"
+  description = "The namespace used for the deployment"
+  type        = string
+}
+
+### MinIO
+variable "minio_create_namespace" {
+  default     = true
+  description = "Create a namespace for the deployment."
+  type        = bool
+}
+
+variable "minio_namespace" {
+  default     = "minio"
+  description = "The namespace used for the deployment"
+  type        = string
+}
+
+### Loki
+variable "loki_create_namespace" {
+  default     = true
+  description = "Create a namespace for the deployment."
+  type        = bool
+}
+
+variable "loki_namespace" {
+  default     = "loki"
+  description = "The namespace used for the deployment"
+  type        = string
+}
+
+### Tempo
+variable "tempo_create_namespace" {
+  default     = true
+  description = "Create a namespace for the deployment."
+  type        = bool
+}
+
+variable "tempo_namespace" {
+  default     = "tempo"
+  description = "The namespace used for the deployment"
+  type        = string
+}
+
+### OpenTelemetry Operator
+variable "opentelemetry_operator_create_namespace" {
+  default     = true
+  description = "Create a namespace for the deployment."
+  type        = bool
+}
+
+variable "opentelemetry_operator_namespace" {
+  default     = null
+  description = "The namespace used for the deployment"
+  type        = string
+}
+
+### OpenTelemetry Collector Deamonset
+variable "opentelemetry_collector_deamonset_create_namespace" {
+  default     = true
+  description = "Create a namespace for the deployment."
+  type        = bool
+}
+
+variable "opentelemetry_collector_deamonset_namespace" {
+  default     = null
+  description = "The namespace used for the deployment"
+  type        = string
+}
+
+### OpenTelemetry Collector Statefulset
+variable "opentelemetry_collector_statefulset_create_namespace" {
+  default     = true
+  description = "Create a namespace for the deployment."
+  type        = bool
+}
+
+variable "opentelemetry_collector_statefulset_namespace" {
   default     = null
   description = "The namespace used for the deployment"
   type        = string
@@ -239,6 +372,352 @@ variable "cert_manager_lets_encrypt_issuer_ingress_class" {
 }
 
 #######
+### MinIO
+#######
+variable "minio_chart_name" {
+  default     = null
+  description = "The name of the Helm chart to install"
+  type        = string
+}
+
+variable "minio_chart_repository" {
+  default     = null
+  description = "The repository containing the Helm chart to install."
+  type        = string
+}
+
+variable "minio_chart_version" {
+  default     = null
+  description = "The version of the Helm chart to install."
+  type        = string
+}
+
+variable "minio_release_name" {
+  default     = null
+  description = "The name of the helm release."
+  type        = string
+}
+
+variable "minio_settings" {
+  default     = null
+  description = "Additional key value settings which will be passed to the Helm chart values, e.g. { \"namespace\" = \"kube-system\" }."
+  type        = map(any)
+}
+
+variable "minio_timeout" {
+  default     = null
+  description = "Time in seconds to wait for any individual kubernetes operation"
+  type        = number
+}
+
+variable "minio_values" {
+  default     = null
+  description = "A list of values in raw YAML to be applied to the helm release. Overrides default values from [default-configs](./default-configs). Merges with the settings input, can also be used with the `file()` function, i.e. `file(\"my/values.yaml\")`."
+  type        = list(string)
+}
+
+#######
+### Loki
+#######
+variable "loki_chart_name" {
+  default     = null
+  description = "The name of the Helm chart to install"
+  type        = string
+}
+
+variable "loki_chart_repository" {
+  default     = null
+  description = "The repository containing the Helm chart to install."
+  type        = string
+}
+
+variable "loki_chart_version" {
+  default     = null
+  description = "The version of the Helm chart to install."
+  type        = string
+}
+
+variable "loki_release_name" {
+  default     = null
+  description = "The name of the helm release."
+  type        = string
+}
+
+variable "loki_settings" {
+  default     = null
+  description = "Additional key value settings which will be passed to the Helm chart values, e.g. { \"namespace\" = \"kube-system\" }."
+  type        = map(any)
+}
+
+variable "loki_timeout" {
+  default     = null
+  description = "Time in seconds to wait for any individual kubernetes operation"
+  type        = number
+}
+
+variable "loki_values" {
+  default     = null
+  description = "A list of values in raw YAML to be applied to the helm release. Overrides default values from [default-configs](./default-configs). Merges with the settings input, can also be used with the `file()` function, i.e. `file(\"my/values.yaml\")`."
+  type        = list(string)
+}
+
+#######
+### Tempo
+#######
+variable "tempo_chart_name" {
+  default     = null
+  description = "The name of the Helm chart to install"
+  type        = string
+}
+
+variable "tempo_chart_repository" {
+  default     = null
+  description = "The repository containing the Helm chart to install."
+  type        = string
+}
+
+variable "tempo_chart_version" {
+  default     = null
+  description = "The version of the Helm chart to install."
+  type        = string
+}
+
+variable "tempo_release_name" {
+  default     = null
+  description = "The name of the helm release."
+  type        = string
+}
+
+variable "tempo_settings" {
+  default     = null
+  description = "Additional key value settings which will be passed to the Helm chart values, e.g. { \"namespace\" = \"kube-system\" }."
+  type        = map(any)
+}
+
+variable "tempo_timeout" {
+  default     = null
+  description = "Time in seconds to wait for any individual kubernetes operation"
+  type        = number
+}
+
+variable "tempo_values" {
+  default     = null
+  description = "A list of values in raw YAML to be applied to the helm release. Overrides default values from [default-configs](./default-configs). Merges with the settings input, can also be used with the `file()` function, i.e. `file(\"my/values.yaml\")`."
+  type        = list(string)
+}
+
+#######
+### OpenTelemetry Operator
+#######
+variable "opentelemetry_operator_chart_name" {
+  default     = null
+  description = "The name of the Helm chart to install"
+  type        = string
+}
+
+variable "opentelemetry_operator_chart_repository" {
+  default     = null
+  description = "The repository containing the Helm chart to install."
+  type        = string
+}
+
+variable "opentelemetry_operator_chart_version" {
+  default     = null
+  description = "The version of the Helm chart to install."
+  type        = string
+}
+
+variable "opentelemetry_operator_release_name" {
+  default     = null
+  description = "The name of the helm release."
+  type        = string
+}
+
+variable "opentelemetry_operator_settings" {
+  default     = null
+  description = "Additional key value settings which will be passed to the Helm chart values, e.g. { \"namespace\" = \"kube-system\" }."
+  type        = map(any)
+}
+
+variable "opentelemetry_operator_timeout" {
+  default     = null
+  description = "Time in seconds to wait for any individual kubernetes operation"
+  type        = number
+}
+
+variable "opentelemetry_operator_values" {
+  default     = null
+  description = "A list of values in raw YAML to be applied to the helm release. Overrides default values from [default-configs](./default-configs). Merges with the settings input, can also be used with the `file()` function, i.e. `file(\"my/values.yaml\")`."
+  type        = list(string)
+}
+
+#######
+### OpenTelemetry Collector Deamonset
+#######
+variable "opentelemetry_collector_deamonset_chart_name" {
+  default     = null
+  description = "The name of the Helm chart to install"
+  type        = string
+}
+
+variable "opentelemetry_collector_deamonset_chart_repository" {
+  default     = null
+  description = "The repository containing the Helm chart to install."
+  type        = string
+}
+
+variable "opentelemetry_collector_deamonset_chart_version" {
+  default     = null
+  description = "The version of the Helm chart to install."
+  type        = string
+}
+
+variable "opentelemetry_collector_deamonset_release_name" {
+  default     = "collector-deamonset"
+  description = "The name of the helm release."
+  type        = string
+}
+
+variable "opentelemetry_collector_deamonset_settings" {
+  default     = null
+  description = "Additional key value settings which will be passed to the Helm chart values, e.g. { \"namespace\" = \"kube-system\" }."
+  type        = map(any)
+}
+
+variable "opentelemetry_collector_deamonset_timeout" {
+  default     = null
+  description = "Time in seconds to wait for any individual kubernetes operation"
+  type        = number
+}
+
+variable "opentelemetry_collector_deamonset_values" {
+  default     = null
+  description = "A list of values in raw YAML to be applied to the helm release. Overrides default values from [default-configs](./default-configs). Merges with the settings input, can also be used with the `file()` function, i.e. `file(\"my/values.yaml\")`."
+  type        = list(string)
+}
+
+variable "opentelemetry_collector_deamonset_logs_otlphttp_endpoint" {
+  default     = null
+  description = "Logs OTLP HTTP endpoint."
+  type        = string
+}
+
+variable "opentelemetry_collector_deamonset_traces_otlp_endpoint" {
+  default     = null
+  description = "Traces OTLP endpoint."
+  type        = string
+}
+
+variable "opentelemetry_collector_deamonset_metrics_otlphttp_endpoint" {
+  default     = null
+  description = "Metrics OTLP HTTP endpoint."
+  type        = string
+}
+
+#######
+### OpenTelemetry Collector Statefulset
+#######
+variable "opentelemetry_collector_statefulset_chart_name" {
+  default     = null
+  description = "The name of the Helm chart to install"
+  type        = string
+}
+
+variable "opentelemetry_collector_statefulset_chart_repository" {
+  default     = null
+  description = "The repository containing the Helm chart to install."
+  type        = string
+}
+
+variable "opentelemetry_collector_statefulset_chart_version" {
+  default     = null
+  description = "The version of the Helm chart to install."
+  type        = string
+}
+
+variable "opentelemetry_collector_statefulset_release_name" {
+  default     = "collector-statefulset"
+  description = "The name of the helm release."
+  type        = string
+}
+
+variable "opentelemetry_collector_statefulset_settings" {
+  default     = null
+  description = "Additional key value settings which will be passed to the Helm chart values, e.g. { \"namespace\" = \"kube-system\" }."
+  type        = map(any)
+}
+
+variable "opentelemetry_collector_statefulset_timeout" {
+  default     = null
+  description = "Time in seconds to wait for any individual kubernetes operation"
+  type        = number
+}
+
+variable "opentelemetry_collector_statefulset_values" {
+  default     = null
+  description = "A list of values in raw YAML to be applied to the helm release. Overrides default values from [default-configs](./default-configs). Merges with the settings input, can also be used with the `file()` function, i.e. `file(\"my/values.yaml\")`."
+  type        = list(string)
+}
+
+#######
+### Prometheus stack
+#######
+variable "prometheus_stack_chart_name" {
+  default     = null
+  description = "The name of the Helm chart to install"
+  type        = string
+}
+
+variable "prometheus_stack_chart_repository" {
+  default     = null
+  description = "The repository containing the Helm chart to install."
+  type        = string
+}
+
+variable "prometheus_stack_chart_version" {
+  default     = null
+  description = "The version of the Helm chart to install."
+  type        = string
+}
+
+variable "prometheus_stack_release_name" {
+  default     = null
+  description = "The name of the helm release."
+  type        = string
+}
+
+variable "prometheus_stack_settings" {
+  default     = null
+  description = "Additional key value settings which will be passed to the Helm chart values, e.g. { \"namespace\" = \"kube-system\" }."
+  type        = map(any)
+}
+
+variable "prometheus_stack_timeout" {
+  default     = null
+  description = "Time in seconds to wait for any individual kubernetes operation"
+  type        = number
+}
+
+variable "prometheus_stack_values" {
+  default     = null
+  description = "A list of values in raw YAML to be applied to the helm release. Overrides default values from [default-configs](./default-configs). Merges with the settings input, can also be used with the `file()` function, i.e. `file(\"my/values.yaml\")`."
+  type        = list(string)
+}
+
+variable "prometheus_stack_grafana_admin_login" {
+  default     = "sxadmin"
+  description = "Grafana admin user login"
+  type        = string
+}
+
+variable "prometheus_stack_grafana_admin_password" {
+  default     = "sxadmin"
+  description = "Grafana admin user password"
+  type        = string
+  sensitive   = true
+}
+
+#######
 ### KAAP
 #######
 variable "pulsar_kaap_chart_name" {
@@ -359,10 +838,10 @@ variable "streamx_operator_messaging_pulsar_admin_service_url" {
   type        = string
 }
 
-variable "streamx_operator_monitoring_traces_enabled" {
-  default     = false
-  description = "Enables traces monitoring for StreamX Meshes deployed by StreamX Operator"
-  type        = bool
+variable "streamx_operator_monitoring_traces_mode" {
+  default     = null
+  description = "Traces monitoring mode for StreamX Meshes deployed by StreamX Operator"
+  type        = string
 }
 
 variable "streamx_operator_monitoring_traces_endpoint" {

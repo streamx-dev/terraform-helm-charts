@@ -17,13 +17,13 @@ locals {
   default_atomic           = true
   default_chart_name       = "streamx-operator"
   default_chart_repository = "oci://europe-west1-docker.pkg.dev/streamx-releases/streamx-helm-charts"
-  default_chart_version    = "0.0.4"
+  default_chart_version    = "0.0.6"
   default_cleanup_on_fail  = true
   default_create_namespace = true
   default_namespace        = "streamx-operator"
   default_release_name     = "streamx-operator"
   default_settings         = {}
-  default_timeout          = 120
+  default_timeout          = 300
   default_values           = []
 
   atomic           = var.force_defaults_for_null_variables && var.atomic == null ? local.default_atomic : var.atomic

@@ -37,11 +37,7 @@ resource "google_container_node_pool" "node_pool" {
   node_config {
 
     oauth_scopes = [
-      "https://www.googleapis.com/auth/trace.append",
       "https://www.googleapis.com/auth/service.management.readonly",
-      "https://www.googleapis.com/auth/monitoring",
-      "https://www.googleapis.com/auth/monitoring.write",
-      "https://www.googleapis.com/auth/logging.write",
       "https://www.googleapis.com/auth/devstorage.read_only"
     ]
 
@@ -49,6 +45,8 @@ resource "google_container_node_pool" "node_pool" {
     disk_type    = "pd-ssd"
     machine_type = "e2-standard-4"
   }
+
+  depends_on = [google_container_cluster.cluster]
 }
 
 locals {
@@ -87,11 +85,15 @@ resource "local_sensitive_file" "kubeconfig" {
 
 module "streamx_platform" {
   source  = "streamx-dev/charts/helm"
-  version = "0.0.3"
+  version = "0.0.4"
 
+  prometheus_stack_grafana_admin_password              = var.grafana_admin_password
+  grafana_admin_password                               = var.grafana_admin_password
   cert_manager_lets_encrypt_issuer_acme_email          = var.cert_manager_lets_encrypt_issuer_acme_email
   streamx_operator_image_pull_secret_registry_email    = var.streamx_operator_image_pull_secret_registry_email
   streamx_operator_image_pull_secret_registry_password = var.streamx_operator_image_pull_secret_registry_password
   streamx_operator_chart_repository_username           = "_json_key_base64"
   streamx_operator_chart_repository_password           = var.streamx_operator_image_pull_secret_registry_password
+
+  depends_on = [google_container_node_pool.node_pool]
 }
