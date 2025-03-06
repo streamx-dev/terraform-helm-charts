@@ -220,9 +220,9 @@ module "opentelemetry_operator" {
 }
 
 locals {
-  logs_otlphttp_endpoint                      = var.loki_enabled ? module.loki[0].loki_otlp_endpoint : var.opentelemetry_collector_deamonset_logs_otlphttp_endpoint
-  traces_otlp_endpoint                        = var.tempo_enabled ? module.tempo[0].tempo_otlp_endpoint : var.opentelemetry_collector_deamonset_traces_otlp_endpoint
-  metrics_otlphttp_endpoint                   = var.prometheus_stack_enabled ? module.prometheus_stack[0].metrics_otlp_endpoint : var.opentelemetry_collector_deamonset_metrics_otlphttp_endpoint
+  logs_otlphttp_endpoint    = var.loki_enabled ? module.loki[0].loki_otlp_endpoint : var.opentelemetry_collector_deamonset_logs_otlphttp_endpoint
+  traces_otlp_endpoint      = var.tempo_enabled ? module.tempo[0].tempo_otlp_endpoint : var.opentelemetry_collector_deamonset_traces_otlp_endpoint
+  metrics_otlphttp_endpoint = var.prometheus_stack_enabled ? module.prometheus_stack[0].metrics_otlp_endpoint : var.opentelemetry_collector_deamonset_metrics_otlphttp_endpoint
 }
 
 module "opentelemetry_collector_deamonset" {
