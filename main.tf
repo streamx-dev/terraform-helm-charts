@@ -48,7 +48,7 @@ module "cert_manager" {
 }
 
 module "cert_manager_lets_encrypt_issuer" {
-  count  = var.cert_manager_enabled && var.cert_manager_lets_encrypt_issuer_enabled ? 1 : 0
+  count  = var.cert_manager_lets_encrypt_issuer_enabled ? 1 : 0
   source = "./modules/cert-manager-issuer-lets-encrypt"
 
   name                    = var.cert_manager_lets_encrypt_issuer_name
@@ -121,7 +121,7 @@ resource "kubernetes_namespace" "loki" {
 }
 
 locals {
-  loki_namespace = var.loki_create_namespace ? kubernetes_namespace.loki[0].metadata[0].name : var.loki_namespace
+  loki_namespace = var.loki_enabled && var.loki_create_namespace ? kubernetes_namespace.loki[0].metadata[0].name : var.loki_namespace
 }
 
 resource "kubernetes_secret_v1" "loki_s3_access_keys" {
@@ -166,7 +166,7 @@ resource "kubernetes_namespace" "tempo" {
 }
 
 locals {
-  tempo_namespace = var.tempo_create_namespace ? kubernetes_namespace.tempo[0].metadata[0].name : var.tempo_namespace
+  tempo_namespace = var.tempo_enabled && var.tempo_create_namespace ? kubernetes_namespace.tempo[0].metadata[0].name : var.tempo_namespace
 }
 
 resource "kubernetes_secret_v1" "tempo_s3_access_keys" {
