@@ -318,12 +318,6 @@ variable "ingress_controller_apisix_values" {
   type        = list(string)
 }
 
-variable "ingress_controller_apisix_default_ingress_class" {
-  default     = true
-  description = "If true, Ingresses without `ingressClassName` get assigned to APISIX IngressClass on creation."
-  type        = bool
-}
-
 #######
 ### NGINX Ingress Controller
 #######

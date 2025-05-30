@@ -30,24 +30,6 @@ module "ingress_controller_apisix" {
   ])
 }
 
-resource "kubectl_manifest" "apisix_ingress_patch" {
-  count = var.ingress_controller_apisix_default_ingress_class ? 1 : 0
-
-  server_side_apply = true
-  yaml_body         = <<YAML
-apiVersion: networking.k8s.io/v1
-kind: IngressClass
-metadata:
-  name: apisix
-  annotations:
-    ingressclass.kubernetes.io/is-default-class: "true"
-YAML
-
-  depends_on        = [
-    module.ingress_controller_apisix
-  ]
-}
-
 module "ingress_controller_nginx" {
   count  = var.ingress_controller_nginx_enabled ? 1 : 0
   source = "./modules/ingress-controller-nginx"

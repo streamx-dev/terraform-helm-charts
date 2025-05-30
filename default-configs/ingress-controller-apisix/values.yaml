@@ -39,6 +39,7 @@ config:
   kubernetes:
     apisixRouteVersion: "apisix.apache.org/v2beta3"
     apiVersion: "apisix.apache.org/v2beta3"
+    defaultIngressClass: true
 
 podDisruptionBudget:
   enabled: true
