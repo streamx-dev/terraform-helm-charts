@@ -14,8 +14,14 @@
 #
 
 ### Enable/Disable sub-modules
-variable "ingress_controller_nginx_enabled" {
+variable "ingress_controller_apisix_enabled" {
   default     = true
+  description = "Enables APISIX Ingress Controller."
+  type        = bool
+}
+
+variable "ingress_controller_nginx_enabled" {
+  default     = false
   description = "Enables NGINX Ingress Controller."
   type        = bool
 }
@@ -106,6 +112,19 @@ variable "ingress_controller_nginx_create_namespace" {
 }
 
 variable "ingress_controller_nginx_namespace" {
+  default     = null
+  description = "The namespace used for the deployment"
+  type        = string
+}
+
+### APISIX Ingress Controller
+variable "ingress_controller_apisix_create_namespace" {
+  default     = null
+  description = "Create a namespace for the deployment."
+  type        = bool
+}
+
+variable "ingress_controller_apisix_namespace" {
   default     = null
   description = "The namespace used for the deployment"
   type        = string
@@ -253,6 +272,51 @@ variable "streamx_operator_namespace" {
 ### Sub-module Variables
 ### Most variables inherit the default values from their submodule, hence the use of `null` defaults
 ###########################
+
+#######
+### APISIX Ingress Controller
+#######
+variable "ingress_controller_apisix_chart_name" {
+  default     = null
+  description = "The name of the Helm chart to install"
+  type        = string
+}
+
+variable "ingress_controller_apisix_chart_repository" {
+  default     = null
+  description = "The repository containing the Helm chart to install."
+  type        = string
+}
+
+variable "ingress_controller_apisix_chart_version" {
+  default     = null
+  description = "The version of the Helm chart to install."
+  type        = string
+}
+
+variable "ingress_controller_apisix_release_name" {
+  default     = null
+  description = "The name of the helm release."
+  type        = string
+}
+
+variable "ingress_controller_apisix_settings" {
+  default     = null
+  description = "Additional key value settings which will be passed to the Helm chart values, e.g. { \"namespace\" = \"kube-system\" }."
+  type        = map(any)
+}
+
+variable "ingress_controller_apisix_timeout" {
+  default     = null
+  description = "Time in seconds to wait for any individual kubernetes operation"
+  type        = number
+}
+
+variable "ingress_controller_apisix_values" {
+  default     = null
+  description = "A list of values in raw YAML to be applied to the helm release. Overrides default values from [default-configs](./default-configs). Merges with the settings input, can also be used with the `file()` function, i.e. `file(\"my/values.yaml\")`."
+  type        = list(string)
+}
 
 #######
 ### NGINX Ingress Controller

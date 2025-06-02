@@ -13,6 +13,23 @@
 # limitations under the License.
 #
 
+module "ingress_controller_apisix" {
+  count  = var.ingress_controller_apisix_enabled ? 1 : 0
+  source = "./modules/ingress-controller-apisix"
+
+  chart_name       = var.ingress_controller_apisix_chart_name
+  chart_repository = var.ingress_controller_apisix_chart_repository
+  chart_version    = var.ingress_controller_apisix_chart_version
+  create_namespace = var.ingress_controller_apisix_create_namespace
+  namespace        = var.ingress_controller_apisix_namespace
+  release_name     = var.ingress_controller_apisix_release_name
+  settings         = var.ingress_controller_apisix_settings
+  timeout          = var.ingress_controller_apisix_timeout
+  values = coalescelist(var.ingress_controller_apisix_values, [
+    file("${path.module}/default-configs/ingress-controller-apisix/values.yaml")
+  ])
+}
+
 module "ingress_controller_nginx" {
   count  = var.ingress_controller_nginx_enabled ? 1 : 0
   source = "./modules/ingress-controller-nginx"

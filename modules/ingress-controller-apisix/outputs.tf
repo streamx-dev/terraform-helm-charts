@@ -13,12 +13,11 @@
 # limitations under the License.
 #
 
-output "loadbalancer_ip" {
-  description = "K8s cluster Load Balancer IP"
-  value       = length(module.ingress_controller_nginx) > 0 ? module.ingress_controller_nginx.0.ingress_ip : length(module.ingress_controller_apisix) > 0 ? module.ingress_controller_apisix.0.ingress_ip : null
+locals {
+  load_balancer_ingress = data.kubernetes_service.ingress_svc.status.0.load_balancer.0.ingress
 }
 
-output "cert_manager_lets_encrypt_issuer_ingress_annotations" {
-  description = "Ingress annotations with Cert Manager Let's Encrypt issuer configuration"
-  value       = length(module.cert_manager_lets_encrypt_issuer) > 0 ? module.cert_manager_lets_encrypt_issuer.0.cluster_issuer_ingress_annotations : null
+output "ingress_ip" {
+  description = "K8s cluster Load Balancer IP"
+  value       = length(local.load_balancer_ingress) > 0 ? local.load_balancer_ingress.0.ip : null
 }
