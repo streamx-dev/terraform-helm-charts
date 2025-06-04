@@ -278,7 +278,7 @@ locals {
 }
 
 module "grafana_loki_datasource" {
-  count = var.loki_enabled ? 1 : 0
+  count = var.prometheus_stack_enabled && var.loki_enabled ? 1 : 0
 
   source            = "./modules/monitoring-grafana-loki-datasource"
   loki_namespace    = var.loki_namespace
@@ -288,7 +288,7 @@ module "grafana_loki_datasource" {
 }
 
 module "loki_dashboards" {
-  count     = var.loki_enabled ? 1 : 0
+  count     = var.prometheus_stack_enabled && var.loki_enabled ? 1 : 0
   source    = "./modules/monitoring-loki-grafana-dashboards"
   namespace = local.prometheus_stack_namespace
 
@@ -296,7 +296,7 @@ module "loki_dashboards" {
 }
 
 module "grafana_tempo_datasource" {
-  count = var.tempo_enabled ? 1 : 0
+  count = var.prometheus_stack_enabled && var.tempo_enabled ? 1 : 0
 
   source            = "./modules/monitoring-grafana-tempo-datasource"
   tempo_namespace   = var.tempo_namespace
@@ -364,7 +364,7 @@ module "kaap_pod_monitor" {
 }
 
 module "kaap_dashboards" {
-  count     = var.pulsar_kaap_enabled ? 1 : 0
+  count     = var.prometheus_stack_enabled && var.pulsar_kaap_enabled ? 1 : 0
   source    = "./modules/monitoring-kaap-grafana-dashboards"
   namespace = local.prometheus_stack_namespace
 
@@ -451,7 +451,7 @@ module "streamx_pod_monitor" {
 }
 
 module "streamx_dashboards" {
-  count     = var.streamx_operator_enabled ? 1 : 0
+  count     = var.prometheus_stack_enabled && var.streamx_operator_enabled ? 1 : 0
   source    = "./modules/monitoring-streamx-grafana-dashboards"
   namespace = local.prometheus_stack_namespace
 
