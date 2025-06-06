@@ -54,7 +54,7 @@ No modules.
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | The namespace used for the deployment | `string` | `"ingress-nginx"` | no |
 | <a name="input_release_name"></a> [release\_name](#input\_release\_name) | The name of the helm release | `string` | `"ingress-nginx"` | no |
 | <a name="input_settings"></a> [settings](#input\_settings) | Settings which will be passed to the Helm chart values | `map(any)` | `{}` | no |
-| <a name="input_timeout"></a> [timeout](#input\_timeout) | Time in seconds to wait for any individual kubernetes operation | `number` | `120` | no |
+| <a name="input_timeout"></a> [timeout](#input\_timeout) | Time in seconds to wait for any individual kubernetes operation | `number` | `300` | no |
 | <a name="input_values"></a> [values](#input\_values) | A list of values in raw YAML to be applied to the helm release. Merges with the settings input, can also be used with the `file()` function, i.e. `file("my/values.yaml")`. | `list` | `[]` | no |
 
 ## Outputs
