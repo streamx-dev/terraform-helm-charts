@@ -17,7 +17,7 @@ locals {
   default_atomic           = true
   default_chart_name       = "apisix-ingress-controller"
   default_chart_repository = "https://charts.apiseven.com"
-  default_chart_version    = "0.14.0"
+  default_chart_version    = "0.14.1"
   default_cleanup_on_fail  = true
   default_create_namespace = true
   default_namespace        = "ingress-apisix"
