@@ -43,6 +43,7 @@ config:
 
 podDisruptionBudget:
   enabled: true
+  minAvailable: 50%
   maxUnavailable: 1
 
 gateway:
