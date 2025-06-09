@@ -74,12 +74,6 @@ variable "opentelemetry_collector_deamonset_enabled" {
   type        = bool
 }
 
-variable "opentelemetry_collector_statefulset_enabled" {
-  default     = false
-  description = "Enables OpenTelemetry Collector Statefulset."
-  type        = bool
-}
-
 variable "pulsar_kaap_enabled" {
   default     = true
   description = "Enables Kubernetes Autoscaling for Apache Pulsar (KAAP)."
