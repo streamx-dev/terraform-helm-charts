@@ -23,7 +23,7 @@ resource "kubernetes_config_map_v1" "loki-datasource" {
   }
 
   data = {
-    "prometheus-datasource.yaml" = <<EOT
+    "loki-datasource.yaml" = <<EOT
 apiVersion: 1
 datasources:
   - name: "Loki"

@@ -23,7 +23,7 @@ resource "kubernetes_config_map_v1" "tempo-datasource" {
   }
 
   data = {
-    "prometheus-datasource.yaml" = <<EOT
+    "tempo-datasource.yaml" = <<EOT
 apiVersion: 1
 datasources:
   - name: "Tempo"
