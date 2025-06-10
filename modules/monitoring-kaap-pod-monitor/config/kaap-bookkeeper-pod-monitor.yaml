@@ -18,6 +18,7 @@ kind: PodMonitor
 metadata:
   name: "kaap-bookkeeper-pod-monitor"
 spec:
+  fallbackScrapeProtocol: "PrometheusText0.0.4"
   labelLimit: 63
   labelNameLengthLimit: 511
   labelValueLengthLimit: 1023
