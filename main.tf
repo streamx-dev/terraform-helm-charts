@@ -374,8 +374,8 @@ module "kaap_dashboards" {
 locals {
   streamx_operator_namespace                           = var.streamx_operator_create_namespace ? kubernetes_namespace.streamx_operator[0].metadata[0].name : var.streamx_operator_namespace
   streamx_operator_image_pull_secret_name              = var.streamx_operator_image_pull_secret_enabled ? module.streamx_operator_image_pull_secret[0].secret_name : var.streamx_operator_image_pull_secret_name
-  streamx_operator_messaging_pulsar_client_service_url = var.pulsar_kaap_enabled ? module.pulsar_kaap[0].client_service_url : var.streamx_operator_messaging_pulsar_client_service_url
-  streamx_operator_messaging_pulsar_admin_service_url  = var.pulsar_kaap_enabled ? module.pulsar_kaap[0].admin_service_url : var.streamx_operator_messaging_pulsar_admin_service_url
+  streamx_operator_messaging_pulsar_client_service_url = var.streamx_operator_messaging_pulsar_client_service_url == null && var.pulsar_kaap_enabled ? module.pulsar_kaap[0].client_service_url : var.streamx_operator_messaging_pulsar_client_service_url
+  streamx_operator_messaging_pulsar_admin_service_url  = var.streamx_operator_messaging_pulsar_admin_service_url == null && var.pulsar_kaap_enabled ? module.pulsar_kaap[0].admin_service_url : var.streamx_operator_messaging_pulsar_admin_service_url
 }
 
 resource "kubernetes_namespace" "streamx_operator" {
