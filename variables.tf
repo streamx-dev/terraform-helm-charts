@@ -886,13 +886,13 @@ variable "streamx_operator_messaging_pulsar_init_image" {
 
 variable "streamx_operator_messaging_pulsar_client_service_url" {
   default     = null
-  description = "Pulsar client service URL passed to StreamX Operator if KAAP is disabled."
+  description = "Pulsar client service URL passed to StreamX Operator. If null and KAAP enabled then KAAP default URL is used."
   type        = string
 }
 
 variable "streamx_operator_messaging_pulsar_admin_service_url" {
   default     = null
-  description = "Pulsar admin service URL passed to StreamX Operator if KAAP is disabled."
+  description = "Pulsar admin service URL passed to StreamX Operator. If null and KAAP enabled then KAAP default URL is used."
   type        = string
 }
 

@@ -25,7 +25,7 @@ module "ingress_controller_apisix" {
   release_name     = var.ingress_controller_apisix_release_name
   settings         = var.ingress_controller_apisix_settings
   timeout          = var.ingress_controller_apisix_timeout
-  values = coalescelist(var.ingress_controller_apisix_values, [
+  values           = coalescelist(var.ingress_controller_apisix_values, [
     file("${path.module}/default-configs/ingress-controller-apisix/values.yaml")
   ])
 }
@@ -42,7 +42,7 @@ module "ingress_controller_nginx" {
   release_name     = var.ingress_controller_nginx_release_name
   settings         = var.ingress_controller_nginx_settings
   timeout          = var.ingress_controller_nginx_timeout
-  values = coalescelist(var.ingress_controller_nginx_values, [
+  values           = coalescelist(var.ingress_controller_nginx_values, [
     file("${path.module}/default-configs/ingress-controller-nginx/values.yaml")
   ])
 }
@@ -59,7 +59,7 @@ module "cert_manager" {
   release_name     = var.cert_manager_release_name
   settings         = var.cert_manager_settings
   timeout          = var.cert_manager_timeout
-  values = coalescelist(var.cert_manager_values, [
+  values           = coalescelist(var.cert_manager_values, [
     file("${path.module}/default-configs/cert-manager/values.yaml")
   ])
 }
@@ -78,7 +78,7 @@ module "cert_manager_lets_encrypt_issuer" {
 }
 
 resource "random_password" "minio_secret_access_key" {
-  count = var.minio_enabled && var.minio_create_namespace ? 1 : 0
+  count   = var.minio_enabled && var.minio_create_namespace ? 1 : 0
   # Removed special characters to avoid issues with tempo configuration in tempo/config.yaml
   special = false
   length  = 16
@@ -122,7 +122,7 @@ module "minio" {
   release_name     = var.minio_release_name
   settings         = var.minio_settings
   timeout          = var.minio_timeout
-  values = coalescelist(var.minio_values, [
+  values           = coalescelist(var.minio_values, [
     file("${path.module}/default-configs/minio/values.yaml")
   ])
 
@@ -167,7 +167,7 @@ module "loki" {
   release_name     = var.loki_release_name
   settings         = var.loki_settings
   timeout          = var.loki_timeout
-  values = coalescelist(var.loki_values, [
+  values           = coalescelist(var.loki_values, [
     file("${path.module}/default-configs/loki/values.yaml")
   ])
 
@@ -212,7 +212,7 @@ module "tempo" {
   release_name     = var.tempo_release_name
   settings         = var.tempo_settings
   timeout          = var.tempo_timeout
-  values = coalescelist(var.tempo_values, [
+  values           = coalescelist(var.tempo_values, [
     file("${path.module}/default-configs/tempo/values.yaml")
   ])
 
@@ -231,7 +231,7 @@ module "opentelemetry_operator" {
   release_name     = var.opentelemetry_operator_release_name
   settings         = var.opentelemetry_operator_settings
   timeout          = var.opentelemetry_operator_timeout
-  values = coalescelist(var.opentelemetry_operator_values, [
+  values           = coalescelist(var.opentelemetry_operator_values, [
     file("${path.module}/default-configs/opentelemetry-operator/values.yaml")
   ])
 }
@@ -254,7 +254,7 @@ module "opentelemetry_collector_deamonset" {
   release_name     = var.opentelemetry_collector_deamonset_release_name
   settings         = var.opentelemetry_collector_deamonset_settings
   timeout          = var.opentelemetry_collector_deamonset_timeout
-  values = coalescelist(var.opentelemetry_collector_deamonset_values, [
+  values           = coalescelist(var.opentelemetry_collector_deamonset_values, [
     templatefile("${path.module}/default-configs/opentelemetry-collector/deamonset-values.tftpl.yaml", {
       logs_otlphttp_endpoint    = "http://${local.logs_otlphttp_endpoint}"
       traces_otlp_endpoint      = local.traces_otlp_endpoint
@@ -331,7 +331,7 @@ module "prometheus_stack" {
   release_name     = var.prometheus_stack_release_name
   settings         = var.prometheus_stack_settings
   timeout          = var.prometheus_stack_timeout
-  values = coalescelist(var.prometheus_stack_values, [
+  values           = coalescelist(var.prometheus_stack_values, [
     file("${path.module}/default-configs/prometheus-stack/values.yaml")
   ])
 
@@ -350,7 +350,7 @@ module "pulsar_kaap" {
   release_name     = var.pulsar_kaap_release_name
   settings         = var.pulsar_kaap_settings
   timeout          = var.pulsar_kaap_timeout
-  values = coalescelist(var.pulsar_kaap_values, [
+  values           = coalescelist(var.pulsar_kaap_values, [
     file("${path.module}/default-configs/pulsar-kaap/values.yaml")
   ])
 }
@@ -374,8 +374,8 @@ module "kaap_dashboards" {
 locals {
   streamx_operator_namespace                           = var.streamx_operator_create_namespace ? kubernetes_namespace.streamx_operator[0].metadata[0].name : var.streamx_operator_namespace
   streamx_operator_image_pull_secret_name              = var.streamx_operator_image_pull_secret_enabled ? module.streamx_operator_image_pull_secret[0].secret_name : var.streamx_operator_image_pull_secret_name
-  streamx_operator_messaging_pulsar_client_service_url = var.pulsar_kaap_enabled ? module.pulsar_kaap[0].client_service_url : var.streamx_operator_messaging_pulsar_client_service_url
-  streamx_operator_messaging_pulsar_admin_service_url  = var.pulsar_kaap_enabled ? module.pulsar_kaap[0].admin_service_url : var.streamx_operator_messaging_pulsar_admin_service_url
+  streamx_operator_messaging_pulsar_client_service_url = var.streamx_operator_messaging_pulsar_client_service_url == null && var.pulsar_kaap_enabled ? module.pulsar_kaap[0].client_service_url : var.streamx_operator_messaging_pulsar_client_service_url
+  streamx_operator_messaging_pulsar_admin_service_url  = var.streamx_operator_messaging_pulsar_admin_service_url == null && var.pulsar_kaap_enabled ? module.pulsar_kaap[0].admin_service_url : var.streamx_operator_messaging_pulsar_admin_service_url
 }
 
 resource "kubernetes_namespace" "streamx_operator" {
@@ -417,7 +417,7 @@ module "streamx_operator" {
   release_name              = var.streamx_operator_release_name
   settings                  = var.streamx_operator_settings
   timeout                   = var.streamx_operator_timeout
-  values = coalescelist(var.streamx_operator_values, [
+  values                    = coalescelist(var.streamx_operator_values, [
     yamlencode({
       image = {
         tag = "0.0.12-jvm"
