@@ -51,11 +51,10 @@ resource "helm_release" "tempo" {
   version          = local.chart_version
   values           = local.values
 
-  dynamic "set" {
-    for_each = local.settings
-    content {
-      name  = set.key
-      value = set.value
+  set = [
+    for k, v in local.settings : {
+      name  = k
+      value = v
     }
-  }
+  ]
 }
