@@ -419,19 +419,9 @@ module "streamx_operator" {
   timeout                   = var.streamx_operator_timeout
   values = coalescelist(var.streamx_operator_values, [
     yamlencode({
-      image = {
-        tag = "0.0.12-jvm"
-      }
       imagePullSecrets = local.streamx_operator_image_pull_secret_name == null ? [] : [
         { name = local.streamx_operator_image_pull_secret_name }
       ]
-      messaging = {
-        pulsar = {
-          initImage : var.streamx_operator_messaging_pulsar_init_image
-          clientServiceUrl = local.streamx_operator_messaging_pulsar_client_service_url
-          adminServiceUrl  = local.streamx_operator_messaging_pulsar_admin_service_url
-        }
-      }
       monitoring = {
         traces = {
           mode     = local.streamx_operator_monitoring_traces_mode
@@ -440,6 +430,8 @@ module "streamx_operator" {
       }
     })
   ])
+  pulsar_messaging_config_client_service_url = local.streamx_operator_messaging_pulsar_client_service_url
+  pulsar_messaging_config_admin_service_url  = local.streamx_operator_messaging_pulsar_admin_service_url
 }
 
 module "streamx_pod_monitor" {

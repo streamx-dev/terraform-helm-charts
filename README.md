@@ -19,7 +19,7 @@
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.0 |
-| <a name="requirement_helm"></a> [helm](#requirement\_helm) | >= 2.17.0 |
+| <a name="requirement_helm"></a> [helm](#requirement\_helm) | >= 2.17.0, < 3.0.0 |
 | <a name="requirement_kubectl"></a> [kubectl](#requirement\_kubectl) | >= 1.14.0 |
 | <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | >= 2.35.1 |
 
@@ -147,7 +147,6 @@
 | <a name="input_opentelemetry_collector_statefulset_chart_repository"></a> [opentelemetry\_collector\_statefulset\_chart\_repository](#input\_opentelemetry\_collector\_statefulset\_chart\_repository) | The repository containing the Helm chart to install. | `string` | `null` | no |
 | <a name="input_opentelemetry_collector_statefulset_chart_version"></a> [opentelemetry\_collector\_statefulset\_chart\_version](#input\_opentelemetry\_collector\_statefulset\_chart\_version) | The version of the Helm chart to install. | `string` | `null` | no |
 | <a name="input_opentelemetry_collector_statefulset_create_namespace"></a> [opentelemetry\_collector\_statefulset\_create\_namespace](#input\_opentelemetry\_collector\_statefulset\_create\_namespace) | Create a namespace for the deployment. | `bool` | `true` | no |
-| <a name="input_opentelemetry_collector_statefulset_enabled"></a> [opentelemetry\_collector\_statefulset\_enabled](#input\_opentelemetry\_collector\_statefulset\_enabled) | Enables OpenTelemetry Collector Statefulset. | `bool` | `false` | no |
 | <a name="input_opentelemetry_collector_statefulset_namespace"></a> [opentelemetry\_collector\_statefulset\_namespace](#input\_opentelemetry\_collector\_statefulset\_namespace) | The namespace used for the deployment | `string` | `null` | no |
 | <a name="input_opentelemetry_collector_statefulset_release_name"></a> [opentelemetry\_collector\_statefulset\_release\_name](#input\_opentelemetry\_collector\_statefulset\_release\_name) | The name of the helm release. | `string` | `"collector-statefulset"` | no |
 | <a name="input_opentelemetry_collector_statefulset_settings"></a> [opentelemetry\_collector\_statefulset\_settings](#input\_opentelemetry\_collector\_statefulset\_settings) | Additional key value settings which will be passed to the Helm chart values, e.g. { "namespace" = "kube-system" }. | `map(any)` | `null` | no |
@@ -198,9 +197,8 @@
 | <a name="input_streamx_operator_image_pull_secret_registry_password"></a> [streamx\_operator\_image\_pull\_secret\_registry\_password](#input\_streamx\_operator\_image\_pull\_secret\_registry\_password) | StreamX Operator container image registry user password. | `string` | n/a | yes |
 | <a name="input_streamx_operator_image_pull_secret_registry_server"></a> [streamx\_operator\_image\_pull\_secret\_registry\_server](#input\_streamx\_operator\_image\_pull\_secret\_registry\_server) | StreamX Operator container image registry server. | `string` | `"europe-west1-docker.pkg.dev"` | no |
 | <a name="input_streamx_operator_image_pull_secret_registry_username"></a> [streamx\_operator\_image\_pull\_secret\_registry\_username](#input\_streamx\_operator\_image\_pull\_secret\_registry\_username) | StreamX Operator container image registry username. | `string` | `"_json_key_base64"` | no |
-| <a name="input_streamx_operator_messaging_pulsar_admin_service_url"></a> [streamx\_operator\_messaging\_pulsar\_admin\_service\_url](#input\_streamx\_operator\_messaging\_pulsar\_admin\_service\_url) | Pulsar admin service URL passed to StreamX Operator if KAAP is disabled. | `string` | `null` | no |
-| <a name="input_streamx_operator_messaging_pulsar_client_service_url"></a> [streamx\_operator\_messaging\_pulsar\_client\_service\_url](#input\_streamx\_operator\_messaging\_pulsar\_client\_service\_url) | Pulsar client service URL passed to StreamX Operator if KAAP is disabled. | `string` | `null` | no |
-| <a name="input_streamx_operator_messaging_pulsar_init_image"></a> [streamx\_operator\_messaging\_pulsar\_init\_image](#input\_streamx\_operator\_messaging\_pulsar\_init\_image) | Pulsar Tenant Init container image. | `string` | `"ghcr.io/streamx-dev/streamx/pulsar-init:latest-jvm"` | no |
+| <a name="input_streamx_operator_messaging_pulsar_admin_service_url"></a> [streamx\_operator\_messaging\_pulsar\_admin\_service\_url](#input\_streamx\_operator\_messaging\_pulsar\_admin\_service\_url) | Pulsar admin service URL passed to StreamX Operator. If null and KAAP enabled then KAAP default URL is used. | `string` | `null` | no |
+| <a name="input_streamx_operator_messaging_pulsar_client_service_url"></a> [streamx\_operator\_messaging\_pulsar\_client\_service\_url](#input\_streamx\_operator\_messaging\_pulsar\_client\_service\_url) | Pulsar client service URL passed to StreamX Operator. If null and KAAP enabled then KAAP default URL is used. | `string` | `null` | no |
 | <a name="input_streamx_operator_monitoring_traces_endpoint"></a> [streamx\_operator\_monitoring\_traces\_endpoint](#input\_streamx\_operator\_monitoring\_traces\_endpoint) | Traces collector URL | `string` | `null` | no |
 | <a name="input_streamx_operator_monitoring_traces_mode"></a> [streamx\_operator\_monitoring\_traces\_mode](#input\_streamx\_operator\_monitoring\_traces\_mode) | Traces monitoring mode for StreamX Meshes deployed by StreamX Operator | `string` | `null` | no |
 | <a name="input_streamx_operator_namespace"></a> [streamx\_operator\_namespace](#input\_streamx\_operator\_namespace) | The namespace used for the deployment | `string` | `"streamx-operator"` | no |

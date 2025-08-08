@@ -1,0 +1,12 @@
+apiVersion: "streamx.dev/v1alpha1"
+kind: MessagingConfig
+metadata:
+  name: pulsar
+spec:
+  type: pulsar
+  pulsar:
+    auth:
+      enabled: false
+    services:
+      adminServiceUrl: ${admin_service_url}
+      clientServiceUrl: ${client_service_url}

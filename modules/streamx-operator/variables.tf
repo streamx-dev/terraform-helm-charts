@@ -51,7 +51,7 @@ variable "chart_repository_password" {
 }
 
 variable "chart_version" {
-  default     = "0.0.6"
+  default     = "0.0.7"
   description = "The version of the Helm chart to install"
   type        = string
 }
@@ -95,4 +95,16 @@ variable "timeout" {
 variable "values" {
   default     = []
   description = "A list of values in raw YAML to be applied to the helm release. Merges with the settings input, can also be used with the `file()` function, i.e. `file(\"my/values.yaml\")`."
+}
+
+variable "pulsar_messaging_config_client_service_url" {
+  default     = null
+  description = "Pulsar client service URL passed to default MessagingConfig resource. If null then default MessagingConfig is not created."
+  type        = string
+}
+
+variable "pulsar_messaging_config_admin_service_url" {
+  default     = null
+  description = "Pulsar admin service URL passed to StreamX Operator. If null then default MessagingConfig is not created."
+  type        = string
 }

@@ -17,7 +17,7 @@ locals {
   default_atomic           = true
   default_chart_name       = "streamx-operator"
   default_chart_repository = "oci://europe-west1-docker.pkg.dev/streamx-releases/streamx-helm-charts"
-  default_chart_version    = "0.0.6"
+  default_chart_version    = "0.0.7"
   default_cleanup_on_fail  = true
   default_create_namespace = true
   default_namespace        = "streamx-operator"
@@ -60,4 +60,16 @@ resource "helm_release" "streamx_operator" {
       value = set.value
     }
   }
+}
+
+resource "kubectl_manifest" "pulsar_messaging_config" {
+  count = var.pulsar_messaging_config_admin_service_url != null && var.pulsar_messaging_config_client_service_url != null ? 1 : 0
+  yaml_body          = templatefile(
+    "${path.module}/config/pulsar-messaging-config.yaml",
+    {
+      admin_service_url = var.pulsar_messaging_config_admin_service_url
+      client_service_url = var.pulsar_messaging_config_client_service_url
+    }
+  )
+  override_namespace = var.namespace
 }

@@ -878,12 +878,6 @@ variable "streamx_operator_values" {
   type        = list(string)
 }
 
-variable "streamx_operator_messaging_pulsar_init_image" {
-  default     = "ghcr.io/streamx-dev/streamx/pulsar-init:latest-jvm"
-  description = "Pulsar Tenant Init container image."
-  type        = string
-}
-
 variable "streamx_operator_messaging_pulsar_client_service_url" {
   default     = null
   description = "Pulsar client service URL passed to StreamX Operator. If null and KAAP enabled then KAAP default URL is used."
