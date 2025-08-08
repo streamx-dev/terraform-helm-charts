@@ -371,6 +371,21 @@ module "kaap_dashboards" {
   depends_on = [module.pulsar_kaap]
 }
 
+module "pulsar_resources_operator" {
+  count  = var.pulsar_resources_operator_enabled ? 1 : 0
+  source = "./modules/pulsar-resources-operator"
+
+  chart_name       = var.pulsar_resources_operator_chart_name
+  chart_repository = var.pulsar_resources_operator_chart_repository
+  chart_version    = var.pulsar_resources_operator_chart_version
+  create_namespace = var.pulsar_resources_operator_create_namespace
+  namespace        = var.pulsar_resources_operator_namespace
+  release_name     = var.pulsar_resources_operator_release_name
+  settings         = var.pulsar_resources_operator_settings
+  timeout          = var.pulsar_resources_operator_timeout
+  values           = var.pulsar_resources_operator_values
+}
+
 locals {
   streamx_operator_namespace                           = var.streamx_operator_create_namespace ? kubernetes_namespace.streamx_operator[0].metadata[0].name : var.streamx_operator_namespace
   streamx_operator_image_pull_secret_name              = var.streamx_operator_image_pull_secret_enabled ? module.streamx_operator_image_pull_secret[0].secret_name : var.streamx_operator_image_pull_secret_name
@@ -432,6 +447,8 @@ module "streamx_operator" {
   ])
   pulsar_messaging_config_client_service_url = local.streamx_operator_messaging_pulsar_client_service_url
   pulsar_messaging_config_admin_service_url  = local.streamx_operator_messaging_pulsar_admin_service_url
+
+  depends_on = [module.pulsar_resources_operator]
 }
 
 module "streamx_pod_monitor" {

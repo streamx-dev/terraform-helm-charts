@@ -26,13 +26,13 @@ variable "atomic" {
 }
 
 variable "chart_name" {
-  default     = "streamx-operator"
+  default     = "pulsar-resources-operator"
   description = "The name of the Helm chart to install"
   type        = string
 }
 
 variable "chart_repository" {
-  default     = "oci://europe-west1-docker.pkg.dev/streamx-releases/streamx-helm-charts"
+  default     = "https://charts.streamnative.io"
   description = "The repository containing the Helm chart to install"
   type        = string
 }
@@ -51,7 +51,7 @@ variable "chart_repository_password" {
 }
 
 variable "chart_version" {
-  default     = "0.0.7"
+  default     = "0.12.0"
   description = "The version of the Helm chart to install"
   type        = string
 }
@@ -69,13 +69,13 @@ variable "create_namespace" {
 }
 
 variable "namespace" {
-  default     = "streamx-operator"
+  default     = "pulsar-resources-operator"
   description = "The namespace used for the deployment"
   type        = string
 }
 
 variable "release_name" {
-  default     = "streamx-operator"
+  default     = "pulsar-resources-operator"
   description = "The name of the helm release"
   type        = string
 }
@@ -95,16 +95,4 @@ variable "timeout" {
 variable "values" {
   default     = []
   description = "A list of values in raw YAML to be applied to the helm release. Merges with the settings input, can also be used with the `file()` function, i.e. `file(\"my/values.yaml\")`."
-}
-
-variable "pulsar_messaging_config_client_service_url" {
-  default     = null
-  description = "Pulsar client service URL passed to default MessagingConfig resource. If null then default MessagingConfig is not created."
-  type        = string
-}
-
-variable "pulsar_messaging_config_admin_service_url" {
-  default     = null
-  description = "Pulsar admin service URL passed to default MessagingConfig resource. If null then default MessagingConfig is not created."
-  type        = string
 }
