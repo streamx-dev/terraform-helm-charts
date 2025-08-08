@@ -64,12 +64,14 @@ resource "helm_release" "streamx_operator" {
 
 resource "kubectl_manifest" "pulsar_messaging_config" {
   count = var.pulsar_messaging_config_admin_service_url != null && var.pulsar_messaging_config_client_service_url != null ? 1 : 0
-  yaml_body          = templatefile(
+  yaml_body = templatefile(
     "${path.module}/config/pulsar-messaging-config.yaml",
     {
-      admin_service_url = var.pulsar_messaging_config_admin_service_url
+      admin_service_url  = var.pulsar_messaging_config_admin_service_url
       client_service_url = var.pulsar_messaging_config_client_service_url
     }
   )
   override_namespace = var.namespace
+
+  depends_on = [helm_release.streamx_operator]
 }
