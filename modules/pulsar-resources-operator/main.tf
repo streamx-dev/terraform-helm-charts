@@ -15,13 +15,13 @@
 
 locals {
   default_atomic           = true
-  default_chart_name       = "streamx-operator"
-  default_chart_repository = "oci://europe-west1-docker.pkg.dev/streamx-releases/streamx-helm-charts"
-  default_chart_version    = "0.0.8"
+  default_chart_name       = "pulsar-resources-operator"
+  default_chart_repository = "https://charts.streamnative.io"
+  default_chart_version    = "0.12.0"
   default_cleanup_on_fail  = true
   default_create_namespace = true
-  default_namespace        = "streamx-operator"
-  default_release_name     = "streamx-operator"
+  default_namespace        = "pulsar-resources-operator"
+  default_release_name     = "pulsar-resources-operator"
   default_settings         = {}
   default_timeout          = 300
   default_values           = []
@@ -39,7 +39,7 @@ locals {
   values           = var.force_defaults_for_null_variables && var.values == null ? local.default_values : var.values
 }
 
-resource "helm_release" "streamx_operator" {
+resource "helm_release" "pulsar_resources_operator" {
   atomic              = local.atomic
   chart               = local.chart_name
   cleanup_on_fail     = local.cleanup_on_fail
@@ -60,18 +60,4 @@ resource "helm_release" "streamx_operator" {
       value = set.value
     }
   }
-}
-
-resource "kubectl_manifest" "pulsar_messaging_config" {
-  count = var.pulsar_messaging_config_admin_service_url != null && var.pulsar_messaging_config_client_service_url != null ? 1 : 0
-  yaml_body = templatefile(
-    "${path.module}/config/pulsar-messaging-config.yaml",
-    {
-      admin_service_url  = var.pulsar_messaging_config_admin_service_url
-      client_service_url = var.pulsar_messaging_config_client_service_url
-    }
-  )
-  override_namespace = var.namespace
-
-  depends_on = [helm_release.streamx_operator]
 }

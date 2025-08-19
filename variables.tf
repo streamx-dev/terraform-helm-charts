@@ -80,6 +80,12 @@ variable "pulsar_kaap_enabled" {
   type        = bool
 }
 
+variable "pulsar_resources_operator_enabled" {
+  default     = true
+  description = "Enables Pulsar Resources Operator."
+  type        = bool
+}
+
 variable "streamx_operator_enabled" {
   default     = true
   description = "Enables StreamX Operator."
@@ -245,6 +251,19 @@ variable "pulsar_kaap_create_namespace" {
 
 variable "pulsar_kaap_namespace" {
   default     = null
+  description = "The namespace used for the deployment"
+  type        = string
+}
+
+### Pulsar Resources Operator
+variable "pulsar_resources_operator_create_namespace" {
+  default     = true
+  description = "Create a namespace for the deployment."
+  type        = bool
+}
+
+variable "pulsar_resources_operator_namespace" {
+  default     = "pulsar-resources-operator"
   description = "The namespace used for the deployment"
   type        = string
 }
@@ -821,6 +840,64 @@ variable "pulsar_kaap_values" {
 }
 
 #######
+### Pulsar Resources Operator
+#######
+variable "pulsar_resources_operator_chart_name" {
+  default     = null
+  description = "The name of the Helm chart to install"
+  type        = string
+}
+
+variable "pulsar_resources_operator_chart_repository" {
+  default     = null
+  description = "The repository containing the Helm chart to install."
+  type        = string
+}
+
+variable "pulsar_resources_operator_chart_repository_username" {
+  default     = null
+  description = "The username used for the repository authentication."
+  type        = string
+}
+
+variable "pulsar_resources_operator_chart_repository_password" {
+  default     = null
+  description = "The password used for the repository authentication."
+  type        = string
+  sensitive   = true
+}
+
+variable "pulsar_resources_operator_chart_version" {
+  default     = null
+  description = "The version of the Helm chart to install."
+  type        = string
+}
+
+variable "pulsar_resources_operator_release_name" {
+  default     = null
+  description = "The name of the helm release."
+  type        = string
+}
+
+variable "pulsar_resources_operator_settings" {
+  default     = null
+  description = "Additional key value settings which will be passed to the Helm chart values, e.g. { \"namespace\" = \"kube-system\" }."
+  type        = map(any)
+}
+
+variable "pulsar_resources_operator_timeout" {
+  default     = null
+  description = "Time in seconds to wait for any individual kubernetes operation."
+  type        = number
+}
+
+variable "pulsar_resources_operator_values" {
+  default     = null
+  description = "A list of values in raw YAML to be applied to the helm release. Overrides default composed values. Merges with the settings input, can also be used with the `file()` function, i.e. `file(\"my/values.yaml\")`."
+  type        = list(string)
+}
+
+#######
 ### StreamX Operator
 #######
 variable "streamx_operator_chart_name" {
@@ -876,12 +953,6 @@ variable "streamx_operator_values" {
   default     = null
   description = "A list of values in raw YAML to be applied to the helm release. Overrides default composed values. Merges with the settings input, can also be used with the `file()` function, i.e. `file(\"my/values.yaml\")`."
   type        = list(string)
-}
-
-variable "streamx_operator_messaging_pulsar_init_image" {
-  default     = "ghcr.io/streamx-dev/streamx/pulsar-init:latest-jvm"
-  description = "Pulsar Tenant Init container image."
-  type        = string
 }
 
 variable "streamx_operator_messaging_pulsar_client_service_url" {
