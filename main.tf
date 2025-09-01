@@ -434,14 +434,22 @@ module "streamx_operator" {
   timeout                   = var.streamx_operator_timeout
   values = coalescelist(var.streamx_operator_values, [
     yamlencode({
-      imagePullSecrets = local.streamx_operator_image_pull_secret_name == null ? [] : [
-        { name = local.streamx_operator_image_pull_secret_name }
-      ]
-      monitoring = {
-        traces = {
-          mode     = local.streamx_operator_monitoring_traces_mode
-          endpoint = var.streamx_operator_monitoring_traces_endpoint
+      global = {
+        imagePullSecrets = local.streamx_operator_image_pull_secret_name == null ? [] : [
+          { name = local.streamx_operator_image_pull_secret_name }
+        ]
+      }
+      mesh = {
+        monitoring = {
+          traces = {
+            mode     = local.streamx_operator_monitoring_traces_mode
+            endpoint = var.streamx_operator_monitoring_traces_endpoint
+          }
         }
+      }
+      federation = {
+        # Disable Mesh Federation by default
+        enabled = false
       }
     })
   ])
