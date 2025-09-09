@@ -86,10 +86,10 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_rate_in{cluster=~\"$cluster\", namespace=~\"$tenant/.*\"}) by (cluster)",
+          "expr": "sum(pulsar_rate_in{cluster=~\"$cluster\", exported_namespace=~\"$tenant/.*\"}) by (cluster)",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{cluster}} - {{namespace}}",
+          "legendFormat": "{{cluster}} - {{exported_namespace}}",
           "metric": "pulsar_rate_in",
           "refId": "A",
           "step": 10
@@ -182,10 +182,10 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_rate_out{cluster=~\"$cluster\", namespace=~\"$tenant/.*\"}) by (cluster)",
+          "expr": "sum(pulsar_rate_out{cluster=~\"$cluster\", exported_namespace=~\"$tenant/.*\"}) by (cluster)",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{cluster}} - {{namespace}}",
+          "legendFormat": "{{cluster}} - {{exported_namespace}}",
           "metric": "pulsar_rate_out",
           "refId": "A",
           "step": 10
@@ -279,11 +279,11 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_throughput_in{cluster=~\"$cluster\", namespace=~\"$tenant/.*\"}) by (cluster)",
+          "expr": "sum(pulsar_throughput_in{cluster=~\"$cluster\", exported_namespace=~\"$tenant/.*\"}) by (cluster)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{cluster}} - {{namespace}}",
+          "legendFormat": "{{cluster}} - {{exported_namespace}}",
           "metric": "pulsar_throughput_in",
           "refId": "A",
           "step": 10
@@ -378,11 +378,11 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_throughput_out{cluster=~\"$cluster\", namespace=~\"$tenant/.*\"}) by (cluster)",
+          "expr": "sum(pulsar_throughput_out{cluster=~\"$cluster\", exported_namespace=~\"$tenant/.*\"}) by (cluster)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{cluster}} - {{namespace}}",
+          "legendFormat": "{{cluster}} - {{exported_namespace}}",
           "metric": "pulsar_throughput_out",
           "refId": "A",
           "step": 10
@@ -477,7 +477,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_topics_count{cluster=~\"$cluster\", namespace=~\"$tenant/.*\"})",
+          "expr": "sum(pulsar_topics_count{cluster=~\"$cluster\", exported_namespace=~\"$tenant/.*\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -491,7 +491,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_producers_count{cluster=~\"$cluster\", namespace=~\"$tenant/.*\"})",
+          "expr": "sum(pulsar_producers_count{cluster=~\"$cluster\", exported_namespace=~\"$tenant/.*\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -505,7 +505,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_subscriptions_count{cluster=~\"$cluster\", namespace=~\"$tenant/.*\"})",
+          "expr": "sum(pulsar_subscriptions_count{cluster=~\"$cluster\", exported_namespace=~\"$tenant/.*\"})",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "subscriptions",
@@ -518,7 +518,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_consumers_count{cluster=~\"$cluster\", namespace=~\"$tenant/.*\"})",
+          "expr": "sum(pulsar_consumers_count{cluster=~\"$cluster\", exported_namespace=~\"$tenant/.*\"})",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "consumers",
@@ -616,11 +616,11 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_msg_backlog{cluster=~\"$cluster\", namespace=~\"$tenant/.*\"}) by (cluster)",
+          "expr": "sum(pulsar_msg_backlog{cluster=~\"$cluster\", exported_namespace=~\"$tenant/.*\"}) by (cluster)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{cluster}} - {{namespace}}",
+          "legendFormat": "{{cluster}} - {{exported_namespace}}",
           "metric": "pulsar_msg_backlog",
           "refId": "A",
           "step": 10
@@ -732,7 +732,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_0_5{cluster=~\"$cluster\", namespace=~\"$tenant/.*\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_0_5{cluster=~\"$cluster\", exported_namespace=~\"$tenant/.*\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -746,7 +746,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_1{cluster=~\"$cluster\", namespace=~\"$tenant/.*\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_1{cluster=~\"$cluster\", exported_namespace=~\"$tenant/.*\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -760,7 +760,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_5{cluster=~\"$cluster\", namespace=~\"$tenant/.*\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_5{cluster=~\"$cluster\", exported_namespace=~\"$tenant/.*\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -774,7 +774,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_10{cluster=~\"$cluster\", namespace=~\"$namespace\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_10{cluster=~\"$cluster\", exported_namespace=~\"$exported_namespace\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -788,7 +788,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_20{cluster=~\"$cluster\", namespace=~\"$namespace\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_20{cluster=~\"$cluster\", exported_namespace=~\"$exported_namespace\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -802,7 +802,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_50{cluster=~\"$cluster\", namespace=~\"$namespace\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_50{cluster=~\"$cluster\", exported_namespace=~\"$exported_namespace\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -816,7 +816,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_100{cluster=~\"$cluster\", namespace=~\"$namespace\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_100{cluster=~\"$cluster\", exported_namespace=~\"$exported_namespace\"}) / 60.0",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -831,7 +831,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_200{cluster=~\"$cluster\", namespace=~\"$namespace\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_200{cluster=~\"$cluster\", exported_namespace=~\"$exported_namespace\"}) / 60.0",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "100 - 200 ms",
@@ -844,7 +844,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_1000{cluster=~\"$cluster\", namespace=~\"$namespace\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_1000{cluster=~\"$cluster\", exported_namespace=~\"$exported_namespace\"}) / 60.0",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "200 ms - 1 s",
@@ -857,7 +857,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_storage_write_latency_overflow{cluster=~\"$cluster\", namespace=~\"$namespace\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_overflow{cluster=~\"$cluster\", exported_namespace=~\"$exported_namespace\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -955,7 +955,7 @@
             "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "sum(pulsar_storage_size{cluster=~\"$cluster\", namespace=~\"$tenant/.*\"}) by (cluster)",
+          "expr": "sum(pulsar_storage_size{cluster=~\"$cluster\", exported_namespace=~\"$tenant/.*\"}) by (cluster)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1052,7 +1052,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_entry_size_le_128{cluster=~\"$cluster\", namespace=~\"$tenant/.*\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_le_128{cluster=~\"$cluster\", exported_namespace=~\"$tenant/.*\"}) / 60.0",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "< 128 bytes",
@@ -1065,7 +1065,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_entry_size_le_512{cluster=~\"$cluster\", namespace=~\"$tenant/.*\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_le_512{cluster=~\"$cluster\", exported_namespace=~\"$tenant/.*\"}) / 60.0",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "< 512 bytes",
@@ -1078,7 +1078,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_entry_size_le_1_kb{cluster=~\"$cluster\", namespace=~\"$tenant/.*\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_le_1_kb{cluster=~\"$cluster\", exported_namespace=~\"$tenant/.*\"}) / 60.0",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "< 1 KB",
@@ -1091,7 +1091,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_entry_size_le_2_kb{cluster=~\"$cluster\", namespace=~\"$tenant/.*\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_le_2_kb{cluster=~\"$cluster\", exported_namespace=~\"$tenant/.*\"}) / 60.0",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "< 2 KB",
@@ -1104,7 +1104,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_entry_size_le_4_kb{cluster=~\"$cluster\", namespace=~\"$tenant/.*\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_le_4_kb{cluster=~\"$cluster\", exported_namespace=~\"$tenant/.*\"}) / 60.0",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "< 4 KB",
@@ -1117,7 +1117,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_entry_size_le_16_kb{cluster=~\"$cluster\", namespace=~\"$tenant/.*\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_le_16_kb{cluster=~\"$cluster\", exported_namespace=~\"$tenant/.*\"}) / 60.0",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "< 16 KB",
@@ -1130,7 +1130,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_entry_size_le_100_kb{cluster=~\"$cluster\", namespace=~\"$tenant/.*\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_le_100_kb{cluster=~\"$cluster\", exported_namespace=~\"$tenant/.*\"}) / 60.0",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "< 100 KB",
@@ -1143,7 +1143,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_entry_size_le_1_mb{cluster=~\"$cluster\", namespace=~\"$tenant/.*\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_le_1_mb{cluster=~\"$cluster\", exported_namespace=~\"$tenant/.*\"}) / 60.0",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "< 1 MB",
@@ -1156,7 +1156,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_entry_size_overflow{cluster=~\"$cluster\", namespace=~\"$tenant/.*\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_overflow{cluster=~\"$cluster\", exported_namespace=~\"$tenant/.*\"}) / 60.0",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "> 1 MB",
@@ -1252,7 +1252,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_replication_rate_out{cluster=~\"$cluster\", namespace=~\"$tenant/.*\"})",
+          "expr": "sum(pulsar_replication_rate_out{cluster=~\"$cluster\", exported_namespace=~\"$tenant/.*\"})",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{cluster}} → {{remote_cluster}}",
@@ -1349,7 +1349,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_replication_rate_in{cluster=~\"$cluster\", namespace=~\"$tenant/.*\", remote_cluster!=\"local\"}) by (cluster, remote_cluster)",
+          "expr": "sum(pulsar_replication_rate_in{cluster=~\"$cluster\", exported_namespace=~\"$tenant/.*\", remote_cluster!=\"local\"}) by (cluster, remote_cluster)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1441,7 +1441,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_replication_backlog{cluster=~\"$cluster\", namespace=~\"$tenant/.*\"}) by (cluster, remote_cluster)",
+          "expr": "sum(pulsar_replication_backlog{cluster=~\"$cluster\", exported_namespace=~\"$tenant/.*\"}) by (cluster, remote_cluster)",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{cluster}} → {{remote_cluster}}",
@@ -1545,7 +1545,7 @@
           "refId": "Prometheus-namespace-Variable-Query"
         },
         "refresh": 2,
-        "regex": "/.*,namespace=\\\"([^\\\"]+)/.*\\\".*/",
+        "regex": "/.*,exported_namespace=\\\"([^\\\"]+)/.*\\\".*/",
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
