@@ -28,6 +28,8 @@ spec:
       interval: "10s"
       scrapeTimeout: "10s"
       relabelings:
+        - action: labeldrop
+          regex: namespace
         - action: labelmap
           regex: __meta_kubernetes_pod_label_(.+)
         - sourceLabels: [__meta_kubernetes_namespace]
