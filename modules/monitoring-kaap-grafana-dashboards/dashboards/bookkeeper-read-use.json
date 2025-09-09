@@ -23,10 +23,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${prometheus}"
-      },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -85,7 +82,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -121,10 +118,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${prometheus}"
-      },
+      "datasource": null,
       "description": "Time spent by the read thread pool executing requests",
       "fieldConfig": {
         "defaults": {
@@ -184,7 +178,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -220,10 +214,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${prometheus}"
-      },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -324,7 +315,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -360,10 +351,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${prometheus}"
-      },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -422,7 +410,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -458,22 +446,7 @@
   "style": "dark",
   "tags": [],
   "templating": {
-    "list": [
-      {
-        "hide": 0,
-        "includeAll": false,
-        "label": "Data source",
-        "multi": false,
-        "name": "prometheus",
-        "options": [],
-        "query": "prometheus",
-        "queryValue": "",
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "type": "datasource"
-      }
-    ]
+    "list": []
   },
   "time": {
     "from": "now-7d",

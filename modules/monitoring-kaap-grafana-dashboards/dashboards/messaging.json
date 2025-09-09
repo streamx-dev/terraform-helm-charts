@@ -78,10 +78,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${prometheus}"
-      },
+      "datasource": "Prometheus",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -161,10 +158,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${prometheus}"
-      },
+      "datasource": "Prometheus",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -246,10 +240,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${prometheus}"
-      },
+      "datasource": "Prometheus",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -331,10 +322,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${prometheus}"
-      },
+      "datasource": "Prometheus",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -416,10 +404,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${prometheus}"
-      },
+      "datasource": "Prometheus",
       "format": "decbytes",
       "gauge": {
         "maxValue": 100,
@@ -501,10 +486,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${prometheus}"
-      },
+      "datasource": "Prometheus",
       "format": "decbytes",
       "gauge": {
         "maxValue": 100,
@@ -592,10 +574,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${prometheus}"
-          },
+          "datasource": "Prometheus",
           "fill": 1,
           "gridPos": {
             "h": 7,
@@ -683,10 +662,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${prometheus}"
-          },
+          "datasource": "Prometheus",
           "fill": 1,
           "gridPos": {
             "h": 7,
@@ -772,10 +748,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${prometheus}"
-          },
+          "datasource": "Prometheus",
           "fill": 1,
           "gridPos": {
             "h": 7,
@@ -862,10 +835,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${prometheus}"
-          },
+          "datasource": "Prometheus",
           "description": "",
           "fill": 1,
           "gridPos": {
@@ -954,10 +924,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${prometheus}"
-          },
+          "datasource": "Prometheus",
           "decimals": 0,
           "fill": 1,
           "gridPos": {
@@ -1076,10 +1043,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${prometheus}"
-          },
+          "datasource": "Prometheus",
           "fill": 1,
           "gridPos": {
             "h": 7,
@@ -1193,10 +1157,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${prometheus}"
-          },
+          "datasource": "Prometheus",
           "fill": 5,
           "gridPos": {
             "h": 7,
@@ -1377,10 +1338,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${prometheus}"
-          },
+          "datasource": "Prometheus",
           "fill": 1,
           "gridPos": {
             "h": 7,
@@ -1468,10 +1426,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${prometheus}"
-          },
+          "datasource": "Prometheus",
           "description": "Rate of writes into storage (can be lower than publish rate, when batching is enabled)",
           "fill": 1,
           "gridPos": {
@@ -1559,10 +1514,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${prometheus}"
-          },
+          "datasource": "Prometheus",
           "description": "Reads from bookies",
           "fill": 1,
           "gridPos": {
@@ -1650,10 +1602,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${prometheus}"
-          },
+          "datasource": "Prometheus",
           "fill": 6,
           "gridPos": {
             "h": 6,
@@ -1839,10 +1788,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${prometheus}"
-          },
+          "datasource": "Prometheus",
           "fill": 1,
           "gridPos": {
             "h": 7,
@@ -1929,10 +1875,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${prometheus}"
-          },
+          "datasource": "Prometheus",
           "fill": 1,
           "gridPos": {
             "h": 7,
@@ -2018,10 +1961,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${prometheus}"
-          },
+          "datasource": "Prometheus",
           "fill": 1,
           "gridPos": {
             "h": 7,
@@ -2116,26 +2056,9 @@
   "templating": {
     "list": [
       {
-        "hide": 0,
-        "includeAll": false,
-        "label": "Data source",
-        "multi": false,
-        "name": "prometheus",
-        "options": [],
-        "query": "prometheus",
-        "queryValue": "",
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "type": "datasource"
-      },
-      {
         "allValue": null,
         "current": {},
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+        "datasource": "Prometheus",
         "hide": 0,
         "includeAll": true,
         "label": "Cluster",
@@ -2156,10 +2079,7 @@
       {
         "allValue": null,
         "current": {},
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+        "datasource": "Prometheus",
         "hide": 0,
         "includeAll": true,
         "label": "Namespace",
@@ -2168,7 +2088,7 @@
         "options": [],
         "query": "pulsar_rate_in{namespace=~\".+\", cluster=~\"$cluster\"}",
         "refresh": 2,
-        "regex": "/.*namespace=\\\"([^\\\"]+)\\\".*/",
+        "regex": "/[\\s,{]namespace=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
@@ -2213,3 +2133,4 @@
   "uid": "sWPi0L-mk",
   "version": 4
 }
+

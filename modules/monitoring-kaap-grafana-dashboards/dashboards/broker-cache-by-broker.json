@@ -32,7 +32,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -110,7 +110,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(pulsar_ml_cache_hits_rate{kubernetes_pod_name=~\"$broker\"}) ",
@@ -123,7 +123,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(pulsar_ml_cache_misses_rate{kubernetes_pod_name=~\"$broker\"})",
@@ -135,7 +135,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(avg(pulsar_rate_in{kubernetes_pod_name=~\"$broker\"}) by (topic)) ",
@@ -147,7 +147,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(avg(pulsar_rate_out{kubernetes_pod_name=~\"$broker\"}) by (topic)) ",
@@ -167,7 +167,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -214,7 +214,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(pulsar_ml_cache_hits_rate{kubernetes_pod_name=~\"$broker\"}) / (sum(pulsar_ml_cache_hits_rate{kubernetes_pod_name=~\"$broker\"}) + sum(pulsar_ml_cache_misses_rate{kubernetes_pod_name=~\"$broker\"})) * 100",
@@ -232,7 +232,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "mode": "time",
         "show": true,
@@ -257,7 +257,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -334,7 +334,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(pulsar_ml_cache_misses_rate{kubernetes_pod_name=~\"$broker\"}) by (kubernetes_pod_name)",
@@ -354,7 +354,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -400,7 +400,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(pulsar_ml_cache_hits_rate{kubernetes_pod_name=~\"$broker\"}) by (kubernetes_pod_name)",
@@ -418,7 +418,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "mode": "time",
         "show": true,
@@ -447,7 +447,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -494,7 +494,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(pulsar_ml_cache_hits_throughput{kubernetes_pod_name=~\"$broker\"}) by (kubernetes_pod_name)",
@@ -512,7 +512,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "mode": "time",
         "show": true,
@@ -541,7 +541,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -588,7 +588,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(pulsar_ml_cache_misses_throughput{kubernetes_pod_name=~\"$broker\"}) by (kubernetes_pod_name)",
@@ -606,7 +606,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "mode": "time",
         "show": true,
@@ -635,7 +635,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -682,7 +682,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(pulsar_ml_cache_used_size{kubernetes_pod_name=~\"$broker\"}) by (kubernetes_pod_name)",
@@ -700,7 +700,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "mode": "time",
         "show": true,
@@ -729,7 +729,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -775,7 +775,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(pulsar_ml_cache_evictions{kubernetes_pod_name=~\"$broker\"}) by (kubernetes_pod_name)",
@@ -793,7 +793,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "mode": "time",
         "show": true,
@@ -823,20 +823,6 @@
   "templating": {
     "list": [
       {
-        "hide": 0,
-        "includeAll": false,
-        "label": "Data source",
-        "multi": false,
-        "name": "prometheus",
-        "options": [],
-        "query": "prometheus",
-        "queryValue": "",
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "type": "datasource"
-      },
-      {
         "current": {
           "selected": true,
           "text": [
@@ -852,7 +838,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "${prometheus}"
+          "uid": "prometheus"
         },
         "definition": "label_values(pulsar_ml_AddEntryBytesRate, kubernetes_pod_name)",
         "hide": 0,
