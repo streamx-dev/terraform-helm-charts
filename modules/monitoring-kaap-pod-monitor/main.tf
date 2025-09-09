@@ -29,6 +29,11 @@ resource "kubectl_manifest" "kaap_broker_pod_monitor" {
   override_namespace = local.namespace
 }
 
+resource "kubectl_manifest" "kaap_proxy_pod_monitor" {
+  yaml_body          = file("${path.module}/config/kaap-proxy-pod-monitor.yaml")
+  override_namespace = local.namespace
+}
+
 resource "kubectl_manifest" "kaap_zookeeper_pod_monitor" {
   yaml_body          = file("${path.module}/config/kaap-zookeeper-pod-monitor.yaml")
   override_namespace = local.namespace
