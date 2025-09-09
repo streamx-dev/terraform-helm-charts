@@ -34,7 +34,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "gridPos": {
         "h": 1,
@@ -50,7 +50,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -125,7 +125,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -200,7 +200,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -274,7 +274,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -348,7 +348,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -423,7 +423,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -497,7 +497,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -575,7 +575,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -653,7 +653,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -728,7 +728,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -803,7 +803,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -881,7 +881,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -959,7 +959,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1037,7 +1037,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1116,7 +1116,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "gridPos": {
         "h": 1,
@@ -1132,7 +1132,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1211,7 +1211,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(pulsar_storage_size{job=~\"broker\",kubernetes_pod_name=~\"$broker\"}) by (kubernetes_pod_name)",
@@ -1224,7 +1224,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(pulsar_storage_size{job=~\"broker\",kubernetes_pod_name=~\"$broker\"}) ",
@@ -1242,7 +1242,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1321,7 +1321,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(pulsar_rate_in{job=~\"broker\"}) by (cluster)",
@@ -1334,7 +1334,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(pulsar_rate_in{job=~\"broker\", kubernetes_pod_name=~\"$broker\"}) by (kubernetes_pod_name)",
@@ -1348,7 +1348,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(pulsar_rate_out{job=~\"broker\"}) by (cluster)",
@@ -1361,7 +1361,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(pulsar_rate_out{job=~\"broker\", kubernetes_pod_name=~\"$broker\"}) by (kubernetes_pod_name)",
@@ -1379,7 +1379,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1528,7 +1528,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -1566,7 +1566,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1645,7 +1645,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(pulsar_msg_backlog{job=~\"broker\", kubernetes_pod_name=~\"$broker\"}) by (kubernetes_pod_name)",
@@ -1658,7 +1658,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(pulsar_msg_backlog{job=~\"broker\", kubernetes_pod_name=~\"$broker\"}) ",
@@ -1680,7 +1680,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1727,7 +1727,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(pulsar_throughput_in{job=~\"broker\", kubernetes_pod_name=~\"$broker\"}) by (kubernetes_pod_name)",
@@ -1740,7 +1740,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(pulsar_throughput_in{job=~\"broker\"}) by (cluster)",
@@ -1754,7 +1754,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(pulsar_throughput_out{job=~\"broker\", kubernetes_pod_name=~\"$broker\"}) by (kubernetes_pod_name)",
@@ -1767,7 +1767,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(pulsar_throughput_out{job=~\"broker\"}) by (cluster)",
@@ -1787,7 +1787,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "mode": "time",
         "show": true,
@@ -1814,7 +1814,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1893,7 +1893,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(pulsar_subscription_unacked_messages{job=~\"broker\", kubernetes_pod_name=~\"$broker\"}) by (cluster)",
@@ -1906,7 +1906,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(pulsar_subscription_unacked_messages{job=~\"broker\", kubernetes_pod_name=~\"$broker\"}) by (kubernetes_pod_name)",
@@ -1928,7 +1928,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1975,7 +1975,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(pulsar_producers_count{job=~\"broker\",  kubernetes_pod_name=~\"$broker\"}) by (cluster)",
@@ -1988,7 +1988,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(pulsar_producers_count{job=~\"broker\", kubernetes_pod_name=~\"$broker\"}) by (kubernetes_pod_name)",
@@ -2008,7 +2008,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "mode": "time",
         "show": true,
@@ -2035,7 +2035,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -2202,7 +2202,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "expr": " topk(10, sum(pulsar_subscription_unacked_messages{job=~\"broker\", kubernetes_pod_name=~\"$broker\"}) by (topic,kubernetes_pod_name))",
           "format": "table",
@@ -2237,7 +2237,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -2316,7 +2316,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(pulsar_consumers_count{job=~\"broker\", kubernetes_pod_name=~\"$broker\"}) by (cluster)",
@@ -2329,7 +2329,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(pulsar_consumers_count{job=~\"broker\", kubernetes_pod_name=~\"$broker\"}) by (kubernetes_pod_name)",
@@ -2347,7 +2347,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -2426,7 +2426,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(pulsar_subscriptions_count{job=~\"broker\", kubernetes_pod_name=~\"$broker\"}) by (kubernetes_pod_name)",
@@ -2439,7 +2439,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(pulsar_subscriptions_count{job=~\"broker\", kubernetes_pod_name=~\"$broker\"}) by (cluster)",
@@ -2461,7 +2461,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -2508,7 +2508,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(increase(pulsar_in_messages_total{kubernetes_pod_name=~\"$broker\"}[1d])) by (cluster)",
@@ -2522,7 +2522,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(increase(pulsar_in_messages_total{kubernetes_pod_name=~\"$broker\"}[1d])) by (kubernetes_pod_name)",
@@ -2537,7 +2537,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(increase(pulsar_out_messages_total{kubernetes_pod_name=~\"$broker\"}[1d])) by (cluster)",
@@ -2552,7 +2552,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(increase(pulsar_out_messages_total{kubernetes_pod_name=~\"$broker\"}[1d])) by (kubernetes_pod_name)",
@@ -2573,7 +2573,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "mode": "time",
         "show": true,
@@ -2604,7 +2604,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -2651,7 +2651,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(increase(pulsar_in_bytes_total{kubernetes_pod_name=~\"$broker\"}[1d])) by (cluster)",
@@ -2665,7 +2665,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(increase(pulsar_in_bytes_total{kubernetes_pod_name=~\"$broker\"}[1d])) by (kubernetes_pod_name)",
@@ -2680,7 +2680,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(increase(pulsar_out_bytes_total{kubernetes_pod_name=~\"$broker\"}[1d])) by (cluster)",
@@ -2695,7 +2695,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(increase(pulsar_out_bytes_total{kubernetes_pod_name=~\"$broker\"}[1d])) by (kubernetes_pod_name)",
@@ -2716,7 +2716,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "mode": "time",
         "show": true,
@@ -2743,7 +2743,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -2815,7 +2815,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -2968,7 +2968,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "expr": " topk(10, sum(pulsar_storage_size{job=~\"broker\",kubernetes_pod_name=~\"$broker\"}) by (topic,kubernetes_pod_name))",
           "format": "table",
@@ -3010,7 +3010,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -3072,7 +3072,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "expr": "sum(increase(pulsar_out_bytes_total[1d]))/sum(increase(pulsar_out_messages_total[1d]))",
           "interval": "",
@@ -3090,7 +3090,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -3136,7 +3136,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(pulsar_storage_offloaded_size{kubernetes_pod_name=~\"$broker\"}) by (cluster)",
@@ -3148,7 +3148,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(pulsar_storage_offloaded_size{kubernetes_pod_name=~\"$broker\"}) by (kubernetes_pod_name)",
@@ -3167,7 +3167,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "mode": "time",
         "show": true,
@@ -3198,7 +3198,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -3244,7 +3244,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(pulsar_subscription_msg_rate_redeliver{kubernetes_pod_name=~\"$broker\"}) by (cluster)",
@@ -3256,7 +3256,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "sum(pulsar_subscription_msg_rate_redeliver{kubernetes_pod_name=~\"$broker\"}) by (kubernetes_pod_name)",
@@ -3275,7 +3275,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "mode": "time",
         "show": true,
@@ -3302,7 +3302,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -3455,7 +3455,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "expr": " topk(10, sum(pulsar_storage_offloaded_size{job=~\"broker\", kubernetes_pod_name=~\"$broker\"}) by (topic,kubernetes_pod_name))",
           "format": "table",
@@ -3492,7 +3492,7 @@
       "collapsed": true,
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "prometheus"
       },
       "gridPos": {
         "h": 1,
@@ -3509,7 +3509,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "fill": 1,
           "gridPos": {
@@ -3558,7 +3558,7 @@
             "value_type": "individual"
           },
           "transparent": false,
-          "type": "timeseries",
+          "type": "graph",
           "xaxis": {
             "mode": "time",
             "show": true,
@@ -3589,7 +3589,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "prometheus"
           },
           "fill": 1,
           "gridPos": {
@@ -3636,7 +3636,7 @@
             "sort": 0,
             "value_type": "individual"
           },
-          "type": "timeseries",
+          "type": "graph",
           "xaxis": {
             "mode": "time",
             "show": true,
@@ -3672,20 +3672,6 @@
   "templating": {
     "list": [
       {
-        "hide": 0,
-        "includeAll": false,
-        "label": "Data source",
-        "multi": false,
-        "name": "prometheus",
-        "options": [],
-        "query": "prometheus",
-        "queryValue": "",
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "type": "datasource"
-      },
-      {
         "current": {
           "selected": true,
           "text": [
@@ -3697,7 +3683,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "${prometheus}"
+          "uid": "prometheus"
         },
         "definition": "label_values(pulsar_msg_backlog, kubernetes_pod_name)",
         "hide": 0,

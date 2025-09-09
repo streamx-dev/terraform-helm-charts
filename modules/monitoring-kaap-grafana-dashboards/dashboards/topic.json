@@ -23,10 +23,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${prometheus}"
-      },
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {},
@@ -72,7 +69,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "pulsar_rate_in{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}",
+          "expr": "pulsar_rate_in{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"}",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -93,7 +90,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -129,10 +126,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${prometheus}"
-      },
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {},
@@ -179,7 +173,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "pulsar_subscription_msg_rate_out{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}",
+          "expr": "pulsar_subscription_msg_rate_out{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -199,7 +193,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -235,10 +229,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${prometheus}"
-      },
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {},
@@ -283,7 +274,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "pulsar_throughput_in{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}",
+          "expr": "pulsar_throughput_in{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -303,7 +294,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -341,10 +332,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${prometheus}"
-      },
+      "datasource": "Prometheus",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -392,7 +380,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "pulsar_subscription_msg_throughput_out{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}",
+          "expr": "pulsar_subscription_msg_throughput_out{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -412,7 +400,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -448,10 +436,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${prometheus}"
-      },
+      "datasource": "Prometheus",
       "decimals": 0,
       "fieldConfig": {
         "defaults": {
@@ -499,7 +484,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_producers_count{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"})",
+          "expr": "sum(pulsar_producers_count{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -509,7 +494,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_subscriptions_count{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"})",
+          "expr": "sum(pulsar_subscriptions_count{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -519,7 +504,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_consumers_count{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"})",
+          "expr": "sum(pulsar_consumers_count{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -539,7 +524,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -577,10 +562,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${prometheus}"
-      },
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {},
@@ -627,7 +609,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "pulsar_subscription_back_log{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}",
+          "expr": "pulsar_subscription_back_log{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -647,7 +629,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -696,10 +678,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${prometheus}"
-      },
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {},
@@ -749,7 +728,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_storage_write_latency_le_0_5{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_0_5{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -759,7 +738,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_1{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_1{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -769,7 +748,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_5{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_5{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -779,7 +758,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_10{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_10{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -789,7 +768,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_20{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_20{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -799,7 +778,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_50{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_50{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -809,7 +788,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_100{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_100{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -820,7 +799,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_200{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_200{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -830,7 +809,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_1000{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_1000{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -840,7 +819,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_overflow{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_overflow{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -860,7 +839,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -896,10 +875,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${prometheus}"
-      },
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {},
@@ -946,7 +922,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "pulsar_subscription_unacked_messages{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}  ",
+          "expr": "pulsar_subscription_unacked_messages{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"}  ",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -966,7 +942,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -1002,10 +978,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${prometheus}"
-      },
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {},
@@ -1055,7 +1028,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_entry_size_le_128{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_le_128{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1065,7 +1038,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_entry_size_le_512{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_le_512{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1075,7 +1048,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_entry_size_le_1_kb{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_le_1_kb{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1085,7 +1058,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_entry_size_le_2_kb{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_le_2_kb{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1095,7 +1068,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_entry_size_le_4_kb{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_le_4_kb{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1105,7 +1078,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_entry_size_le_16_kb{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_le_16_kb{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1115,7 +1088,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_entry_size_le_100_kb{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_le_100_kb{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1125,7 +1098,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_entry_size_le_1_mb{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_le_1_mb{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1135,7 +1108,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_entry_size_overflow{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_overflow{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1155,7 +1128,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -1191,10 +1164,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${prometheus}"
-      },
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {},
@@ -1239,7 +1209,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_storage_size{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"})",
+          "expr": "sum(pulsar_storage_size{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1259,7 +1229,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -1295,10 +1265,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${prometheus}"
-      },
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {},
@@ -1343,7 +1310,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "pulsar_subscription_msg_rate_redeliver{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}",
+          "expr": "pulsar_subscription_msg_rate_redeliver{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1363,7 +1330,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -1399,10 +1366,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${prometheus}"
-      },
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {},
@@ -1447,7 +1411,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "pulsar_consumer_msg_rate_redeliver{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}",
+          "expr": "pulsar_subscription_msg_rate_redeliver{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1467,7 +1431,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -1503,10 +1467,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${prometheus}"
-      },
+      "datasource": "Prometheus",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1552,7 +1513,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "pulsar_replication_rate_in{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}",
+          "expr": "pulsar_replication_rate_in{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1575,7 +1536,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -1611,10 +1572,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${prometheus}"
-      },
+      "datasource": "Prometheus",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1660,7 +1618,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "pulsar_replication_rate_out{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}",
+          "expr": "pulsar_replication_rate_out{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1683,7 +1641,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -1719,10 +1677,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${prometheus}"
-      },
+      "datasource": "Prometheus",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1768,7 +1723,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "pulsar_replication_throughput_in{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}",
+          "expr": "pulsar_replication_throughput_in{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1794,7 +1749,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -1832,10 +1787,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${prometheus}"
-      },
+      "datasource": "Prometheus",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1881,7 +1833,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "pulsar_replication_throughput_out{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}",
+          "expr": "pulsar_replication_throughput_out{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1904,7 +1856,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -1942,10 +1894,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${prometheus}"
-      },
+      "datasource": "Prometheus",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1991,7 +1940,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "pulsar_replication_backlog{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}",
+          "expr": "pulsar_replication_backlog{cluster=~\"$cluster\", namespace=~\"$tenant.+\", namespace=~\"$namespace\", topic=~\"$topic\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2011,7 +1960,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -2052,30 +2001,13 @@
   "templating": {
     "list": [
       {
-        "hide": 0,
-        "includeAll": false,
-        "label": "Data source",
-        "multi": false,
-        "name": "prometheus",
-        "options": [],
-        "query": "prometheus",
-        "queryValue": "",
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "type": "datasource"
-      },
-      {
         "allValue": null,
         "current": {
           "selected": false,
           "text": "koddi-prod-euwest3-aws",
           "value": "koddi-prod-euwest3-aws"
         },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+        "datasource": "Prometheus",
         "definition": "pulsar_producers_count",
         "error": null,
         "hide": 0,
@@ -2102,11 +2034,35 @@
           "text": "replicated-tenant",
           "value": "replicated-tenant"
         },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+        "datasource": "Prometheus",
         "definition": "pulsar_producers_count{cluster=\"$cluster\"}",
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "Tenant",
+        "multi": false,
+        "name": "tenant",
+        "options": [],
+        "query": "pulsar_producers_count{cluster=\"$cluster\"}",
+        "refresh": 2,
+        "regex": "/[\\s,{]namespace=\\\"([^\\/]+)\\/.*/",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "replicated-tenant/gns",
+          "value": "replicated-tenant/gns"
+        },
+        "datasource": "Prometheus",
+        "definition": "pulsar_producers_count{namespace=~\"$tenant.+\"}",
         "error": null,
         "hide": 0,
         "includeAll": false,
@@ -2114,13 +2070,9 @@
         "multi": false,
         "name": "namespace",
         "options": [],
-        "query": {
-          "qryType": 4,
-          "query": "pulsar_producers_count{cluster=\"$cluster\"}",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
+        "query": "pulsar_producers_count{namespace=~\"$tenant.+\"}",
         "refresh": 2,
-        "regex": "/.*namespace=\"([^\"]*)\".*/",
+        "regex": "/[\\s,{]namespace=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
@@ -2136,10 +2088,7 @@
           "text": "persistent://replicated-tenant/gns/koddi.bid_automation.automatedbidrequests",
           "value": "persistent://replicated-tenant/gns/koddi.bid_automation.automatedbidrequests"
         },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+        "datasource": "Prometheus",
         "definition": "pulsar_producers_count{namespace=\"$namespace\"}",
         "error": null,
         "hide": 0,

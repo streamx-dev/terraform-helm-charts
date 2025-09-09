@@ -21,10 +21,7 @@
   "panels": [
     {
       "collapsed": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${prometheus}"
-      },
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -45,10 +42,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -135,10 +129,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -225,10 +216,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+      "datasource": "Prometheus",
       "decimals": 1,
       "description": "success rate for different types of requests",
       "fieldConfig": {
@@ -299,7 +287,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -335,10 +323,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+      "datasource": "Prometheus",
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -441,7 +426,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -481,10 +466,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#299c46"
       ],
-      "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -568,10 +550,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+      "datasource": "Prometheus",
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -641,7 +620,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -677,10 +656,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+      "datasource": "Prometheus",
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -751,7 +727,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -784,10 +760,7 @@
     },
     {
       "collapsed": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${prometheus}"
-      },
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -804,10 +777,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+      "datasource": "Prometheus",
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -870,7 +840,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -906,10 +876,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+      "datasource": "Prometheus",
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -972,7 +939,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -1008,10 +975,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+      "datasource": "Prometheus",
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -1074,7 +1038,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -1110,10 +1074,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+      "datasource": "Prometheus",
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -1176,7 +1137,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -1212,10 +1173,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+      "datasource": "Prometheus",
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -1278,7 +1236,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -1314,10 +1272,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+      "datasource": "Prometheus",
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -1380,7 +1335,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -1416,10 +1371,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+      "datasource": "Prometheus",
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -1482,7 +1434,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -1518,10 +1470,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+      "datasource": "Prometheus",
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -1584,7 +1533,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -1620,10 +1569,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+      "datasource": "Prometheus",
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -1686,7 +1632,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -1722,10 +1668,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+      "datasource": "Prometheus",
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -1788,7 +1731,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -1821,10 +1764,7 @@
     },
     {
       "collapsed": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${prometheus}"
-      },
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1841,10 +1781,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+      "datasource": "Prometheus",
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -1907,7 +1844,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -1943,10 +1880,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+      "datasource": "Prometheus",
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -2009,7 +1943,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -2045,10 +1979,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+      "datasource": "Prometheus",
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -2111,7 +2042,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -2147,10 +2078,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+      "datasource": "Prometheus",
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -2213,7 +2141,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -2249,10 +2177,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+      "datasource": "Prometheus",
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -2315,7 +2240,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -2351,10 +2276,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+      "datasource": "Prometheus",
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -2417,7 +2339,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -2453,10 +2375,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+      "datasource": "Prometheus",
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -2519,7 +2438,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -2555,10 +2474,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+      "datasource": "Prometheus",
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -2621,7 +2537,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -2657,10 +2573,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+      "datasource": "Prometheus",
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -2723,7 +2636,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -2759,10 +2672,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+      "datasource": "Prometheus",
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -2825,7 +2735,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -2861,10 +2771,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+      "datasource": "Prometheus",
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -2927,7 +2834,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -2960,10 +2867,7 @@
     },
     {
       "collapsed": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${prometheus}"
-      },
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -2980,10 +2884,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+      "datasource": "Prometheus",
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -3046,7 +2947,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -3082,10 +2983,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+      "datasource": "Prometheus",
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -3148,7 +3046,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -3184,10 +3082,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+      "datasource": "Prometheus",
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -3250,7 +3145,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -3286,10 +3181,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+      "datasource": "Prometheus",
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -3352,7 +3244,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -3388,10 +3280,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -3452,7 +3341,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -3488,10 +3377,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -3552,7 +3438,7 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "type": "timeseries",
+      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -3593,30 +3479,13 @@
   "templating": {
     "list": [
       {
-        "hide": 0,
-        "includeAll": false,
-        "label": "Data source",
-        "multi": false,
-        "name": "prometheus",
-        "options": [],
-        "query": "prometheus",
-        "queryValue": "",
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "type": "datasource"
-      },
-      {
         "allValue": null,
         "current": {
           "selected": false,
           "text": "bookkeeper",
           "value": "bookkeeper"
         },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+        "datasource": "Prometheus",
         "definition": "bookkeeper_server_ADD_ENTRY{job=~\"$job\"}",
         "hide": 0,
         "includeAll": true,
@@ -3645,10 +3514,7 @@
             "pulsar-bookkeeper-1"
           ]
         },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${prometheus}"
-        },
+        "datasource": "Prometheus",
         "definition": "bookkeeper_server_ADD_ENTRY{job=~\"$job\", kubernetes_pod_name=~\".+\"}",
         "hide": 0,
         "includeAll": true,
