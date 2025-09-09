@@ -774,7 +774,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_10{cluster=~\"$cluster\", exported_namespace=~\"$exported_namespace\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_10{cluster=~\"$cluster\", exported_namespace=~\"$tenant/.*\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -788,7 +788,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_20{cluster=~\"$cluster\", exported_namespace=~\"$exported_namespace\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_20{cluster=~\"$cluster\", exported_namespace=~\"$tenant/.*\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -802,7 +802,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_50{cluster=~\"$cluster\", exported_namespace=~\"$exported_namespace\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_50{cluster=~\"$cluster\", exported_namespace=~\"$tenant/.*\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -816,7 +816,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_100{cluster=~\"$cluster\", exported_namespace=~\"$exported_namespace\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_100{cluster=~\"$cluster\", exported_namespace=~\"$tenant/.*\"}) / 60.0",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -831,7 +831,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_200{cluster=~\"$cluster\", exported_namespace=~\"$exported_namespace\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_200{cluster=~\"$cluster\", exported_namespace=~\"$tenant/.*\"}) / 60.0",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "100 - 200 ms",
@@ -844,7 +844,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_1000{cluster=~\"$cluster\", exported_namespace=~\"$exported_namespace\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_1000{cluster=~\"$cluster\", exported_namespace=~\"$tenant/.*\"}) / 60.0",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "200 ms - 1 s",
@@ -857,7 +857,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(pulsar_storage_write_latency_overflow{cluster=~\"$cluster\", exported_namespace=~\"$exported_namespace\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_overflow{cluster=~\"$cluster\", exported_namespace=~\"$tenant/.*\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
