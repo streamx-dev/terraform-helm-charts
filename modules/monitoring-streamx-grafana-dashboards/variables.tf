@@ -24,3 +24,9 @@ variable "namespace" {
   description = "The namespace used for the deployment"
   type        = string
 }
+
+variable "multicluster" {
+  default     = false
+  description = "If false Cluster variable in dashboards is hidden"
+  type        = bool
+}

@@ -34,6 +34,8 @@ resource "kubernetes_config_map_v1" "grafana_dashboard" {
   }
 
   data = {
-    (each.value) = file("${path.module}/dashboards/${each.value}")
+    (each.value) = templatefile("${path.module}/dashboards/${each.value}", {
+      hide_cluster_variable = var.multicluster ? 0 : 2
+    })
   }
 }
