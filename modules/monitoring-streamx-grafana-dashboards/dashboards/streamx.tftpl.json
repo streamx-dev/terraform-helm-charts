@@ -18,13 +18,13 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 38,
+  "id": 58,
   "links": [],
   "panels": [
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "$${prometheus}"
       },
       "gridPos": {
         "h": 8,
@@ -69,7 +69,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "$${prometheus}"
       },
       "description": "Displays the total number of unique messages currently stored, counted by unique keys. The count includes all messages, regardless of action type or payload presence.",
       "fieldConfig": {
@@ -119,7 +119,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "$${prometheus}"
           },
           "disableTextWrap": false,
           "editorMode": "builder",
@@ -142,7 +142,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "$${prometheus}"
       },
       "description": "Displays how the total number of unique messages currently stored increase in time using IDelta function.\n\nThe messages are counted by unique keys. The count includes all messages, regardless of action type or payload presence.",
       "fieldConfig": {
@@ -221,7 +221,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "$${prometheus}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -244,7 +244,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "$${prometheus}"
       },
       "description": "Displays the total number of unique messages currently stored, counted by unique keys and having ACTION==PUBLISHED. \n\nThe number decreases when store received message new version with ACTION==UNPUBLISH ",
       "fieldConfig": {
@@ -293,7 +293,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "$${prometheus}"
           },
           "disableTextWrap": false,
           "editorMode": "builder",
@@ -316,7 +316,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "$${prometheus}"
       },
       "description": "Displays how the number of unique messages currently stored changes over time using idelta function. \n\nMessages are counted by unique keys and having ACTION==PUBLISHED\n\nThe number decreases when store received message new version with ACTION==UNPUBLISH ",
       "fieldConfig": {
@@ -393,7 +393,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "$${prometheus}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -416,7 +416,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "$${prometheus}"
       },
       "description": "Displays the total number of unique messages currently stored, counted by unique keys and having payload not null. \n\nThe number decreases when store received message new version with null payload",
       "fieldConfig": {
@@ -464,7 +464,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "$${prometheus}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -487,7 +487,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "$${prometheus}"
       },
       "description": "Displays how the number of unique messages currently stored changes over time using idelta function.\n\nMessages are counted by unique keys and having not null payload\n\nThe number decreases when store received message new version with null payload\n",
       "fieldConfig": {
@@ -563,7 +563,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "$${prometheus}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -586,7 +586,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "$${prometheus}"
       },
       "description": "Shows the difference of messages number between the same store on application instances.\n\nThe value is: max store size from each instance - min store size from each instance.\n\nPublished Messages is the total number of unique messages currently stored, counted by unique keys and having ACTION==PUBLISHED.",
       "fieldConfig": {
@@ -664,7 +664,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "$${prometheus}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -687,7 +687,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "$${prometheus}"
       },
       "description": "Shows the difference of messages number between the same store on application instances.\n\nThe value is: max store size from each instance - min store size from each instance.\n\nMessages having payload is the total number of unique messages currently stored, counted by unique keys and having payload not null.\n\n",
       "fieldConfig": {
@@ -765,7 +765,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "$${prometheus}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -788,7 +788,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "$${prometheus}"
       },
       "description": "Shows outdated messages in time using IDelta function.\n\nOutdated messages is when incoming message is older than message already present on the store. \n\nThe age of message is calculated using message timestamp",
       "fieldConfig": {
@@ -867,7 +867,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "$${prometheus}"
           },
           "disableTextWrap": false,
           "editorMode": "builder",
@@ -903,7 +903,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "$${prometheus}"
       },
       "description": "Difference between requested replicas number and available",
       "fieldConfig": {
@@ -984,7 +984,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "$${prometheus}"
           },
           "editorMode": "code",
           "expr": "kube_deployment_status_replicas{kubernetes_namespace=\"$namespace\"} - kube_deployment_status_replicas_available{kubernetes_namespace=\"$namespace\"}",
@@ -1000,7 +1000,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "$${prometheus}"
       },
       "description": "Shows available replicas for each application",
       "fieldConfig": {
@@ -1077,7 +1077,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "$${prometheus}"
           },
           "editorMode": "code",
           "expr": "kube_deployment_status_replicas_available{kubernetes_namespace=\"$namespace\"}",
@@ -1106,7 +1106,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "$${prometheus}"
       },
       "description": "Displays how the number of http requests changes over time using idelta function.\n\n",
       "fieldConfig": {
@@ -1181,7 +1181,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "$${prometheus}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -1201,7 +1201,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "$${prometheus}"
       },
       "description": "Displays how the number of acked messages changes over time using idelta function.\n\nBased on quarkus_messaging_message_acks_total metric",
       "fieldConfig": {
@@ -1279,7 +1279,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "$${prometheus}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -1302,7 +1302,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "$${prometheus}"
       },
       "description": "Displays how the number of nacked messages changes over time using idelta function.\n\nBased on quarkus_messaging_message_failures_total metric.",
       "fieldConfig": {
@@ -1380,7 +1380,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "$${prometheus}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -1403,7 +1403,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "$${prometheus}"
       },
       "description": "Shows max time of processing message in service. \n\nBased on quarkus_messaging_message_duration_seconds_max metric. \n\nThe value is measured from message processing function start until message is Ack or NAck.\n\nThe time of fetching message from broker or storing message in processing waiting queue is not included into this metric.\n\nMax value is calculated using 60s slicing window. It means the value is in the calculation range in >= 120 s. \n\nThe calculation algorithm based on \"ticks\". Prometheus samples metrics. The combination of this approaches can leads to little shift of change the values in grafana dashboard  ",
       "fieldConfig": {
@@ -1481,7 +1481,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "$${prometheus}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -1504,7 +1504,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${prometheus}"
+        "uid": "$${prometheus}"
       },
       "description": "Shows average time of processing message.\n\nThe value is calculated dividing sum of all messages processing time by count of all messages processed since instance is up.\n\nBased on quarkus_messaging_message_duration_seconds_sum and quarkus_messaging_message_duration_seconds_count metrics. \n\nThe value is measured from message processing function start until message is Ack or NAck.\n\nThe time of fetching message from broker or storing message in processing waiting queue is not included into this metric.",
       "fieldConfig": {
@@ -1582,7 +1582,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${prometheus}"
+            "uid": "$${prometheus}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -1603,7 +1603,7 @@
       "type": "timeseries"
     }
   ],
-  "refresh": "5s",
+  "refresh": "30s",
   "schemaVersion": 39,
   "tags": [],
   "templating": {
@@ -1623,9 +1623,27 @@
         "type": "datasource"
       },
       {
+        "allowCustomValue": false,
+        "definition": "label_values(cluster)",
+        "includeAll": true,
+        "multi": true,
+        "label": "Cluster",
+        "name": "cluster",
+        "hide": "${ hide_cluster_variable }",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(cluster)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
         "datasource": {
           "type": "prometheus",
-          "uid": "${prometheus}"
+          "uid": "$${prometheus}"
         },
         "definition": "label_values(up,kubernetes_namespace)",
         "hide": 0,
@@ -1648,7 +1666,7 @@
       {
         "datasource": {
           "type": "prometheus",
-          "uid": "${prometheus}"
+          "uid": "$${prometheus}"
         },
         "definition": "label_values(up{kubernetes_namespace=\"$namespace\"},application)",
         "hide": 0,
@@ -1671,7 +1689,7 @@
       {
         "datasource": {
           "type": "prometheus",
-          "uid": "${prometheus}"
+          "uid": "$${prometheus}"
         },
         "definition": "label_values(up{application=~\"$application\"},instance)",
         "hide": 0,
@@ -1682,7 +1700,7 @@
         "options": [],
         "query": {
           "qryType": 1,
-          "query": "label_values(up{application=~\"$application\"},instance)",
+          "query": "label_values(up{application=~\"$application\", cluster=\"$cluster\"},instance)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
@@ -1699,7 +1717,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "${prometheus}"
+          "uid": "$${prometheus}"
         },
         "definition": "label_values(quarkus_messaging_message_count_total{application=\"$application\"},channel)",
         "hide": 0,
