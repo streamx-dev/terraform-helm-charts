@@ -3978,7 +3978,7 @@
         "multi": true,
         "label": "Cluster",
         "name": "cluster",
-        "hide": "${ hide_cluster_variable }",
+        "hide": ${ hide_cluster_variable },
         "options": [],
         "query": {
           "qryType": 1,
