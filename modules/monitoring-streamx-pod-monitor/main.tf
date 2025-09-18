@@ -17,3 +17,8 @@ resource "kubectl_manifest" "streamx_pod_monitor" {
   yaml_body          = file("${path.module}/config/streamx-pod-monitor.yaml")
   override_namespace = var.namespace
 }
+
+resource "kubectl_manifest" "streamx_operator_pod_monitor" {
+  yaml_body          = file("${path.module}/config/streamx-operator-pod-monitor.yaml")
+  override_namespace = var.namespace
+}

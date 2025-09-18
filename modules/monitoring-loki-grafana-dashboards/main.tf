@@ -28,9 +28,6 @@ resource "kubernetes_config_map_v1" "grafana_dashboard" {
     labels = {
       grafana_dashboard = "1"
     }
-    annotations = {
-      dashboard_folder = "Loki"
-    }
   }
 
   data = {
