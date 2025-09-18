@@ -45,8 +45,6 @@ spec:
         - sourceLabels: [__meta_kubernetes_pod_label_app_kubernetes_io_instance]
           action: replace
           targetLabel: application
-  namespaceSelector:
-    any: true
   selector:
     matchLabels:
       "app.kubernetes.io/instance" : streamx-operator

@@ -65,8 +65,6 @@ spec:
         - sourceLabels: [__meta_kubernetes_pod_label_component]
           action: replace
           targetLabel: application
-  namespaceSelector:
-    any: true
   selector:
     matchLabels:
       app: pulsar

@@ -45,8 +45,6 @@ spec:
         - sourceLabels: [__meta_kubernetes_pod_container_name]
           action: replace
           targetLabel: application
-  namespaceSelector:
-    any: true
   selector:
     matchLabels:
       app.kubernetes.io/name: kaap
