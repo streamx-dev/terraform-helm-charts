@@ -16,7 +16,7 @@
 apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
-  name: "streamx-pod-monitor"
+  name: "streamx-operator-pod-monitor"
 spec:
   labelLimit: 63
   labelNameLengthLimit: 511
