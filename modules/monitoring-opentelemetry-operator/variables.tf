@@ -38,7 +38,7 @@ variable "chart_repository" {
 }
 
 variable "chart_version" {
-  default     = "0.80.2"
+  default     = "0.99.0"
   description = "The version of the Helm chart to install"
   type        = string
 }

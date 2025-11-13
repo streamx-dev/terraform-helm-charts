@@ -17,7 +17,7 @@ locals {
   default_atomic           = true
   default_chart_name       = "opentelemetry-collector"
   default_chart_repository = "https://open-telemetry.github.io/opentelemetry-helm-charts"
-  default_chart_version    = "0.117.0"
+  default_chart_version    = "0.139.0"
   default_cleanup_on_fail  = true
   default_create_namespace = true
   default_namespace        = "opentelemetry"
