@@ -115,7 +115,7 @@
             "uid": "loki"
           },
           "editorMode": "code",
-          "expr": "sum(count_over_time({k8s_namespace_name=~\"$namespace\", k8s_pod_name =~\"$pod\", k8s_container_name =~\"$container\"} |= \"$query\" [$__interval]))",
+          "expr": "sum(count_over_time({k8s_cluster_name=~\"$cluster\", k8s_namespace_name=~\"$namespace\", k8s_pod_name =~\"$pod\", k8s_container_name =~\"$container\"} |= \"$query\" [$__interval]))",
           "instant": false,
           "legendFormat": "Log count",
           "queryType": "range",
@@ -146,7 +146,7 @@
         "showLabels": false,
         "showTime": false,
         "sortOrder": "Descending",
-        "wrapLogMessage": false
+        "wrapLogMessage": true
       },
       "targets": [
         {
@@ -154,7 +154,7 @@
             "type": "loki",
             "uid": "loki"
           },
-          "expr": "{k8s_namespace_name=~\"$namespace\", k8s_pod_name =~\"$pod\", k8s_container_name =~\"$container\"} |= \"$query\"",
+          "expr": "{k8s_cluster_name=~\"$cluster\", k8s_namespace_name=~\"$namespace\", k8s_pod_name =~\"$pod\", k8s_container_name =~\"$container\"} |= \"$query\"",
           "refId": "A"
         }
       ],
@@ -203,6 +203,37 @@
           "uid": "loki"
         },
         "definition": "",
+        "hide": ${ hide_cluster_variable },
+        "includeAll": true,
+        "label": "Cluster",
+        "name": "cluster",
+        "options": [],
+        "query": {
+          "label": "k8s_cluster_name",
+          "refId": "LokiVariableQueryEditor-VariableQuery",
+          "stream": "",
+          "type": 1
+        },
+        "refresh": 1,
+        "regex": "",
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "allValue": ".+",
+        "current": {
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "loki",
+          "uid": "loki"
+        },
+        "definition": "",
         "hide": 0,
         "includeAll": true,
         "multi": true,
@@ -211,12 +242,11 @@
         "query": {
           "label": "k8s_namespace_name",
           "refId": "LokiVariableQueryEditor-VariableQuery",
-          "stream": "",
+          "stream": "{k8s_cluster_name=~\"$cluster\"}",
           "type": 1
         },
         "refresh": 1,
         "regex": "",
-        "skipUrlSync": false,
         "sort": 0,
         "type": "query"
       },
@@ -244,7 +274,7 @@
         "query": {
           "label": "k8s_pod_name",
           "refId": "LokiVariableQueryEditor-VariableQuery",
-          "stream": "{k8s_namespace_name=\"$namespace\"}",
+          "stream": "{k8s_cluster_name=~\"$cluster\", k8s_namespace_name=~\"$namespace\"}",
           "type": 1
         },
         "refresh": 1,
@@ -277,7 +307,7 @@
         "query": {
           "label": "k8s_container_name",
           "refId": "LokiVariableQueryEditor-VariableQuery",
-          "stream": "{k8s_pod_name=\"$pod\"}",
+          "stream": "{k8s_cluster_name=~\"$cluster\", k8s_namespace_name=~\"$namespace\", k8s_pod_name=~\"$pod\"}",
           "type": 1
         },
         "refresh": 1,
