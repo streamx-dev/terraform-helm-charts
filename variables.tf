@@ -276,7 +276,7 @@ variable "streamx_operator_create_namespace" {
 }
 
 variable "streamx_operator_namespace" {
-  default     = "streamx-operator"
+  default     = "streamx-system"
   description = "The namespace used for the deployment"
   type        = string
 }

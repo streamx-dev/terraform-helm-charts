@@ -20,7 +20,7 @@ locals {
   default_chart_version    = "0.1.1"
   default_cleanup_on_fail  = true
   default_create_namespace = true
-  default_namespace        = "streamx-operator"
+  default_namespace        = "streamx-system"
   default_release_name     = "streamx-operator"
   default_settings         = {}
   default_timeout          = 300
