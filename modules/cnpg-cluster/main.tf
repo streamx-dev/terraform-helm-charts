@@ -63,7 +63,7 @@ resource "helm_release" "release" {
 
 data "kubernetes_secret_v1" "cluster_app" {
   metadata {
-    name = "${local.release_name}-cluster-app"
+    name      = "${local.release_name}-cluster-app"
     namespace = local.namespace
   }
 
