@@ -1043,6 +1043,31 @@ variable "streamx_operator_monitoring_traces_endpoint" {
   type        = string
 }
 
+variable "streamx_operator_default_gateway_name" {
+  default     = "streamx-default"
+  type        = string
+}
+
+variable "streamx_operator_default_gateway_namespace" {
+  default     = null
+  type        = string
+}
+
+variable "streamx_operator_default_gateway_controller_name" {
+  default     = null
+  type        = string
+}
+
+variable "streamx_operator_default_gateway_cert_manager_issuer_name" {
+  default     = null
+  type        = string
+}
+
+variable "streamx_operator_default_gateway_cert_manager_issuer_is_cluster_issuer" {
+  default     = null
+  type        = bool
+}
+
 #######
 ### StreamX Operator image pull secret
 #######

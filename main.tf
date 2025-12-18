@@ -453,12 +453,24 @@ module "streamx_operator" {
         imagePullSecrets = local.streamx_operator_image_pull_secret_name == null ? [] : [
           { name = local.streamx_operator_image_pull_secret_name }
         ]
+        image = {
+          tag = "2.0.2-jvm"
+        }
       }
       mesh = {
         monitoring = {
           traces = {
             mode     = local.streamx_operator_monitoring_traces_mode
             endpoint = var.streamx_operator_monitoring_traces_endpoint
+          }
+        }
+        defaultGateway = {
+          name           = var.streamx_operator_default_gateway_name
+          namespace      = var.streamx_operator_default_gateway_namespace == null ? local.streamx_operator_namespace : var.streamx_operator_default_gateway_namespace
+          controllerName = var.streamx_operator_default_gateway_controller_name
+          issuer = {
+            name : var.streamx_operator_default_gateway_cert_manager_issuer_name
+            isClusterIssuer : var.streamx_operator_default_gateway_cert_manager_issuer_is_cluster_issuer
           }
         }
       }
