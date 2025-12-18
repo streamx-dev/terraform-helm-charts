@@ -20,7 +20,7 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [helm_release.streamx_dashboard](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [helm_release.capsule](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
 
 ## Inputs
 

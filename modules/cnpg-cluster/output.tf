@@ -10,3 +10,7 @@ output "db_password" {
 output "db_name" {
   value = data.kubernetes_secret_v1.cluster_app.data.dbname
 }
+
+output "db_host" {
+  value = "${data.kubernetes_secret_v1.cluster_app.data.host}.${local.namespace}.svc.cluster.local"
+}

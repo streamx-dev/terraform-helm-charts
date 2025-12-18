@@ -1,27 +1,12 @@
-# Copyright 2025 Dynamic Solutions Sp. z o.o. sp.k.
-
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
-
 locals {
   default_atomic           = true
-  default_chart_name       = "streamx-operator"
+  default_chart_name       = "streamx-dashboard"
   default_chart_repository = "oci://europe-west1-docker.pkg.dev/streamx-releases/streamx-helm-charts"
-  default_chart_version    = "0.1.8"
+  default_chart_version    = "0.0.16"
   default_cleanup_on_fail  = true
   default_create_namespace = true
-  default_namespace        = "streamx-system"
-  default_release_name     = "streamx-operator"
+  default_namespace        = "streamx-dashboard"
+  default_release_name     = "streamx-dashboard"
   default_settings         = {}
   default_timeout          = 300
   default_values           = []
@@ -39,7 +24,7 @@ locals {
   values           = var.force_defaults_for_null_variables && var.values == null ? local.default_values : var.values
 }
 
-resource "helm_release" "streamx_operator" {
+resource "helm_release" "streamx_dashboard" {
   atomic              = local.atomic
   chart               = local.chart_name
   cleanup_on_fail     = local.cleanup_on_fail
@@ -60,18 +45,4 @@ resource "helm_release" "streamx_operator" {
       value = set.value
     }
   }
-}
-
-resource "kubectl_manifest" "pulsar_messaging_config" {
-  count = var.pulsar_messaging_config_admin_service_url != null && var.pulsar_messaging_config_client_service_url != null ? 1 : 0
-  yaml_body = templatefile(
-    "${path.module}/config/pulsar-messaging-config.yaml",
-    {
-      admin_service_url  = var.pulsar_messaging_config_admin_service_url
-      client_service_url = var.pulsar_messaging_config_client_service_url
-    }
-  )
-  override_namespace = var.namespace
-
-  depends_on = [helm_release.streamx_operator]
 }
