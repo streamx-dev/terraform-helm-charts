@@ -36,6 +36,7 @@
 |------|--------|---------|
 | <a name="module_cert_manager"></a> [cert\_manager](#module\_cert\_manager) | ./modules/cert-manager | n/a |
 | <a name="module_cert_manager_lets_encrypt_issuer"></a> [cert\_manager\_lets\_encrypt\_issuer](#module\_cert\_manager\_lets\_encrypt\_issuer) | ./modules/cert-manager-issuer-lets-encrypt | n/a |
+| <a name="module_envoy_gateway"></a> [envoy\_gateway](#module\_envoy\_gateway) | ./modules/envoy-gateway | n/a |
 | <a name="module_grafana_loki_datasource"></a> [grafana\_loki\_datasource](#module\_grafana\_loki\_datasource) | ./modules/monitoring-grafana-loki-datasource | n/a |
 | <a name="module_grafana_tempo_datasource"></a> [grafana\_tempo\_datasource](#module\_grafana\_tempo\_datasource) | ./modules/monitoring-grafana-tempo-datasource | n/a |
 | <a name="module_ingress_controller_apisix"></a> [ingress\_controller\_apisix](#module\_ingress\_controller\_apisix) | ./modules/ingress-controller-apisix | n/a |
@@ -49,6 +50,7 @@
 | <a name="module_opentelemetry_operator"></a> [opentelemetry\_operator](#module\_opentelemetry\_operator) | ./modules/monitoring-opentelemetry-operator | n/a |
 | <a name="module_prometheus_stack"></a> [prometheus\_stack](#module\_prometheus\_stack) | ./modules/monitoring-prometheus-stack | n/a |
 | <a name="module_pulsar_kaap"></a> [pulsar\_kaap](#module\_pulsar\_kaap) | ./modules/pulsar-kaap | n/a |
+| <a name="module_pulsar_resources_operator"></a> [pulsar\_resources\_operator](#module\_pulsar\_resources\_operator) | ./modules/pulsar-resources-operator | n/a |
 | <a name="module_streamx_dashboards"></a> [streamx\_dashboards](#module\_streamx\_dashboards) | ./modules/monitoring-streamx-grafana-dashboards | n/a |
 | <a name="module_streamx_operator"></a> [streamx\_operator](#module\_streamx\_operator) | ./modules/streamx-operator | n/a |
 | <a name="module_streamx_operator_image_pull_secret"></a> [streamx\_operator\_image\_pull\_secret](#module\_streamx\_operator\_image\_pull\_secret) | ./modules/docker-config-secret | n/a |
@@ -90,11 +92,21 @@
 | <a name="input_cert_manager_settings"></a> [cert\_manager\_settings](#input\_cert\_manager\_settings) | Additional key value settings which will be passed to the Helm chart values, e.g. { "namespace" = "kube-system" }. | `map(any)` | `null` | no |
 | <a name="input_cert_manager_timeout"></a> [cert\_manager\_timeout](#input\_cert\_manager\_timeout) | Time in seconds to wait for any individual kubernetes operation | `number` | `null` | no |
 | <a name="input_cert_manager_values"></a> [cert\_manager\_values](#input\_cert\_manager\_values) | A list of values in raw YAML to be applied to the helm release. Overrides default values from [default-configs](./default-configs). Merges with the settings input, can also be used with the `file()` function, i.e. `file("my/values.yaml")`. | `list(string)` | `null` | no |
+| <a name="input_envoy_gateway_chart_name"></a> [envoy\_gateway\_chart\_name](#input\_envoy\_gateway\_chart\_name) | The name of the Helm chart to install | `string` | `null` | no |
+| <a name="input_envoy_gateway_chart_repository"></a> [envoy\_gateway\_chart\_repository](#input\_envoy\_gateway\_chart\_repository) | The repository containing the Helm chart to install. | `string` | `null` | no |
+| <a name="input_envoy_gateway_chart_version"></a> [envoy\_gateway\_chart\_version](#input\_envoy\_gateway\_chart\_version) | The version of the Helm chart to install. | `string` | `null` | no |
+| <a name="input_envoy_gateway_create_namespace"></a> [envoy\_gateway\_create\_namespace](#input\_envoy\_gateway\_create\_namespace) | Create a namespace for the deployment. | `bool` | `null` | no |
+| <a name="input_envoy_gateway_enabled"></a> [envoy\_gateway\_enabled](#input\_envoy\_gateway\_enabled) | Enables Envoy Gateway. | `bool` | `false` | no |
+| <a name="input_envoy_gateway_namespace"></a> [envoy\_gateway\_namespace](#input\_envoy\_gateway\_namespace) | The namespace used for the deployment | `string` | `null` | no |
+| <a name="input_envoy_gateway_release_name"></a> [envoy\_gateway\_release\_name](#input\_envoy\_gateway\_release\_name) | The name of the helm release. | `string` | `null` | no |
+| <a name="input_envoy_gateway_settings"></a> [envoy\_gateway\_settings](#input\_envoy\_gateway\_settings) | Additional key value settings which will be passed to the Helm chart values, e.g. { "namespace" = "kube-system" }. | `map(any)` | `null` | no |
+| <a name="input_envoy_gateway_timeout"></a> [envoy\_gateway\_timeout](#input\_envoy\_gateway\_timeout) | Time in seconds to wait for any individual kubernetes operation | `number` | `null` | no |
+| <a name="input_envoy_gateway_values"></a> [envoy\_gateway\_values](#input\_envoy\_gateway\_values) | A list of values in raw YAML to be applied to the helm release. Overrides default values from [default-configs](./default-configs). Merges with the settings input, can also be used with the `file()` function, i.e. `file("my/values.yaml")`. | `list(string)` | `null` | no |
 | <a name="input_ingress_controller_apisix_chart_name"></a> [ingress\_controller\_apisix\_chart\_name](#input\_ingress\_controller\_apisix\_chart\_name) | The name of the Helm chart to install | `string` | `null` | no |
 | <a name="input_ingress_controller_apisix_chart_repository"></a> [ingress\_controller\_apisix\_chart\_repository](#input\_ingress\_controller\_apisix\_chart\_repository) | The repository containing the Helm chart to install. | `string` | `null` | no |
 | <a name="input_ingress_controller_apisix_chart_version"></a> [ingress\_controller\_apisix\_chart\_version](#input\_ingress\_controller\_apisix\_chart\_version) | The version of the Helm chart to install. | `string` | `null` | no |
 | <a name="input_ingress_controller_apisix_create_namespace"></a> [ingress\_controller\_apisix\_create\_namespace](#input\_ingress\_controller\_apisix\_create\_namespace) | Create a namespace for the deployment. | `bool` | `null` | no |
-| <a name="input_ingress_controller_apisix_enabled"></a> [ingress\_controller\_apisix\_enabled](#input\_ingress\_controller\_apisix\_enabled) | Enables APISIX Ingress Controller. | `bool` | `true` | no |
+| <a name="input_ingress_controller_apisix_enabled"></a> [ingress\_controller\_apisix\_enabled](#input\_ingress\_controller\_apisix\_enabled) | Enables APISIX Ingress Controller. | `bool` | `false` | no |
 | <a name="input_ingress_controller_apisix_namespace"></a> [ingress\_controller\_apisix\_namespace](#input\_ingress\_controller\_apisix\_namespace) | The namespace used for the deployment | `string` | `null` | no |
 | <a name="input_ingress_controller_apisix_release_name"></a> [ingress\_controller\_apisix\_release\_name](#input\_ingress\_controller\_apisix\_release\_name) | The name of the helm release. | `string` | `null` | no |
 | <a name="input_ingress_controller_apisix_settings"></a> [ingress\_controller\_apisix\_settings](#input\_ingress\_controller\_apisix\_settings) | Additional key value settings which will be passed to the Helm chart values, e.g. { "namespace" = "kube-system" }. | `map(any)` | `null` | no |
@@ -184,12 +196,29 @@
 | <a name="input_pulsar_kaap_settings"></a> [pulsar\_kaap\_settings](#input\_pulsar\_kaap\_settings) | Additional key value settings which will be passed to the Helm chart values, e.g. { "namespace" = "kube-system" }. | `map(any)` | `null` | no |
 | <a name="input_pulsar_kaap_timeout"></a> [pulsar\_kaap\_timeout](#input\_pulsar\_kaap\_timeout) | Time in seconds to wait for any individual kubernetes operation | `number` | `null` | no |
 | <a name="input_pulsar_kaap_values"></a> [pulsar\_kaap\_values](#input\_pulsar\_kaap\_values) | A list of values in raw YAML to be applied to the helm release. Overrides default values from [default-configs](./default-configs). Merges with the settings input, can also be used with the `file()` function, i.e. `file("my/values.yaml")`. | `list(string)` | `null` | no |
+| <a name="input_pulsar_resources_operator_chart_name"></a> [pulsar\_resources\_operator\_chart\_name](#input\_pulsar\_resources\_operator\_chart\_name) | The name of the Helm chart to install | `string` | `null` | no |
+| <a name="input_pulsar_resources_operator_chart_repository"></a> [pulsar\_resources\_operator\_chart\_repository](#input\_pulsar\_resources\_operator\_chart\_repository) | The repository containing the Helm chart to install. | `string` | `null` | no |
+| <a name="input_pulsar_resources_operator_chart_repository_password"></a> [pulsar\_resources\_operator\_chart\_repository\_password](#input\_pulsar\_resources\_operator\_chart\_repository\_password) | The password used for the repository authentication. | `string` | `null` | no |
+| <a name="input_pulsar_resources_operator_chart_repository_username"></a> [pulsar\_resources\_operator\_chart\_repository\_username](#input\_pulsar\_resources\_operator\_chart\_repository\_username) | The username used for the repository authentication. | `string` | `null` | no |
+| <a name="input_pulsar_resources_operator_chart_version"></a> [pulsar\_resources\_operator\_chart\_version](#input\_pulsar\_resources\_operator\_chart\_version) | The version of the Helm chart to install. | `string` | `null` | no |
+| <a name="input_pulsar_resources_operator_create_namespace"></a> [pulsar\_resources\_operator\_create\_namespace](#input\_pulsar\_resources\_operator\_create\_namespace) | Create a namespace for the deployment. | `bool` | `true` | no |
+| <a name="input_pulsar_resources_operator_enabled"></a> [pulsar\_resources\_operator\_enabled](#input\_pulsar\_resources\_operator\_enabled) | Enables Pulsar Resources Operator. | `bool` | `true` | no |
+| <a name="input_pulsar_resources_operator_namespace"></a> [pulsar\_resources\_operator\_namespace](#input\_pulsar\_resources\_operator\_namespace) | The namespace used for the deployment | `string` | `"pulsar-resources-operator"` | no |
+| <a name="input_pulsar_resources_operator_release_name"></a> [pulsar\_resources\_operator\_release\_name](#input\_pulsar\_resources\_operator\_release\_name) | The name of the helm release. | `string` | `null` | no |
+| <a name="input_pulsar_resources_operator_settings"></a> [pulsar\_resources\_operator\_settings](#input\_pulsar\_resources\_operator\_settings) | Additional key value settings which will be passed to the Helm chart values, e.g. { "namespace" = "kube-system" }. | `map(any)` | `null` | no |
+| <a name="input_pulsar_resources_operator_timeout"></a> [pulsar\_resources\_operator\_timeout](#input\_pulsar\_resources\_operator\_timeout) | Time in seconds to wait for any individual kubernetes operation. | `number` | `null` | no |
+| <a name="input_pulsar_resources_operator_values"></a> [pulsar\_resources\_operator\_values](#input\_pulsar\_resources\_operator\_values) | A list of values in raw YAML to be applied to the helm release. Overrides default composed values. Merges with the settings input, can also be used with the `file()` function, i.e. `file("my/values.yaml")`. | `list(string)` | `null` | no |
 | <a name="input_streamx_operator_chart_name"></a> [streamx\_operator\_chart\_name](#input\_streamx\_operator\_chart\_name) | The name of the Helm chart to install | `string` | `null` | no |
 | <a name="input_streamx_operator_chart_repository"></a> [streamx\_operator\_chart\_repository](#input\_streamx\_operator\_chart\_repository) | The repository containing the Helm chart to install. | `string` | `null` | no |
 | <a name="input_streamx_operator_chart_repository_password"></a> [streamx\_operator\_chart\_repository\_password](#input\_streamx\_operator\_chart\_repository\_password) | The password used for the repository authentication. | `string` | `null` | no |
 | <a name="input_streamx_operator_chart_repository_username"></a> [streamx\_operator\_chart\_repository\_username](#input\_streamx\_operator\_chart\_repository\_username) | The username used for the repository authentication. | `string` | `null` | no |
 | <a name="input_streamx_operator_chart_version"></a> [streamx\_operator\_chart\_version](#input\_streamx\_operator\_chart\_version) | The version of the Helm chart to install. | `string` | `null` | no |
 | <a name="input_streamx_operator_create_namespace"></a> [streamx\_operator\_create\_namespace](#input\_streamx\_operator\_create\_namespace) | Create a namespace for the deployment. | `bool` | `true` | no |
+| <a name="input_streamx_operator_default_gateway_cert_manager_issuer_is_cluster_issuer"></a> [streamx\_operator\_default\_gateway\_cert\_manager\_issuer\_is\_cluster\_issuer](#input\_streamx\_operator\_default\_gateway\_cert\_manager\_issuer\_is\_cluster\_issuer) | n/a | `bool` | `null` | no |
+| <a name="input_streamx_operator_default_gateway_cert_manager_issuer_name"></a> [streamx\_operator\_default\_gateway\_cert\_manager\_issuer\_name](#input\_streamx\_operator\_default\_gateway\_cert\_manager\_issuer\_name) | n/a | `string` | `null` | no |
+| <a name="input_streamx_operator_default_gateway_controller_name"></a> [streamx\_operator\_default\_gateway\_controller\_name](#input\_streamx\_operator\_default\_gateway\_controller\_name) | n/a | `string` | `null` | no |
+| <a name="input_streamx_operator_default_gateway_name"></a> [streamx\_operator\_default\_gateway\_name](#input\_streamx\_operator\_default\_gateway\_name) | n/a | `string` | `"streamx-default"` | no |
+| <a name="input_streamx_operator_default_gateway_namespace"></a> [streamx\_operator\_default\_gateway\_namespace](#input\_streamx\_operator\_default\_gateway\_namespace) | n/a | `string` | `null` | no |
 | <a name="input_streamx_operator_enabled"></a> [streamx\_operator\_enabled](#input\_streamx\_operator\_enabled) | Enables StreamX Operator. | `bool` | `true` | no |
 | <a name="input_streamx_operator_image_pull_secret_enabled"></a> [streamx\_operator\_image\_pull\_secret\_enabled](#input\_streamx\_operator\_image\_pull\_secret\_enabled) | Enables StreamX Operator Image Pull Secret. | `bool` | `true` | no |
 | <a name="input_streamx_operator_image_pull_secret_name"></a> [streamx\_operator\_image\_pull\_secret\_name](#input\_streamx\_operator\_image\_pull\_secret\_name) | StreamX Operator image pull secret name. | `string` | `"sx-operator-image-pull-secret"` | no |
@@ -201,7 +230,7 @@
 | <a name="input_streamx_operator_messaging_pulsar_client_service_url"></a> [streamx\_operator\_messaging\_pulsar\_client\_service\_url](#input\_streamx\_operator\_messaging\_pulsar\_client\_service\_url) | Pulsar client service URL passed to StreamX Operator. If null and KAAP enabled then KAAP default URL is used. | `string` | `null` | no |
 | <a name="input_streamx_operator_monitoring_traces_endpoint"></a> [streamx\_operator\_monitoring\_traces\_endpoint](#input\_streamx\_operator\_monitoring\_traces\_endpoint) | Traces collector URL | `string` | `null` | no |
 | <a name="input_streamx_operator_monitoring_traces_mode"></a> [streamx\_operator\_monitoring\_traces\_mode](#input\_streamx\_operator\_monitoring\_traces\_mode) | Traces monitoring mode for StreamX Meshes deployed by StreamX Operator | `string` | `null` | no |
-| <a name="input_streamx_operator_namespace"></a> [streamx\_operator\_namespace](#input\_streamx\_operator\_namespace) | The namespace used for the deployment | `string` | `"streamx-operator"` | no |
+| <a name="input_streamx_operator_namespace"></a> [streamx\_operator\_namespace](#input\_streamx\_operator\_namespace) | The namespace used for the deployment | `string` | `"streamx-system"` | no |
 | <a name="input_streamx_operator_release_name"></a> [streamx\_operator\_release\_name](#input\_streamx\_operator\_release\_name) | The name of the helm release. | `string` | `null` | no |
 | <a name="input_streamx_operator_settings"></a> [streamx\_operator\_settings](#input\_streamx\_operator\_settings) | Additional key value settings which will be passed to the Helm chart values, e.g. { "namespace" = "kube-system" }. | `map(any)` | `null` | no |
 | <a name="input_streamx_operator_timeout"></a> [streamx\_operator\_timeout](#input\_streamx\_operator\_timeout) | Time in seconds to wait for any individual kubernetes operation. | `number` | `null` | no |
@@ -222,5 +251,5 @@
 | Name | Description |
 |------|-------------|
 | <a name="output_cert_manager_lets_encrypt_issuer_ingress_annotations"></a> [cert\_manager\_lets\_encrypt\_issuer\_ingress\_annotations](#output\_cert\_manager\_lets\_encrypt\_issuer\_ingress\_annotations) | Ingress annotations with Cert Manager Let's Encrypt issuer configuration |
-| <a name="output_loadbalancer_ip"></a> [loadbalancer\_ip](#output\_loadbalancer\_ip) | K8s cluster Load Balancer IP |
+| <a name="output_load_balancer_ip"></a> [load\_balancer\_ip](#output\_load\_balancer\_ip) | K8s cluster Load Balancer IP |
 <!-- END_TF_DOCS -->
