@@ -63,7 +63,7 @@ resource "helm_release" "this" {
 data "kubernetes_service_v1" "gateway" {
   metadata {
     name      = "envoy-gateway"
-    namespace = var.namespace
+    namespace = local.namespace
   }
 
   depends_on = [
