@@ -14,7 +14,7 @@
 #
 
 locals {
-  load_balancer_ip = try(data.kubernetes_service.gateway.status.0.addresses.0.value, null)
+  load_balancer_ip = try(data.kubernetes_service.gateway.status.0.load_balancer.0.ingress.0.ip, null)
 }
 
 output "load_balancer_ip" {
