@@ -18,6 +18,6 @@ locals {
 }
 
 output "load_balancer_ip" {
-  description = "IP of the loadbalancer"
+  description = "IP of the Load Balancer"
   value       = local.load_balancer_ip
 }

@@ -60,7 +60,7 @@ resource "helm_release" "this" {
   }
 }
 
-data "kubernetes_service" "gateway" {
+data "kubernetes_service_v1" "gateway" {
   metadata {
     name      = "envoy-gateway"
     namespace = var.namespace
