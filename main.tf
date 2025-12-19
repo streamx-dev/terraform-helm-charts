@@ -469,8 +469,8 @@ module "streamx_operator" {
           namespace      = var.streamx_operator_default_gateway_namespace == null ? local.streamx_operator_namespace : var.streamx_operator_default_gateway_namespace
           controllerName = var.streamx_operator_default_gateway_controller_name
           issuer = {
-            name : var.streamx_operator_default_gateway_cert_manager_issuer_name
-            isClusterIssuer : var.streamx_operator_default_gateway_cert_manager_issuer_is_cluster_issuer
+            name            = var.streamx_operator_default_gateway_cert_manager_issuer_name
+            isClusterIssuer = var.streamx_operator_default_gateway_cert_manager_issuer_is_cluster_issuer
           }
         }
       }
