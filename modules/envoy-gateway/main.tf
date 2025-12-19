@@ -59,3 +59,14 @@ resource "helm_release" "this" {
     }
   }
 }
+
+data "kubernetes_service" "gateway" {
+  metadata {
+    name      = "envoy-gateway"
+    namespace = var.namespace
+  }
+
+  depends_on = [
+    helm_release.this
+  ]
+}

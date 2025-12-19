@@ -49,7 +49,7 @@ module "ingress_controller_nginx" {
 
 module "envoy_gateway" {
   count  = var.envoy_gateway_enabled ? 1 : 0
-  source = "./modules/ingress-controller-nginx"
+  source = "./modules/envoy-gateway"
 
   chart_name       = var.envoy_gateway_chart_name
   chart_repository = var.envoy_gateway_chart_repository
