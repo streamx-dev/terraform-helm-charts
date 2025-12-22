@@ -454,7 +454,7 @@ module "streamx_operator" {
           { name = local.streamx_operator_image_pull_secret_name }
         ]
         image = {
-          tag = "2.0.2-jvm"
+          tag = "2.0.3-jvm"
         }
       }
       mesh = {
