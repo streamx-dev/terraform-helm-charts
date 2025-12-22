@@ -467,11 +467,9 @@ module "streamx_operator" {
         defaultGateway = {
           name           = var.streamx_operator_default_gateway_name
           namespace      = var.streamx_operator_default_gateway_namespace == null ? local.streamx_operator_namespace : var.streamx_operator_default_gateway_namespace
-          controllerName = var.streamx_operator_default_gateway_controller_name
-          issuer = {
-            name            = var.streamx_operator_default_gateway_cert_manager_issuer_name
-            isClusterIssuer = var.streamx_operator_default_gateway_cert_manager_issuer_is_cluster_issuer
-          }
+          className = var.streamx_operator_default_gateway_class_name
+          domain = var.streamx_operator_default_gateway_domain
+          certificateRef = var.streamx_operator_default_gateway_certificate_ref
         }
       }
       federation = {

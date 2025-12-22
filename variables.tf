@@ -1053,19 +1053,19 @@ variable "streamx_operator_default_gateway_namespace" {
   type        = string
 }
 
-variable "streamx_operator_default_gateway_controller_name" {
+variable "streamx_operator_default_gateway_class_name" {
   default     = null
   type        = string
 }
 
-variable "streamx_operator_default_gateway_cert_manager_issuer_name" {
+variable "streamx_operator_default_gateway_domain" {
   default     = null
   type        = string
 }
 
-variable "streamx_operator_default_gateway_cert_manager_issuer_is_cluster_issuer" {
+variable "streamx_operator_default_gateway_certificate_ref" {
   default     = null
-  type        = bool
+  type        = string
 }
 
 #######
