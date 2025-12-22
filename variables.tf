@@ -1043,11 +1043,6 @@ variable "streamx_operator_monitoring_traces_endpoint" {
   type        = string
 }
 
-variable "streamx_operator_default_gateway_name" {
-  default     = "streamx-default"
-  type        = string
-}
-
 variable "streamx_operator_default_gateway_class_name" {
   default     = null
   type        = string

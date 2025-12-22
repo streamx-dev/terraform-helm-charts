@@ -465,7 +465,6 @@ module "streamx_operator" {
           }
         }
         defaultGateway = {
-          name           = var.streamx_operator_default_gateway_name
           className = var.streamx_operator_default_gateway_class_name
           domain = var.streamx_operator_default_gateway_domain
           certificateRef = var.streamx_operator_default_gateway_certificate_ref
