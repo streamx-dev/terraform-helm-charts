@@ -1048,11 +1048,6 @@ variable "streamx_operator_default_gateway_name" {
   type        = string
 }
 
-variable "streamx_operator_default_gateway_namespace" {
-  default     = null
-  type        = string
-}
-
 variable "streamx_operator_default_gateway_class_name" {
   default     = null
   type        = string
