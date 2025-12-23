@@ -26,19 +26,19 @@ variable "atomic" {
 }
 
 variable "chart_name" {
-  default     = "cert-manager"
+  default     = "oci://docker.io/envoyproxy/gateway-helm"
   description = "The name of the Helm chart to install"
   type        = string
 }
 
 variable "chart_repository" {
-  default     = "https://charts.jetstack.io"
+  default     = null
   description = "The repository containing the Helm chart to install"
   type        = string
 }
 
 variable "chart_version" {
-  default     = "v1.14.5"
+  default     = "v1.6.1"
   description = "The version of the Helm chart to install"
   type        = string
 }
@@ -56,13 +56,13 @@ variable "create_namespace" {
 }
 
 variable "namespace" {
-  default     = "cert-manager"
+  default     = "envoy-gateway-system"
   description = "The namespace used for the deployment"
   type        = string
 }
 
 variable "release_name" {
-  default     = "cert-manager"
+  default     = "envoy-gateway"
   description = "The name of the helm release"
   type        = string
 }
