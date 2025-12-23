@@ -21,37 +21,24 @@ variable "force_defaults_for_null_variables" {
 
 variable "atomic" {
   default     = true
-  description = "Purge the chart on a failed installation. Default's to \"true\"."
+  description = "Purge the chart on a failed installation."
   type        = bool
 }
 
 variable "chart_name" {
-  default     = "streamx-operator"
+  default     = "oci://docker.io/envoyproxy/gateway-helm"
   description = "The name of the Helm chart to install"
   type        = string
 }
 
 variable "chart_repository" {
-  default     = "oci://europe-west1-docker.pkg.dev/streamx-releases/streamx-helm-charts"
+  default     = null
   description = "The repository containing the Helm chart to install"
   type        = string
 }
 
-variable "chart_repository_username" {
-  default     = null
-  description = "The username used for the repository authentication"
-  type        = string
-}
-
-variable "chart_repository_password" {
-  default     = null
-  description = "The password used for the repository authentication"
-  type        = string
-  sensitive   = true
-}
-
 variable "chart_version" {
-  default     = "2.0.4"
+  default     = "v1.6.1"
   description = "The version of the Helm chart to install"
   type        = string
 }
@@ -69,13 +56,13 @@ variable "create_namespace" {
 }
 
 variable "namespace" {
-  default     = "streamx-system"
+  default     = "envoy-gateway-system"
   description = "The namespace used for the deployment"
   type        = string
 }
 
 variable "release_name" {
-  default     = "streamx-operator"
+  default     = "envoy-gateway"
   description = "The name of the helm release"
   type        = string
 }
@@ -95,16 +82,4 @@ variable "timeout" {
 variable "values" {
   default     = []
   description = "A list of values in raw YAML to be applied to the helm release. Merges with the settings input, can also be used with the `file()` function, i.e. `file(\"my/values.yaml\")`."
-}
-
-variable "pulsar_messaging_config_client_service_url" {
-  default     = null
-  description = "Pulsar client service URL passed to default MessagingConfig resource. If null then default MessagingConfig is not created."
-  type        = string
-}
-
-variable "pulsar_messaging_config_admin_service_url" {
-  default     = null
-  description = "Pulsar admin service URL passed to default MessagingConfig resource. If null then default MessagingConfig is not created."
-  type        = string
 }

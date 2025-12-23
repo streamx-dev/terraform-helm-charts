@@ -13,12 +13,16 @@
 # limitations under the License.
 #
 
-output "load_balancer_ip" {
-  description = "K8s cluster Load Balancer IP"
-  value       = try(coalesce(try(module.ingress_controller_nginx.0.ingress_ip, null), try(module.ingress_controller_apisix.0.ingress_ip, null), try(module.envoy_gateway.0.load_balancer_ip, null)), null)
-}
-
-output "cert_manager_lets_encrypt_issuer_ingress_annotations" {
-  description = "Ingress annotations with Cert Manager Let's Encrypt issuer configuration"
-  value       = length(module.cert_manager_lets_encrypt_issuer) > 0 ? module.cert_manager_lets_encrypt_issuer.0.cluster_issuer_ingress_annotations : null
+terraform {
+  required_version = ">= 1.0.0"
+  required_providers {
+    helm = {
+      source  = "hashicorp/helm"
+      version = ">= 2.17.0, < 3.0.0"
+    }
+    kubectl = {
+      source  = "gavinbunney/kubectl"
+      version = ">= 1.14.0"
+    }
+  }
 }

@@ -20,6 +20,7 @@ No modules.
 
 | Name | Type |
 |------|------|
+| [kubectl_manifest.streamx_operator_pod_monitor](https://registry.terraform.io/providers/gavinbunney/kubectl/latest/docs/resources/manifest) | resource |
 | [kubectl_manifest.streamx_pod_monitor](https://registry.terraform.io/providers/gavinbunney/kubectl/latest/docs/resources/manifest) | resource |
 
 ## Inputs

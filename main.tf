@@ -47,6 +47,21 @@ module "ingress_controller_nginx" {
   ])
 }
 
+module "envoy_gateway" {
+  count  = var.envoy_gateway_enabled ? 1 : 0
+  source = "./modules/envoy-gateway"
+
+  chart_name       = var.envoy_gateway_chart_name
+  chart_repository = var.envoy_gateway_chart_repository
+  chart_version    = var.envoy_gateway_chart_version
+  create_namespace = var.envoy_gateway_create_namespace
+  namespace        = var.envoy_gateway_namespace
+  release_name     = var.envoy_gateway_release_name
+  settings         = var.envoy_gateway_settings
+  timeout          = var.envoy_gateway_timeout
+  values           = var.envoy_gateway_values
+}
+
 module "cert_manager" {
   count  = var.cert_manager_enabled ? 1 : 0
   source = "./modules/cert-manager"
@@ -438,6 +453,9 @@ module "streamx_operator" {
         imagePullSecrets = local.streamx_operator_image_pull_secret_name == null ? [] : [
           { name = local.streamx_operator_image_pull_secret_name }
         ]
+        image = {
+          tag = "2.0.3-jvm"
+        }
       }
       mesh = {
         monitoring = {
@@ -445,6 +463,11 @@ module "streamx_operator" {
             mode     = local.streamx_operator_monitoring_traces_mode
             endpoint = var.streamx_operator_monitoring_traces_endpoint
           }
+        }
+        defaultGateway = {
+          className      = var.streamx_operator_default_gateway_class_name
+          domain         = var.streamx_operator_default_gateway_domain
+          certificateRef = var.streamx_operator_default_gateway_certificate_ref
         }
       }
       federation = {
