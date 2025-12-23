@@ -49,7 +49,7 @@ No modules.
 | <a name="input_chart_repository"></a> [chart\_repository](#input\_chart\_repository) | The repository containing the Helm chart to install | `string` | `"oci://europe-west1-docker.pkg.dev/streamx-releases/streamx-helm-charts"` | no |
 | <a name="input_chart_repository_password"></a> [chart\_repository\_password](#input\_chart\_repository\_password) | The password used for the repository authentication | `string` | `null` | no |
 | <a name="input_chart_repository_username"></a> [chart\_repository\_username](#input\_chart\_repository\_username) | The username used for the repository authentication | `string` | `null` | no |
-| <a name="input_chart_version"></a> [chart\_version](#input\_chart\_version) | The version of the Helm chart to install | `string` | `"0.0.8"` | no |
+| <a name="input_chart_version"></a> [chart\_version](#input\_chart\_version) | The version of the Helm chart to install | `string` | `"2.0.4"` | no |
 | <a name="input_cleanup_on_fail"></a> [cleanup\_on\_fail](#input\_cleanup\_on\_fail) | Allow deletion of new resources created in this upgrade when upgrade fails | `bool` | `true` | no |
 | <a name="input_create_namespace"></a> [create\_namespace](#input\_create\_namespace) | Create a namespace for the deployment. Defaults to "true". | `bool` | `true` | no |
 | <a name="input_force_defaults_for_null_variables"></a> [force\_defaults\_for\_null\_variables](#input\_force\_defaults\_for\_null\_variables) | Enables forcing default variable values when the variable value passed to the module is null. | `bool` | `true` | no |
