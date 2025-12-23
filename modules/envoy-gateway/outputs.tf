@@ -14,10 +14,10 @@
 #
 
 locals {
-  load_balancer_ip = data.kubernetes_service_v1.gateway.status.0.load_balancer.0.ingress.0.ip
+  load_balancer_ingress = data.kubernetes_service_v1.gateway.status.0.load_balancer.0.ingress
 }
 
 output "load_balancer_ip" {
   description = "IP of the Load Balancer"
-  value       = local.load_balancer_ip
+  value       = length(local.load_balancer_ingress) > 0 ? local.load_balancer_ingress.0.ip : null
 }
