@@ -1044,18 +1044,18 @@ variable "streamx_operator_monitoring_traces_endpoint" {
 }
 
 variable "streamx_operator_default_gateway_class_name" {
-  default     = null
-  type        = string
+  default = null
+  type    = string
 }
 
 variable "streamx_operator_default_gateway_domain" {
-  default     = null
-  type        = string
+  default = null
+  type    = string
 }
 
 variable "streamx_operator_default_gateway_certificate_ref" {
-  default     = null
-  type        = string
+  default = null
+  type    = string
 }
 
 #######
