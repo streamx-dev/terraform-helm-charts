@@ -59,21 +59,3 @@ resource "helm_release" "this" {
     }
   }
 }
-
-resource "kubectl_manifest" "gateway_class" {
-  yaml_body          = file("${path.module}/gateway-class.yaml")
-  override_namespace = local.namespace
-
-  depends_on = [helm_release.this]
-}
-
-data "kubernetes_service_v1" "gateway" {
-  metadata {
-    name      = "envoy-gateway"
-    namespace = local.namespace
-  }
-
-  depends_on = [
-    helm_release.this
-  ]
-}
