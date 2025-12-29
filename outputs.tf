@@ -13,9 +13,9 @@
 # limitations under the License.
 #
 
-output "load_balancer_ip" {
+output "ingress_controller_ip" {
   description = "K8s cluster Load Balancer IP"
-  value       = try(coalesce(try(module.ingress_controller_nginx.0.ingress_ip, null), try(module.ingress_controller_apisix.0.ingress_ip, null), try(module.envoy_gateway.0.load_balancer_ip, null)), null)
+  value       = try(coalesce(try(module.ingress_controller_nginx.0.ingress_ip, null), try(module.ingress_controller_apisix.0.ingress_ip, null)), null)
 }
 
 output "cert_manager_lets_encrypt_issuer_ingress_annotations" {
