@@ -63,8 +63,8 @@ module "envoy_gateway" {
 }
 
 module "envoy_proxy_pod_monitor" {
-  count  = var.envoy_gateway_enabled ? 1 : 0
-  source = "./modules/monitoring-envoy-proxy-pod-monitor"
+  count     = var.envoy_gateway_enabled ? 1 : 0
+  source    = "./modules/monitoring-envoy-proxy-pod-monitor"
   namespace = module.envoy_gateway[0].namespace
 
   depends_on = [module.envoy_gateway]
