@@ -27,8 +27,8 @@
 
 | Name | Version |
 |------|---------|
-| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | 2.35.1 |
-| <a name="provider_random"></a> [random](#provider\_random) | n/a |
+| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | 2.37.1 |
+| <a name="provider_random"></a> [random](#provider\_random) | 3.7.2 |
 
 ## Modules
 
@@ -37,6 +37,7 @@
 | <a name="module_cert_manager"></a> [cert\_manager](#module\_cert\_manager) | ./modules/cert-manager | n/a |
 | <a name="module_cert_manager_lets_encrypt_issuer"></a> [cert\_manager\_lets\_encrypt\_issuer](#module\_cert\_manager\_lets\_encrypt\_issuer) | ./modules/cert-manager-issuer-lets-encrypt | n/a |
 | <a name="module_envoy_gateway"></a> [envoy\_gateway](#module\_envoy\_gateway) | ./modules/envoy-gateway | n/a |
+| <a name="module_envoy_proxy_pod_monitor"></a> [envoy\_proxy\_pod\_monitor](#module\_envoy\_proxy\_pod\_monitor) | ./modules/monitoring-envoy-proxy-pod-monitor | n/a |
 | <a name="module_grafana_loki_datasource"></a> [grafana\_loki\_datasource](#module\_grafana\_loki\_datasource) | ./modules/monitoring-grafana-loki-datasource | n/a |
 | <a name="module_grafana_tempo_datasource"></a> [grafana\_tempo\_datasource](#module\_grafana\_tempo\_datasource) | ./modules/monitoring-grafana-tempo-datasource | n/a |
 | <a name="module_ingress_controller_apisix"></a> [ingress\_controller\_apisix](#module\_ingress\_controller\_apisix) | ./modules/ingress-controller-apisix | n/a |
@@ -249,5 +250,5 @@
 | Name | Description |
 |------|-------------|
 | <a name="output_cert_manager_lets_encrypt_issuer_ingress_annotations"></a> [cert\_manager\_lets\_encrypt\_issuer\_ingress\_annotations](#output\_cert\_manager\_lets\_encrypt\_issuer\_ingress\_annotations) | Ingress annotations with Cert Manager Let's Encrypt issuer configuration |
-| <a name="output_load_balancer_ip"></a> [load\_balancer\_ip](#output\_load\_balancer\_ip) | K8s cluster Load Balancer IP |
+| <a name="output_ingress_controller_ip"></a> [ingress\_controller\_ip](#output\_ingress\_controller\_ip) | K8s cluster Load Balancer IP |
 <!-- END_TF_DOCS -->
