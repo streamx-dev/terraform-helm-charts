@@ -14,7 +14,10 @@
 #
 
 resource "kubectl_manifest" "envoy_proxy_pod_monitor" {
-  yaml_body          = file("${path.module}/config/envoy-proxy-pod-monitor.yaml")
-  override_namespace = var.namespace
+  yaml_body = templatefile(
+    "${path.module}/config/envoy-proxy-pod-monitor.tftpl.yaml",
+    {
+      namespace = var.namespace
+    }
+  )
 }
-

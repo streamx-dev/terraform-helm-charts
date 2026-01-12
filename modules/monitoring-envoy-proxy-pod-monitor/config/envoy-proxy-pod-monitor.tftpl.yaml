@@ -2,9 +2,11 @@ apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
   name: envoy-proxy-pod-monitor
+  namespace: ${namespace}
 spec:
   namespaceSelector:
-    any: true
+    matchNames:
+      - ${namespace}
   podMetricsEndpoints:
     - path: /stats/prometheus
       port: metrics
